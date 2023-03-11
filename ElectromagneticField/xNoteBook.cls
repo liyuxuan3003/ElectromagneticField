@@ -9,6 +9,7 @@
 \RequirePackage{xeCJKfntef}
 
 %引入超链接
+\PassOptionsToPackage{hyphens}{url}
 \RequirePackage[hidelinks]{hyperref}
 \hypersetup{bookmarksnumbered=true}
 \hypersetup{pdftitle=\xtitle}

@@ -8,8 +8,12 @@
 \usetikzlibrary{quotes}
 \usetikzlibrary{angles}
 
+\tikzset{point/.style={circle,draw=#1,solid,thin,radius=0.03,fill=white,inner sep=0.8pt},point/.default=black}
+
 \RequirePackage[european,americaninductors,americanvoltages,americancurrents,RPvoltages]{circuitikz}
 
+\ctikzset{logic ports=ieee}
 \ctikzset{voltage/distance from node=0.85}
 
-\tikzset{point/.style={circle,draw=#1,solid,thin,radius=0.03,fill=white,inner sep=0.8pt},point/.default=black}
+\RequirePackage{pgfplots}
+\pgfplotsset{trig format plots=rad}
