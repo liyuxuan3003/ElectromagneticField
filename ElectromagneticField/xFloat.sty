@@ -1,0 +1,257 @@
+\ProvidesPackage{xFloat}
+
+\RequirePackage{xCommon}
+
+%引入浮动选项[H]以固定浮动体
+\RequirePackage{float}
+
+%引入配置图表标题格式的宏包
+\RequirePackage{caption}
+\captionsetup[table]{skip=8pt}      %设定表标题与其后表格的间距
+\captionsetup[figure]{skip=10pt}    %设定图标题与其前图像的间距
+
+%创建图的标签解析对
+\xrefcreate{fig}{图}
+
+%创建表的标签解析对
+\xrefcreate{tab}{表}
+
+%引入在表格单元格内输入多行文字的命令
+\RequirePackage{makecell}
+
+%引入在表格中创建跨越多行的单元格的命令
+\RequirePackage{multirow}
+
+%引入定义复杂表格列格式的功能
+\RequirePackage{array}
+
+%引入跨页长表格的命令
+\RequirePackage{longtable}
+
+%引入绘制粗表现的环境
+\RequirePackage{boldline}
+
+%引入对表头进行斜线分隔的命令
+\RequirePackage{diagbox}
+
+%定义可调粗细倍率的完整水平线\hlinex
+\def\hlinex#1{\hlineB{#1}}
+\def\hlinetop{\hlinex{2}}           %顶线
+\def\hlinemid{\hlinex{1}}           %中线
+\def\hlinebot{\hlinex{2}}           %底线
+\def\hlinelig{\hlinex{0.5}}         %细线
+
+%定义可调粗细倍率的完整水平线\clinex
+\def\clinex#1#2{\clineB{#1}{#2}}
+\def\clinetop#1{\clinex{#1}{2}}     %顶线
+\def\clinemid#1{\clinex{#1}{1}}     %中线
+\def\clinebot#1{\clinex{#1}{2}}     %底线
+\def\clinelig#1{\clinex{#1}{0.5}}   %细线
+
+%处理Table和Figure收到的标题名称参数
+%存在五种情况
+% 1. "<标题>"
+%   \caption{<标题>}\label{...:<标题>}
+% 2. "<标题>;<标签>"
+%   \caption{<标题>}\label{...:<标签>}
+% 3. "<标题>;"
+%   \caption{<标题>}
+% 4. ";<标签>"
+%   \caption{}\label{...:<标签>}
+% 5. ";" 或 ""
+%   \caption{}
+
+\def\captiontempA{}%
+\def\captiontempB{}%
+
+%用法示例：\captionmake{tab}{<标题>;<标签>}
+%用法示例：\captionmake{fig}{<标题>;<标签>}
+%使用\captionmake*可以使得原先的"\caption{...}"变为"..."，适用于\subcaptionbox命令
+\NewDocumentCommand{\captionmake}{sm>{\SplitArgument{1}{;}}m}%
+{%
+    \captionsave #3%
+    \IfBooleanTF{#1}
+    {\captiontempA}%
+    {\ifthenelse{\equal{\captiontempA}{}}{\caption{}}{\caption{\captiontempA}}}%
+    \ifthenelse{\equal{\captiontempB}{}}{}{\label{#2:\captiontempB}}%
+}%
+
+\NewDocumentCommand{\captionsave}{mm}%
+{%
+    \def\captiontempA{#1}%
+    \IfValueTF{#2}%
+    {\def\captiontempB{#2}}%
+    {\def\captiontempB{#1}}%
+}%
+
+
+%标准表格环境和长表格环境现在具有完全相同的参数接口
+% #1 [表格名称]
+% #2 {表格列格式}
+% #3 [表格字体]     默认值为\small
+%
+% #4 布尔参数* 是否取消自动绘线
+%
+% #5 <首处表头>     默认值为空
+% #6 (其余表头)     默认值为<首处表头>
+% #7 <末处表尾>     默认值为空
+% #8 (其余表尾)     默认值为空
+%
+% 其中"(其余表头)"和"(其余表尾)"对Table环境无效，仅作用于TableLong环境
+%
+% Table环境的流程
+% 绘制表头线\hlinetop
+% 判断<首处表头>是否为空
+%   - 若为空，则不输出任何内容
+%   - 若非空，则输出<首处表头>并绘制表中线\hlinemid
+% 输出表格环境体内容
+% 判断<末处表位>是否为空
+%   - 若为空，则绘制表尾线\hlinebot
+%   - 若非空，则输出<末处表尾>
+%
+% TableLong的流程基本相似，但在一般表头和一般表尾处以(其余表头)和(其余表尾)替之
+% TableLong中的默认值思路是
+% 1. 如果设置了<首处表头>，则会默认将其作为每一页开头的表头，除非另行设置(其余表头)
+% 2. 如果设置了<末处表位>，则并不会影响(其余表尾)，这两者是独立的
+
+%创建Table环境
+\NewDocumentEnvironment{Table}{O{}G{lllllllll}O{\small}sD<>{}D(){#5}D<>{}D(){}b}
+{
+    \par
+    \begin{table}[H]
+        \centering
+        \captionmake{tab}{#1}
+        #3
+        \begin{tabular}{#2}
+            \IfBooleanF{#4}{\hlinetop}
+            \if\relax\detokenize{#5}\relax
+                %...
+            \else
+                #5
+                \IfBooleanF{#4}{\hlinemid}
+            \fi
+            #9
+            \if\relax\detokenize{#7}\relax
+                \IfBooleanF{#4}{\hlinebot}
+            \else
+                #7
+            \fi
+        \end{tabular}
+    \end{table}
+}{}
+
+%创建TableLong环境
+%由于一些原因，在longtable中使用ifthenelse等语句会出现错误
+%因此这里我们手动处理名称参数，放弃对3,4,5情况的支持
+\NewDocumentEnvironment{TableLong}{>{\SplitArgument{1}{;}}O{}G{lllllllll}O{\small}sD<>{}D(){#5}D<>{}D(){}b}
+{
+    \par\captionsave #1
+    #3
+    \begin{longtable}{#2}
+        \caption*{续表}\\
+        \IfBooleanF{#4}{\hlinetop}
+        \if\relax\detokenize{#6}\relax
+            %...
+        \else
+            #6
+            \IfBooleanF{#4}{\hlinemid}
+        \fi
+        \endhead%----------------------------------------
+        \caption{\captiontempA}\label{tab:\captiontempB}\\
+        \IfBooleanF{#4}{\hlinetop}
+        \if\relax\detokenize{#5}\relax
+            %...
+        \else
+            #5
+            \IfBooleanF{#4}{\hlinemid}
+        \fi
+        \endfirsthead%-----------------------------------
+        \if\relax\detokenize{#8}\relax
+            \IfBooleanF{#4}{\hlinebot}
+        \else
+            #8
+        \fi
+        \endfoot%----------------------------------------
+        \if\relax\detokenize{#7}\relax
+            \IfBooleanF{#4}{\hlinebot}
+        \else
+            #7
+        \fi
+        \endlastfoot%------------------------------------
+        #9
+    \end{longtable}
+}{}
+
+%使得单元格具有更大的上下间距
+%用法：\xgp[上间距][下间距]{内容}
+%备注：若仅给出[上间距]而未给出[下间距]，后者会默认定为前者
+\NewDocumentCommand{\xgp}{O{0ex}O{#1}m}
+{\Gape[#1][#2]{#3}}
+
+%使得单元格内部可以换行
+%用法：\xcell<对齐模式>[上间距][下间距]{内容}
+%<对齐模式>模式的默认值为左对齐，即l
+\NewDocumentCommand{\xcell}{D<>{l}O{0ex}O{#2}m}     
+{\Gape[#2][#3]{\makecell[#1]{#4}}}
+
+%使得单元格跨行
+%用法：\mr{行数}[纵向位置调整]{内容}
+%调整内容向上定[纵向位置调整]为正值
+%调整内容向下定[纵向位置调整]为负值
+\NewDocumentCommand{\mr}{mO{0ex}m}
+{\multirow{#1}{*}[#2]{#3}}
+
+%使得单元格跨行的同时嵌套makecell
+%用法：\mrx<对齐模式>{行数}[纵向位置调整]{内容}
+%<对齐模式>模式的默认值为左对齐，即l
+\NewDocumentCommand{\mrx}{D<>{l}mO{0ex}m}
+{\multirow{#2}{*}[#3]{\xcell<#1>{#4}}}
+
+%使得单元格跨列
+%用法：\mc{列数}[上间距][下间距](列格式){内容}
+%对于表格的首个单元格，此处的列格式会覆盖其左右两根纵线
+%对于表格的其余但约个，此处的列格式仅会对右侧的纵线有效
+%(列格式)的默认值是居中，即l
+\NewExpandableDocumentCommand{\mc}{mO{0ex}O{#2}D(){l}m} 
+{\multicolumn{#1}{#4}{\xgp[#2][#3]{#5}}}
+
+%使得单元格跨列的同时嵌套makecell
+%用法：\mcx<对齐模式>{列数}[上间距][下间距](列格式){内容}
+%注意在\mcx中(列格式)中的l,c,r是无效的，对齐模式将被<对齐模式>接管控制
+%因而在\mcx中(列格式)设置的意义仅在于控制纵线
+%<对齐模式>模式的默认值为左对齐，即l
+\NewExpandableDocumentCommand{\mcx}{D<>{c}mO{0ex}O{#3}D(){l}m}
+{\multicolumn{#2}{#5}{\xcell<#1>[#3][#4]{#6}}}
+
+%引入插图的功能
+\RequirePackage{graphicx}
+
+%引入绘制子图表的宏包
+%list=true              在插图目录中显示子图
+%labelformat=simple     在子图的caption中显示a而不是(a)
+\RequirePackage[labelformat=simple]{subcaption}   %这是子图标题对\thesubfigure的修饰
+
+%将\thesubcaption的显示格式由a改为(a)
+\renewcommand\thesubfigure{(\alph{subfigure})}              %这是计数器\thesubfigure本身的格式
+
+%经过以上两项修改，现在子图的caption和ref中就同时能以(a)的形式显示了
+
+%创建Figure环境
+\NewDocumentEnvironment{Figure}{O{}b}
+{
+    \begin{figure}[H]
+        \centering
+        #2
+        \captionmake{fig}{#1}
+        \vspace{-12pt}
+    \end{figure}
+}{}
+
+%创建FigureSub环境
+\NewDocumentEnvironment{FigureSub}{O{}b}
+{%
+    \subcaptionbox{\captionmake*{fig}{#1}}%
+    {%
+        #2
+    }%
+}{}%

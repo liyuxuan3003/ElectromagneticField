@@ -1,0 +1,15 @@
+\ProvidesPackage{xTikZ}
+
+\RequirePackage{tikz}
+
+\usetikzlibrary{intersections}
+\usetikzlibrary{decorations.markings}
+
+\usetikzlibrary{quotes}
+\usetikzlibrary{angles}
+
+\RequirePackage[european,americaninductors,americanvoltages,americancurrents,RPvoltages]{circuitikz}
+
+\ctikzset{voltage/distance from node=0.85}
+
+\tikzset{point/.style={circle,draw=#1,solid,thin,radius=0.03,fill=white,inner sep=0.8pt},point/.default=black}

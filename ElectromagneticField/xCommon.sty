@@ -1,0 +1,188 @@
+\ProvidesPackage{xCommon}
+
+%引入下划线和波浪线等修饰
+\RequirePackage{ulem}
+%引入一个补丁使得ulem可以正确适用于中文
+\RequirePackage{xeCJKfntef}
+%创建一个适用于中文的着重点命令
+\let\udotcn=\CJKunderdot
+
+%解决引入xeCJKfntef后的ulem命令不适用于混有数学公式的中文的问题
+%https://github.com/CTeX-org/ctex-kit/issues/614
+\ExplSyntaxOn
+\cs_gset_protected:Npn \__xeCJK_ulem_CJK_and_Boundary:w
+  {
+    \xeCJK_if_ulem_patch:TF
+      {
+        \xeCJK_peek_catcode_ignore_spaces:NTF \c_math_toggle_token
+          {
+            \xeCJK_class_group_end: %\UL@stop %% remove
+            \CJKecglue
+            %\UL@start %% remove
+          }
+          {
+            \bool_if:NTF \l__xeCJK_peek_ignore_spaces_bool
+              {
+                \xeCJK_class_group_end: \UL@stop
+                \UL@start 
+                { \xeCJK_make_node:n { CJK-space } }
+              }
+              {
+                \xeCJK_class_group_end: \UL@stop
+                \UL@start { \xeCJK_make_node:n { CJK } }
+              }
+            \xeCJK_make_group_tag:
+          }
+      }
+      { \__xeCJK_ulem_CJK_and_Boundary:w }
+  }
+\cs_gset_protected:Npn \__xeCJK_peek_catcode_ignore_spaces_branches:w
+  {
+    \if_meaning:w \l_peek_token \c_space_token
+      \bool_set_true:N \l__xeCJK_peek_ignore_spaces_bool
+      \exp_after:wN \peek_after:Nw
+      \exp_after:wN \__xeCJK_peek_catcode_ignore_spaces_branches:w
+      \exp:w \exp_end_continue_f:w %% add
+      \tex_romannumeral:D 0
+    \else:
+      \if_catcode:w
+        \exp_not:N \l_peek_token \exp_not:N \l__xeCJK_peek_search_token
+        \exp_after:wN \exp_after:wN
+        \exp_after:wN \__xeCJK_peek_catcode_true:w
+      \else:
+        \exp_after:wN \exp_after:wN
+        \exp_after:wN \__xeCJK_peek_catcode_false:w
+      \fi:
+    \fi:
+  }
+\ExplSyntaxOff
+
+%定义一个强调环境
+\newcommand{\empx}[1]{\textbf{\uline{#1}}}
+
+%引入基于Unicode的表情符号
+\RequirePackage{pifont}
+
+%定义带圈数字
+%参数范围是1-10
+\newcommand{\circnum}[1]{\ding{\numexpr 171+#1}}
+\newcommand{\circnumdark}[1]{\ding{\numexpr 181+#1}}
+
+%定义罗马数字
+\newcommand{\romnum}[1]{\romannumeral #1}
+\newcommand{\Romnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+
+%引入更多颜色
+\PassOptionsToPackage{dvipsnames,svgnames,table}{xcolor}
+\RequirePackage{xcolor}
+
+%引入向文档整页插入PDF的功能
+\RequirePackage{pdfpages}
+
+%引入可以跨页的文本框
+\RequirePackage{framed}
+
+%引入表达式解析fpeval
+\RequirePackage{xfp}
+
+%引入基于LaTeX-3的新型命令和环境定义方式
+\RequirePackage{xparse}
+
+%引入循环命令foreach
+\RequirePackage{pgffor}
+
+%引入判断命令ifthenelse
+\RequirePackage{ifthen}
+\RequirePackage{xifthen}
+
+%引入超链接
+\RequirePackage[hidelinks]{hyperref}
+
+%创建一个自定义的标签解析对
+%用法：\xrefcreate{<键>}{<值>}
+%调用该命令将会创建以下的命令
+%   \xrefname<键>
+%   \xreftext<键>
+%   \xref<键>
+%   \fancyref<键>
+\NewDocumentCommand{\xrefcreate}{mm}%
+{%
+    %定义"\xrefname<键>"为"<值>"
+    \expandafter\def\csname xrefname#1\endcsname{#2}%
+    %判断"\xreftext<键>"是否已经被定义，这代表引用文字格式是否已经被给出
+    %如果未被定义，则将"\xreftext<键>{<标签名>}"定义为默认的"<值>\ref*{<键>:<标签名>}"，即形如"图1.1"
+    %如果已经定义，则不做定义，例如在DocumentClass中可能就章节已经规定了"第一章"和"第1.1节"
+    \@ifundefined{xreftext#1}%
+    {\expandafter\def\csname xreftext#1\endcsname##1{#2\hspace{0.10em}\ref*{#1:##1}\CJKsetecglue{}}}{}%
+    %定义"\xref<键>{<标签名>}"为指向"\label{<键>:<标签名>}"带有文字"\xreftext<键>{<标签名>}"的超链接
+    \expandafter\def\csname xref#1\endcsname##1%
+    {%
+        \hyperref[#1:##1]%
+        {%
+            \expandafter\csname xreftext#1\endcsname{##1}%
+        }%
+    }%
+    %定义"\fancyref<键>{<标签名>}"，其形如"[图1.1 图像的标题名称]"
+    \expandafter\def\csname fancyref#1\endcsname##1%
+    {%
+        \CJKsetecglue{ }%   整体和前续汉字保留一个空格的间距
+        {\bfseries%         设置为粗体
+            [%
+                \hyperref[#1:##1]%      中括号内部为指向"\label{<键>:<标签名>}"的超链接
+                {%
+                    \hspace{0.10em}%    左中括号和内部文字保留的距离
+                    %文字"\xreftext<键>{<标签名>}"，即"图1.1"
+                    %文字"<标签名>"，即"图像的标题名称"
+                    %两者间添加有一定的水平距离
+                    \expandafter\csname xreftext#1\endcsname{##1}\hspace{0.5em}\textnormal{##1}%
+                    \hspace{0.08em}%    右中括号和内部文字保留的距离
+                    \CJKsetecglue{}%    右中括号和内部汉字间的默认空格应被取消
+                }%
+            ]%
+        }%
+        \CJKsetecglue{ }%   整体和后续汉字汉字保留一个空格的间距
+    }%
+}%
+
+%定义文档层次标题的名称
+\xrefcreate{part}{部分}
+\xrefcreate{chap}{章}
+\xrefcreate{sec}{节}
+\xrefcreate{subsec}{小节}
+
+%创建一个解析命令，将“<键>:<标签名>”拆分为两部分
+\def\decodetempA{}
+\def\decodetempB{}
+
+\NewDocumentCommand{\decoderef}{>{\SplitArgument{1}{:}}m}%
+{%
+    \decodesave #1%
+}%
+
+\NewDocumentCommand{\decodesave}{mm}%
+{%
+    \def\decodetempA{#1}%
+    \def\decodetempB{#2}%
+}%
+
+%\fancyref{<键>:<标签名>} ==> \fancyref<键>{标签名}
+\NewDocumentCommand{\fancyref}{m}%
+{%
+    \decoderef{#1}%
+    \expandafter\csname fancyref\decodetempA\endcsname{\decodetempB}%
+}%
+
+%\xref{<键>:<标签名>} ==> \xref<键>{标签名}
+\NewDocumentCommand{\xref}{m}%
+{%
+    \decoderef{#1}%
+    \expandafter\csname xref\decodetempA\endcsname{\decodetempB}%
+}%
+
+%定义一个页面引用
+%如果页面引用的格式没有给出，那么使用这里的默认格式
+\ProvideDocumentCommand{\xreftextpage}{m}{页\CJKsetecglue{}\pageref*{#1}}
+\NewDocumentCommand{\xrefpage}{m}%
+{%
+    \hyperref[#1]{\xreftextpage{#1}}%
+}%

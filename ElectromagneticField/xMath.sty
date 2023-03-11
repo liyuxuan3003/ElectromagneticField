@@ -1,0 +1,433 @@
+\ProvidesPackage{xMath}
+
+\RequirePackage{xCommon}
+
+%AMS 数学宏包
+\RequirePackage{amsmath}
+
+%AMS 扩展的数学符号
+\RequirePackage{amssymb}        %包括\mathbb在内的特殊数学字体
+
+%AMS 定理和证明环境
+\RequirePackage{amsthm}
+
+%引入直立希腊字母
+\RequirePackage{upgreek}
+\def\i{\mathrm{i}}              %定义正体虚数单位i
+\def\e{\mathrm{e}}              %定义正体自然常数e
+\def\j{\mathrm{j}}              %适用于电工的虚数单位j
+\let\dipi=\pi                   %令斜体的pi从原有的\pi转移\dipi
+\let\pi=\uppi                   %令正体的pi使用默认的命令\pi
+
+\newcommand{\N}{\mathbb{N}}     %自然数集
+\newcommand{\Z}{\mathbb{Z}}     %整数集
+\newcommand{\Q}{\mathbb{Q}}     %有理数集
+\newcommand{\R}{\mathbb{R}}     %实数集
+\newcommand{\C}{\mathbb{C}}     %复数集
+
+\DeclareMathOperator{\sgn}{sgn}         %取整函数
+
+%三角函数
+%其余的三角函数已经由physics宏包引入
+\DeclareMathOperator{\arsinh}{arsinh}   %反双曲正弦
+\DeclareMathOperator{\arcosh}{arcosh}   %反双曲余弦
+\DeclareMathOperator{\artanh}{artanh}   %反双曲正切
+\DeclareMathOperator{\arcoth}{arcoth}   %反双曲余切
+\DeclareMathOperator{\arsech}{arsech}   %反双曲正割
+\DeclareMathOperator{\arcsch}{arcsch}   %反双曲余割
+
+%定义增量的简写
+\newcommand{\delt}{\Delta}
+
+%定义增量的比值
+\newcommand{\detv}[2]{\frac{\delt #1}{\delt #2}}
+
+%定义偏微记号的简写
+\newcommand{\pdd}{\partial}
+
+%定义泛函微分记号的简写
+\newcommand{\fdd}{\delta}
+
+%重新定义上极限和下极限的记号，使两者可以对齐
+\DeclareMathOperator*{\xlimsup}{lim\hspace{0.20em}sup}
+\DeclareMathOperator*{\xliminf}{lim\hspace{0.35em}i\hspace{0.025em}n\hspace{0.025em}f\hspace{0.165em}}
+
+%巨型运算符
+\NewDocumentCommand{\Lim}{O{}o}{\lim_{#1\IfValueT{#2}{\to #2}}}             %极限符号 
+\NewDocumentCommand{\Limsup}{sO{}o}                                         %上极限符号
+{\IfBooleanTF{#1}{\xlimsup}{\limsup}_{#2\IfValueT{#3}{\to #3}}}
+\NewDocumentCommand{\Liminf}{sO{}o}                                         %下极限符号
+{\IfBooleanTF{#1}{\xliminf}{\liminf}_{#2\IfValueT{#3}{\to #3}}}
+
+\NewDocumentCommand{\Sum}{O{}O{}}{\sum_{#1}^{#2}}                           %连续求和符号
+\NewDocumentCommand{\Prod}{O{}O{}}{\prod_{#1}^{#2}}                         %连续求积符号
+
+%引入更多的积分符号
+\RequirePackage{esint}
+\NewDocumentCommand{\Int}{O{}O{}}{\int_{#1}^{#2}}               %定积分
+\NewDocumentCommand{\Idnt}{O{}}{\iint\limits_{#1}}             %二重积分 d-double
+\NewDocumentCommand{\Itnt}{O{}}{\iiint\limits_{#1}}       %三重积分 t-triple
+\NewDocumentCommand{\Ilnt}{O{}}{\int\nolimits_{#1}}            %曲线积分 l-line
+\NewDocumentCommand{\Ilot}{O{}}{\oint\nolimits_{#1}}           %环路曲线积分
+\NewDocumentCommand{\Isnt}{O{}}{\iint\nolimits_{#1}}      %曲面积分 s-surface
+\NewDocumentCommand{\Isot}{O{}}{\oiint\nolimits_{#1}}     %环路曲面积分
+
+\newcommand{\xvec}[1]{\overrightarrow{#1}}      %向量AB的简写 \vec只能得到短箭头
+\newcommand{\xbar}[1]{\overline{#1}}            %模长AB的简写 \bar只能得到短横线
+
+%傅里叶变换
+\NewDocumentCommand{\F}{sg}
+{\mathcal{F}\IfBooleanT{#1}{^{-1}}\IfValueT{#2}{\qty{#2}}}
+
+%拉普拉斯变换
+\RenewDocumentCommand{\L}{sg}
+{\mathcal{L}\IfBooleanT{#1}{^{-1}}\IfValueT{#2}{\qty{#2}}}
+
+%特殊函数
+\newcommand{\Beta}{\mathrm{B}}          %贝塔函数
+\newcommand{\PolyGamma}{\uppsi}         %双对数函数
+\newcommand{\Jbessel}{\mathrm{J}}       %第一类贝塞尔函数
+\newcommand{\Nbessel}{\mathrm{N}}       %第二类贝塞尔函数
+\newcommand{\Hbessel}{\mathrm{H}}       %第三类贝塞尔函数
+\newcommand{\Ibessel}{\mathrm{I}}       %第一类修正贝塞尔函数
+\newcommand{\Kbessel}{\mathrm{K}}       %第二类修正贝塞尔函数
+\newcommand{\Plegendre}{\mathrm{P}}     %第一类勒让德函数
+\newcommand{\Qlegendre}{\mathrm{Q}}     %第二类勒让德函数
+\newcommand{\Hermite}{\text{H}}         %厄米多项式
+
+%狄拉克函数
+\newcommand{\dirac}{\updelta}
+
+%哈密顿算符
+\newcommand{\Hami}{\mathcal{H}}
+
+%霍奇星算子
+\newcommand{\hodge}{{\star}}
+
+%空集
+\renewcommand{\empty}{\varnothing}
+
+%玻尔兹曼常数
+\newcommand{\kB}{k_\text{B}}
+
+%阿伏伽德罗常数
+\newcommand{\NA}{N_\text{A}}
+
+%尖括号
+\def\<#1>{\langle#1\rangle}
+
+%引入为符号左侧添加上下标的命令\prescript
+%用法：\prescript{<上标>}{<下标>}{<符号>}
+\RequirePackage{mathtools}
+
+%引入更多的分式命令
+\RequirePackage{xfrac}
+
+%引入副对角线方向的省略号\iddots并使\vdots和\ddots适用于任意字号
+\RequirePackage{mathdots}
+
+%引入可以绘制带有复杂格式的矩阵的环境
+\RequirePackage{nicematrix}
+
+%引入一些常用数学符号的简便记法
+\RequirePackage{physics}
+
+\newcommand{\vi}{\vb*{i}}   %单位向量i
+\newcommand{\vj}{\vb*{j}}   %单位向量j
+\newcommand{\vk}{\vb*{k}}   %单位向量k
+
+\newcommand{\dx}{\dd{x}}    %微分dx
+\newcommand{\dy}{\dd{y}}    %微分dy
+\newcommand{\dz}{\dd{z}}    %微分dz
+
+%引入可以简便控制数学公式形式的功能
+\RequirePackage{relsize}
+\let\mal=\mathlarger        %使得行内公式以行间形式显示
+\let\mas=\mathsmaller       %使得行间公式以行内形式显示
+
+%引入带字的等号和箭头
+\RequirePackage{extarrows}
+
+%带字等号
+\NewDocumentCommand{\xleq}{O{}O{}}{\xlongequal[\text{#2}]{\text{#1}}}
+
+%带字箭头
+\NewDocumentCommand{\xlarr}{O{}O{}}{\xlongrightarrow[\text{#2}]{\text{#1}}}
+
+\NewDocumentCommand{\xlarrL}{O{}O{}}{\xlongleftarrow[\text{#2}]{\text{#1}}}         %单线左箭头
+\NewDocumentCommand{\xlarrR}{O{}O{}}{\xlongrightarrow[\text{#2}]{\text{#1}}}        %单线右箭头
+\NewDocumentCommand{\xlarrB}{O{}O{}}{\xlongleftrightarrow[\text{#2}]{\text{#1}}}    %单线双箭头
+
+\NewDocumentCommand{\xLarrL}{O{}O{}}{\xLongleftarrow[\text{#2}]{\text{#1}}}         %双线左箭头 
+\NewDocumentCommand{\xLarrR}{O{}O{}}{\xLongrightarrow[\text{#2}]{\text{#1}}}        %双线右箭头
+\NewDocumentCommand{\xLarrB}{O{}O{}}{\xLongleftrightarrow[\text{#2}]{\text{#1}}}    %双线双箭头
+
+%引入弧的记号
+\RequirePackage{yhmath}
+\let\xpar=\wideparen        %弧AB的简写
+\let\xhat=\widehat          %尖AB的简写 \hat只能得到单个符号的尖
+\let\xwav=\widetilde        %波AB的简写
+
+%引入数学花体mathscr
+\RequirePackage{mathrsfs}
+
+%引入多项式长除
+\RequirePackage{polynom}
+
+%引入物理单位的命令\si{}
+\RequirePackage{siunitx}
+\sisetup
+{
+	inter-unit-product = \ensuremath{{}\cdot{}} %将形如\si{N.m}以N\cdot m的形式显示
+}
+
+%引入有机化学的命令
+\RequirePackage{chemfig}
+
+%引入无机化学的命令
+\RequirePackage{mhchem}
+\newcommand{\xce}[1]{\hspace{0.3em}\ce{#1}}      %使用\xce{}可以在化学式和前序中文间添加空格
+
+%引入彩色文本盒的环境
+\RequirePackage{tcolorbox}
+\tcbuselibrary{breakable}
+
+%生成一个标签盒计数器的命令
+\NewDocumentCommand{\labelboxcnt}{m}
+{
+    \newcounter{#1}[section]            %计数器的上级为节
+    %定义\the<计数器名称>的格式为<章>.<节>.<计数器名称>
+    \expandafter\def\csname the#1\endcsname{\thesection.\arabic{#1}}
+    %定义\add<计数器名称>为计数器自增后显示计数器数值
+    \expandafter\def\csname add#1\endcsname{\refstepcounter{#1}\expandafter\csname the#1\endcsname}
+}
+
+\labelboxcnt{cntdef}    %创建定义族标签盒的计数器cntdef
+\labelboxcnt{cntthm}    %创建定理族标签盒的计数器cntthm
+\labelboxcnt{cntexp}    %创建示例族标签盒的计数器cntexp
+
+%生成一个带有特定格式的标签盒环境族
+%用法：\labelboxstyle{<族环境名>}{<边框颜色>}
+%用法：
+%\begin{<族环境名>}{<键>}{<值>}{<族计数器>}{<标题>}
+%   ...
+%\end{<族环境名>}
+%注意这里传入的<族计数器>应是对应计数器带有自增并显示的命令"\add<计数器名称>"
+\NewDocumentCommand{\labelboxstyle}{mm}%
+{%
+    %定义一个新的tcolorbox并命名为<族环境名>
+    %该tcolorbox的边框颜色设定为<边框颜色>
+    %该tcolorbox的标题格式取决于该环境调用时的四个参数
+    %左侧：<值><族计数器>\label{<键>:<标题>}
+    %右侧：<标题>
+    \newtcolorbox{#1}[4]{
+        arc=0.1mm,
+        colframe=#2,
+        colback=black!3!white,
+        fonttitle=\bfseries,
+        left=0.2cm,
+        right=0.2cm,
+        toptitle=0.05cm,
+        bottomtitle=0.05cm,
+        title={##2\textnormal{##3\label{##1:##4}}\hfill ##4}}
+    %定义一个名为“m<族环境名>”作为“<族环境名>”的可跨页版
+    \newtcolorbox{m#1}[4]{
+        breakable,
+        arc=0.1mm,
+        colframe=#2,
+        colback=black!3!white,
+        fonttitle=\bfseries,
+        left=0.2cm,
+        right=0.2cm,
+        toptitle=0.05cm,
+        bottomtitle=0.05cm,
+        title={##2\textnormal{##3\label{##1:##4}}\hfill ##4}}
+}%
+
+\labelboxstyle{boxdef}{gray!80!green!80!black}             %定义族 绿色
+\labelboxstyle{boxthm}{gray!70!blue}                       %定理族 蓝色
+\labelboxstyle{boxexp}{black!50!cyan}                      %示例族 青色
+
+\renewcommand{\thempfootnote}{\fnsymbol{mpfootnote}}
+
+%记录上一个使用的标签盒环境的名称，作为公式标签的自动前缀
+\gdef\prefixeq{}
+
+%创建一个修改\prefixeq的命令
+\newcommand{\setpeq}[1]{\gdef\prefixeq{#1}}
+
+%记录上一个使用的标签盒的类型，这会在证明环境的标题中使用
+\gdef\proplast{}
+
+%生成一个标签盒环境的实例
+%用法：\labelboxgen{<键>}{<值>}{<族环境名>}{<族计数器>}{<环境实例名>}
+\NewDocumentCommand{\labelboxgen}{mmmmm}
+{%
+    \xrefcreate{#1}{#2}%                创建<键>:<值>标签解析对
+    \NewDocumentEnvironment{#5}{O{}s}%  创建<环境实例名>，带有可选参数[<标题>]和布尔参数<是否断页>
+    {%
+        \gdef\prefixeq{##1}%            将该环境的<标题>作为公式标签的自动前缀
+        \gdef\proplast{#1}%             将该环境的<键>记录在宏中
+        %调用族环境\begin{<环境名>}{<键>}{<值>}{<族计数器>}{<标题>}
+        \begin{\IfBooleanT{##2}{m}#3}{#1}{#2}{#4}{##1}%    
+            \setlength{\parskip}{6pt}%
+    }%      %...
+    {%      %...
+        \end{\IfBooleanT{##2}{m}#3}%
+    }%
+}%
+
+%"定义族"的环境实例
+\labelboxgen{def}{定义}{boxdef}{\addcntdef}{BoxDefinition}
+
+%"定理族"的环境实例
+\labelboxgen{lem}{引理}{boxthm}{\addcntthm}{BoxLemma}
+\labelboxgen{thm}{定理}{boxthm}{\addcntthm}{BoxTheorem}
+\labelboxgen{col}{推论}{boxthm}{\addcntthm}{BoxCorollary}
+
+\labelboxgen{pps}{命题}{boxthm}{\addcntthm}{BoxProposition}
+\labelboxgen{ppt}{性质}{boxthm}{\addcntthm}{BoxProperty}
+
+\labelboxgen{eqt}{方程}{boxthm}{\addcntthm}{BoxEquation}
+\labelboxgen{fml}{公式}{boxthm}{\addcntthm}{BoxFormula}
+
+\labelboxgen{law}{定律}{boxthm}{\addcntthm}{BoxLaw}
+\labelboxgen{pri}{原理}{boxthm}{\addcntthm}{BoxPrinciple}
+
+%"示例族"的环境实例
+\labelboxgen{exp}{例}{boxexp}{\addcntexp}{BoxExample}
+
+%证明环境
+\newenvironment{Proof}[1][\xref{\proplast:\prefixeq}]%
+{%
+    \begin{proof}[\indent\bf 证明]%
+        \quad\dotfill\hspace{0.1em} #1\par%
+}%
+{%
+    \end{proof}\nopagebreak[4]%
+    \hrule\par\goodbreak\vspace{15pt plus 10pt minus 10pt}%
+}%
+
+%求解环境
+\newenvironment{Solution}[1][\xref{\proplast:\prefixeq}]%
+{%
+    \begin{proof}[\indent\bf 解]%
+        \quad\dotfill\hspace{0.1em} #1\par%
+}%
+{%
+    \end{proof}\nopagebreak[4]%
+    \hrule\par\goodbreak\vspace{15pt plus 10pt minus 10pt}%
+}%
+
+%设定数学公式的编号的上级为节
+\numberwithin{equation}{section}
+
+%创建数学公式的标签解析对
+\xrefcreate{eq}{式}
+
+%定义\xlabeleq{...}作为\label{eq:...}的简写
+\NewDocumentCommand{\xlabeleq}{m}%
+{%
+    \label{eq:#1}%
+}%
+
+%创建带有\prefixeq前缀的标签
+\NewDocumentCommand{\xlabelpeq}{om}%
+{%
+    \IfValueTF{#1}%
+    {\xlabeleq{#1#2}}%
+    {\xlabeleq{\prefixeq#2}}%
+}%
+
+%创建带有\prefixeq前缀的引用
+\NewDocumentCommand{\xrefpeq}{om}%
+{%
+    \IfValueTF{#1}%
+    {\xrefeq{#1#2}}%
+    {\xrefeq{\prefixeq#2}}%
+}%
+
+%Equation环境
+\NewDocumentEnvironment{Equation}{st&o}
+{%
+    \IfBooleanTF{#1}%
+    {\begin{equation*}}%
+    {%
+        \begin{equation}%
+            \IfValueTF{#3}%
+            {%
+                \IfBooleanTF{#2}%
+                {\xlabeleq{\prefixeq #3}}%
+                {\xlabeleq{#3}}%
+            }{}%
+    }%
+}%
+{%
+    \IfBooleanTF{#1}%
+    {\end{equation*}}%
+    {\end{equation}}%
+    \par%
+}%
+
+%Split环境
+\NewDocumentEnvironment{Split}{st&ob}
+{%
+    \IfBooleanTF{#1}%
+    {%
+        \begin{equation*}%
+            \begin{split}%
+                #4
+            \end{split}%
+        \end{equation*}%
+    }%
+    {%
+        \begin{equation}%
+            \IfValueTF{#3}%
+            {%
+                \IfBooleanTF{#2}%
+                {\xlabeleq{\prefixeq #3}}%
+                {\xlabeleq{#3}}%
+            }{}%
+            \begin{split}%
+                #4
+            \end{split}%
+        \end{equation}%
+    }%
+    \par%
+}{}
+
+%Gather环境
+\NewDocumentEnvironment{Gather}{sO{\jot}b}%
+{%
+    \setlength\jot{#2}%
+    \IfBooleanTF{#1}%
+    {%
+        \begin{gather*}%
+            #3
+        \end{gather*}%
+    }%
+    {%
+        \begin{gather}%
+            #3
+        \end{gather}%
+    }%
+    \par%
+}{}%
+
+%Align环境
+\NewDocumentEnvironment{Align}{sO{\jot}b}%
+{%
+    \setlength\jot{#2}%
+    \IfBooleanTF{#1}%
+    {%
+        \begin{align*}%
+            #3
+        \end{align*}%
+    }%
+    {%
+        \begin{align}%
+            #3
+        \end{align}%
+    }%
+    \par%
+}{}%
