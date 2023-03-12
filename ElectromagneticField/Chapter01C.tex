@@ -76,3 +76,104 @@
 \end{Equation}
 由于$\grad$具有矢量和微分的双重性质，故又称为\uwave{矢性微分算符}，引入$\grad$的意义在于其可以在直角坐标系下，将梯度、散度、旋度统一表示为$\grad u~,\div\vb*{A},~\curl\vb*{A}$，即将算符$\grad$视为一个矢量分别与场函数进行数乘、点乘、叉乘。不过，这种想法只能适用于直角坐标系，因为\xref{sec:正交曲面坐标系}告诉我们，在柱坐标系和球坐标系下，两个矢量的点乘和叉乘并没有完善的定义，因此，这种情况下再谈论$\grad$与矢量场函数$\vb*{A}$的点乘和叉乘就没有意义了。总的说，$\grad u~,\div\vb*{A},~\curl\vb*{A}$的记法是源于直角坐标，在直角坐标下也确实可以将梯度、散度、旋度理解为$\grad$与场函数的数乘、点乘、叉乘。但是，柱坐标和球坐标中，这种理解并不适用.柱坐标和球坐标中只是继承了用$\grad u~,\div\vb*{A},~\curl\vb*{A}$表示梯度、散度、旋度的记法，并没有继承这种记法的内涵，换言之，柱坐标和球坐标中的$\grad u~,\div\vb*{A},~\curl\vb*{A}$只不过是$\Grad u,~\Div u,~\Curl u$的别称罢了。
 
+\subsection{场点与源点}
+在这一小节，我们将会研究两个计算梯度的示例，由此引出场点和源点的概念，这里设
+\begin{Equation}[场点和源点]
+    \vb*{R}=\vb*{e}_x(x-x')+\vb*{e}_y(y-y')+\vb*{e}_z(z-z')\qquad R=\abs{\vb*{R}}
+\end{Equation}
+关于\xref{eq:场点和源点}，做两点说明
+\begin{itemize}
+    \item 此处$(x,y,z)$称为\uwave{场点}，表示场分布的位置，是变量。
+    \item 此处$(x',y',z')$称为\uwave{源点}，表示场源分布的位置，是常量。
+\end{itemize}
+\begin{BoxFormula}[梯度的计算公式1]
+    若标量场函数正比于至源点$(x',y',z')$半径$R$，则其梯度为
+    \begin{Equation}
+        \grad R=\frac{\vb*{R}}{R}
+    \end{Equation}
+\end{BoxFormula}
+\begin{Proof}
+    根据\fancyref{fml:直角坐标系的梯度}
+    \begin{Equation}
+        \grad R=\vb*{e}_x\pdv{R}{x}+\vb*{e}_y\pdv{R}{y}+\vb*{e}_z\pdv{R}{z}
+    \end{Equation}
+    注意到
+    \begin{Equation}
+        R=\abs{\vb*{R}}=[(x-x')^2+(y-y')^2+(z-z')^2]^{\frac{1}{2}}
+    \end{Equation}
+    因此
+    \begin{Equation}
+        \grad R=\frac{2\vb*{e}_x(x-x')+2\vb*{e}_y(y-y')+2\vb*{e}_z(z-z')}{2[(x-x')^2+(y-y')^2+(z-z')^2]^{\frac{1}{2}}}
+    \end{Equation}
+    将分子分母上的$2$约掉，将$\vb*{R},R$代回
+    \begin{Equation}*
+        \grad R=\frac{\vb*{R}}{R}\qedhere
+    \end{Equation}
+\end{Proof}
+
+\begin{BoxFormula}[梯度的计算公式2]
+    若标量场函数反比于至源点$(x',y',z')$半径$R$，则其梯度为
+    \begin{Equation}
+        \grad R^{-1}=-\frac{\vb*{R}}{R^3}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{fml:直角坐标系的梯度}
+    \begin{Equation}
+        \grad R^{-1}=\vb*{e}_x\pdv{R^{-1}}{x}+\vb*{e}_y\pdv{R^{-1}}{y}+\vb*{e}_z\pdv{R^{-1}}{z}
+    \end{Equation}
+    注意到
+    \begin{Equation}
+        R^{-1}=\abs{\vb*{R}}^{-1}=[(x-x')^2+(y-y')^2+(z-z')^2]^{-\frac{1}{2}}
+    \end{Equation}
+    因此
+    \begin{Equation}
+        \grad R^{-1}=-\frac{2\vb*{e}_x(x-x')+2\vb*{e}_y(y-y')+2\vb*{e}_z(z-z')}{2[(x-x')^2+(y-y')^2+(z-z')^2]^{\frac{3}{2}}}
+    \end{Equation}
+    将分子分母上的$2$约掉，将$\vb*{R},R$代回
+    \begin{Equation}*
+        \grad R^{-1}=-\frac{\vb*{R}}{R^3}\qedhere
+    \end{Equation}
+\end{Proof}
+
+我们说，场点$(x,y,z)$是变量，源点$(x',y',z')$是作为参数的常量，因此以上我们的梯度运算都是对场点进行的，但其实很多时候，取决于我们怎么看，常量和变量是可以相互转换的。
+
+我们引入以下记号
+\begin{Equation}
+    \qquad\qquad\qquad
+    \grad=\vb*{e}_x\pdv{x}+\vb*{e}_y\pdv{y}+\vb*{e}_z\pdv{z}\qquad
+    \grad'=\vb*{e}_x\pdv{x'}+\vb*{e}_y\pdv{y'}+\vb*{e}_z\pdv{z'}
+    \qquad\qquad\qquad
+\end{Equation}
+这里，$\grad$是对场点的微分（源点视为常量），$\grad'$是对源点的微分（场点视为场量）。\goodbreak
+
+这两者的存在于电磁学而言都是非常必要的
+\begin{itemize}
+    \item 研究一个电荷对不同位置的影响（场点变化），使用场点坐标$(x,y,z)$和$\grad$算符。
+    \item 研究多个电荷对同一位置的影响（源点变化），使用源点坐标$(x',y',z')$和$\grad'$算符。
+\end{itemize}
+而事实是，\empx{场点坐标和源点坐标是可以相互转化的}，就梯度而言，两者仅相差一个负号。
+
+\begin{BoxFormula}[场点坐标和源点坐标的转化]
+    场点坐标和源点坐标下，梯度运算的结果相差一个负号
+    \begin{Equation}
+        \grad f(R)=-\grad' f(R)
+    \end{Equation}
+\end{BoxFormula}
+\begin{Proof}
+    在场点坐标下运算
+    \begin{Equation}
+        \grad f(R)=\dv{f(R)}{R}\grad f(R)=\dv{f(R)}{R}\frac{\vb*{R}}{R}
+    \end{Equation}
+    在源点坐标下运算
+    \begin{Equation}
+        \grad' f(R)=\dv{f(R)}{R}\grad' f(R)=-\dv{f(R)}{R}\frac{\vb*{R}}{R}
+    \end{Equation}
+    为何如此呢？关键是因为
+    \begin{Equation}
+        R=[(x-x')^2+(y-y')^2+(z-z')^2]^{\frac{1}{2}}
+    \end{Equation}
+    即$(x,y,z),(x',y',z')$前的负号相反，若交换两者的地位，求导结果自然也相差一个负号。
+\end{Proof}
+这种场点坐标和源点坐标的相互转化，在电磁场中是十分有用的。
