@@ -1,0 +1,78 @@
+\section{标量场的性质}
+若物理量是一个标量，则该物理量所确定的场称为\uwave{标量场}（Scalar Field），常用$u$表示
+\begin{Equation}
+    u=u(\vb*{r},t)
+\end{Equation}
+而对于时不变的标量场，则可以表示为
+\begin{Equation}
+    u=u(\vb*{r})
+\end{Equation}
+在本节，我们就将研究标量场的性质。
+
+\subsection{标量场的等值面}
+标量场是一个关于三维空间点的函数，因此其可视化将成为一个麻烦的问题，介于我们没有第四个维度来表示场函数的值。常用的办法是，绘制一系列使$u(\vb*{r})$取值相同的空间曲面。
+\begin{BoxDefinition}[标量场的等值面]
+    标量场的可视化方法是为\uwave{等值面}（Isosurface），其是由任意常数$c$
+    \begin{Equation}
+        u(\vb*{r})=c
+    \end{Equation}
+    所确定的曲面族，称为\uwave{等值面族}，该方程也称为\uwave{等值面方程}。
+\end{BoxDefinition}
+很明显，由于标量场函数$u(\vb*{r})$是单值的，对于某个$\vb*{r}$的取值，要么等于$c_1$，要么等于$c_2$，这就是说一个空间点$\vb*{r}$只可能存在于一个等值面上，换言之，\empx{标量场的等值面间是互不相交的}。
+
+\subsection{标量场的方向导数和梯度}
+标量场的场函数$u(\vb*{r})$仅描述了场量$u$的分布情况，而研究标量场的另外一个重要方面，就是研究场量$u$在场中任意一点，沿各个方向的变化规律，为此，引入方向导数和梯度的概念。
+
+\begin{BoxDefinition}[标量场的方向导数]
+    定义标量场$u(\vb*{r})$沿$\vb*{l}$的\uwave{方向导数}（Directional Derivative）
+    \begin{Equation}
+        \eval{\pdv{u}{\vb*{l}}}=\Lim[\delt{l}\to 0]\frac{u(\vb*{r}+\delt{\vb*{l}})-u(r)}{\delt{l}}
+    \end{Equation}
+\end{BoxDefinition}
+标量场的方向导数仍然是一个标量场，需要注意的是，单说“方向导数”是没有意义，必须要指明是沿哪个方向的“方向导数”，每一个$\vb*{l}$的取值就将对应一个不同的方向导数$\pdv*{u}{\vb*{l}}$场。
+
+方向导数$\pdv*{u}{\vb*{l}}$，简单的说，就表征了$u(\vb*{r})$沿$\vb*{l}$方向的变换快慢。
+
+方向导数的定义是无关坐标系的，但其具体形式与坐标系有关，在直角坐标系中
+\begin{Equation}
+    \pdv{u}{\vb*{l}}=\pdv{u}{x}\cos\alpha+\pdv{u}{y}\cos\beta+\pdv{u}{z}\cos\gamma
+\end{Equation}
+其中$\cos\alpha,\cos\beta,\cos\gamma$分别是$\vb*{l}$的方向余弦。
+
+标量场的梯度的概念又是怎么来的呢？试想，在场函数$u(\vb*{r})$的每个点处，沿每个$\vb*{l}$方向都会有不同的方向导数，我们可以对于每个点$\vb*{r}$选取该点处最大的那一方向导数$\max{\pdv*{u}{\vb*{l}}}$，并记使得$\pdv*{u}{\vb*{l}}$最大的$\vb*{l}$的单位矢量为$\vb*{e}_\text{n}$，而所谓梯度，就是指两者相乘所构成的矢量场。
+\begin{BoxDefinition}[标量场的梯度]
+    定义标量场$u(\vb*{r})$的\uwave{梯度}（Gradient）
+    \begin{Equation}
+        \grad u=\Grad u=\vb*{e}_\text{n}\max\pdv{u}{\vb*{l}}
+    \end{Equation}
+    其中，$\vb*{e}_\text{n}$代表对于每个点$r$使得$\pdv*{u}{\vb*{l}}$最大的$\vb*{l}$的单位矢量。
+\end{BoxDefinition}
+
+梯度是矢量场，其大小表示该点的最大的变化率，其方向表示该点最大的变化率的方向。
+
+梯度的定义是无关坐标系的，但梯度的具体形式则与坐标系有关，由于这一部分内容我们在微积分和数学物理方法中已经非常熟悉了，以下我们直接列出梯度在各个坐标系中的形式。
+
+\begin{BoxFormula}[直角坐标系的梯度]
+    在直角坐标系下，梯度的形式是
+    \begin{Equation}
+        \grad u=\vb*{e}_x\pdv{u}{x}+\vb*{e}_y\pdv{u}{y}+\vb*{e}_z\pdv{u}{z}
+    \end{Equation}
+\end{BoxFormula}
+\begin{BoxFormula}[柱坐标系的梯度]
+    在柱坐标系下，梯度的形式是
+    \begin{Equation}
+        \grad u=\vb*{e}_\rho\pdv{u}{\rho}+\vb*{e}_\phi\frac{1}{\rho}\pdv{u}{\phi}+\vb*{e}_z\pdv{u}{z}
+    \end{Equation}
+\end{BoxFormula}
+\begin{BoxFormula}[球坐标系的梯度]
+    在球坐标系下，梯度的形式是
+    \begin{Equation}
+        \grad u=\vb*{e}_r\pdv{u}{r}+\vb*{e}_\theta\frac{1}{r}\pdv{u}{\theta}+\vb*{e}_\phi\frac{1}{r\sin\theta}\pdv{u}{\phi}
+    \end{Equation}
+\end{BoxFormula}
+这里$\grad$称为\uwave{哈密顿算符}，常读作Del或Nabla，它在直角坐标系下的形式为
+\begin{Equation}
+    \grad=\vb*{e}_x\pdv{x}+\vb*{e}_y\pdv{y}+\vb*{e}_z\pdv{z}
+\end{Equation}
+由于$\grad$具有矢量和微分的双重性质，故又称为\uwave{矢性微分算符}，引入$\grad$的意义在于其可以在直角坐标系下，将梯度、散度、旋度统一表示为$\grad u~,\div\vb*{A},~\curl\vb*{A}$，即将算符$\grad$视为一个矢量分别与场函数进行数乘、点乘、叉乘。不过，这种想法只能适用于直角坐标系，因为\xref{sec:正交曲面坐标系}告诉我们，在柱坐标系和球坐标系下，两个矢量的点乘和叉乘并没有完善的定义，因此，这种情况下再谈论$\grad$与矢量场函数$\vb*{A}$的点乘和叉乘就没有意义了。总的说，$\grad u~,\div\vb*{A},~\curl\vb*{A}$的记法是源于直角坐标，在直角坐标下也确实可以将梯度、散度、旋度理解为$\grad$与场函数的数乘、点乘、叉乘。但是，柱坐标和球坐标中，这种理解并不适用.柱坐标和球坐标中只是继承了用$\grad u~,\div\vb*{A},~\curl\vb*{A}$表示梯度、散度、旋度的记法，并没有继承这种记法的内涵，换言之，柱坐标和球坐标中的$\grad u~,\div\vb*{A},~\curl\vb*{A}$只不过是$\Grad u,~\Div u,~\Curl u$的别称罢了。
+
