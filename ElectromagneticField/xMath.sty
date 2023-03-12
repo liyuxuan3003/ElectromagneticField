@@ -65,8 +65,8 @@
 %引入更多的积分符号
 \RequirePackage{esint}
 \NewDocumentCommand{\Int}{O{}O{}}{\int_{#1}^{#2}}               %定积分
-\NewDocumentCommand{\Idnt}{O{}}{\iint\limits_{#1}}             %二重积分 d-double
-\NewDocumentCommand{\Itnt}{O{}}{\iiint\limits_{#1}}       %三重积分 t-triple
+\NewDocumentCommand{\Idnt}{O{}}{\iint\nolimits_{#1}}             %二重积分 d-double
+\NewDocumentCommand{\Itnt}{O{}}{\iiint\nolimits_{#1}}       %三重积分 t-triple
 \NewDocumentCommand{\Ilnt}{O{}}{\int\nolimits_{#1}}            %曲线积分 l-line
 \NewDocumentCommand{\Ilot}{O{}}{\oint\nolimits_{#1}}           %环路曲线积分
 \NewDocumentCommand{\Isnt}{O{}}{\iint\nolimits_{#1}}      %曲面积分 s-surface

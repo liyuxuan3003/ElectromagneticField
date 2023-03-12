@@ -1,0 +1,166 @@
+\section{矢量场的性质}
+若物理量是一个矢量，则该物理量所确定的场称为\uwave{矢量场}（Vector Field），常用$\vb*{F}$表示
+\begin{Equation}
+    \vb*{F}=\vb*{F}(\vb*{r},t)
+\end{Equation}
+而对于时不变的矢量场，则可以表示为
+\begin{Equation}
+    \vb*{F}=\vb*{F}(\vb*{r})
+\end{Equation}
+矢量场总是可以分解为三个分量场，在直角坐标系中
+\begin{Equation}
+    \vb*{F}(\vb*{r})=\vb*{e}_xF_x(\vb*{r})+\vb*{e}_yF_y(\vb*{r})+\vb*{e}_zF_z(\vb*{r})
+\end{Equation}
+在本节，我们就将研究矢量场的性质。
+
+\subsection{矢量场的矢量线}
+矢量场应该如何图示化呢？答案是通过一系列的有向曲线来描述矢量的分布，我们期望
+\begin{itemize}
+    \item 这些有向曲线上任一点的切线方向，表示该点处$\vb*{F}(r)$的方向。
+    \item 这些有向曲线间的疏密，表示该处$\vb*{F}(r)$模值的大小。
+\end{itemize}
+这样的曲线称为矢量场的矢量线，那么矢量线应当如何从数学上确定呢？其实很简单，有向曲线的切线如果要表示$\vb*{F}$的增加方向，就是要使得矢量线在该处的微元$\dd{\vb*{r}}$与$\vb*{F}$平行，即
+\begin{BoxDefinition}[矢量场的矢量线]
+    矢量场的可视化方法是\uwave{矢量线}（Streamline），其是由微分方程
+    \begin{Equation}
+        \dd{r}\times\vb*{F}=\vb*{0}
+    \end{Equation}
+    特别的，在直角坐标系中
+    \begin{Equation}
+        \frac{\dx}{F_x}=\frac{\dy}{F_y}=\frac{\dz}{F_z}
+    \end{Equation}
+    所确定的曲线族，称为\uwave{矢量线族}，该方程也称为\uwave{矢量线方程}。
+\end{BoxDefinition}
+
+\subsection{矢量场的通量和散度}
+\begin{BoxDefinition}[矢量场的通量]
+    定义矢量场$\vb*{F}(\vb*{r})$在闭合空间曲面$S$上的\uwave{通量}（Flux）
+    \begin{Equation}
+        \Phi=\Isot[S]\vb*{F}\cdot\dd{\vb*{S}}
+    \end{Equation}
+\end{BoxDefinition}
+\begin{BoxDefinition}[矢量场的散度]
+    定义矢量场$\vb*{F}(\vb*{r})$的\uwave{散度}（Divergence），为该点处的通量密度
+    \begin{Equation}
+        \div\vb*{F}=\Div\vb*{F}=\Lim[\delt{V}\to 0]\frac{1}{\delt{V}}\Isot[S]\vb*{F}\cdot\dd{\vb*{S}}
+    \end{Equation}
+    其中$S$是包围点$\vb*{r}$的任意闭曲面，$\delt{V}$是其包围体积，$\delt{V}\to 0$表示曲面收缩至$\vb*{r}$点。
+\end{BoxDefinition}
+散度是一个标量场，其表征了通量密度，因此
+\begin{itemize}
+    \item 若散度$\div\vb*{F}>0$，则该点为正通量源（源），矢量线由该点发出。
+    \item 若散度$\div\vb*{F}<0$，则该点为负通量源（汇），矢量线向该点汇聚。
+\end{itemize}
+散度在各个坐标系中的形式，我们在数学物理方法中已经非常熟悉了
+\begin{BoxFormula}[直角坐标系的散度]
+    在直角坐标系下，散度的形式是
+    \begin{Equation}
+        \div\vb*{F}=\pdv{F_x}{x}+\pdv{F_y}{y}+\pdv{F_z}{z}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{BoxFormula}[柱坐标系的散度]
+    在柱坐标系下，散度的形式是
+    \begin{Equation}
+        \div\vb*{F}=\frac{1}{\rho}\pdv{(\rho F_\rho)}{\rho}+\frac{1}{\rho}\pdv{(F_\phi)}{\phi}+\pdv{F_z}{z}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{BoxFormula}[球坐标系的散度]
+    在球坐标系下，散度的形式是
+    \begin{Equation}
+        \div\vb*{F}=\frac{1}{r^2}\pdv{(r^2F_r)}{r}+\frac{1}{r\sin\theta}\pdv{(\sin\theta F_\theta)}{\theta}+\frac{1}{r\sin\theta}\pdv{F_\phi}{\phi}
+    \end{Equation}
+\end{BoxFormula}
+
+散度的一个重要结论是散度定理，我们在微积分2中已经学过了
+\begin{BoxTheorem}[散度定理]
+    \uwave{散度定理}（Divergence Theorem），亦称\uwave{高斯定理}（Gauss's Theorem），是指
+    \begin{Equation}
+        \Itnt[V]\div\vb*{F}\dd{V}=\Isot[S]\vb*{F}\cdot\dd{\vb*{S}}
+    \end{Equation}
+    其指出，矢量场的散度在$V$上的积分等于矢量场在$V$的闭曲面$S$上的通量。
+\end{BoxTheorem}
+
+\subsection{矢量场的环流和旋度}
+通量由矢量函数的在闭曲面上的积分给出，环流则由矢量函数在闭取向上的积分给出。
+\begin{BoxDefinition}[矢量场的旋度]
+    定义矢量场$\vb*{F}(\vb*{r})$在闭合空间曲面$C$上的环流（Circulation）
+    \begin{Equation}
+        \Gamma=\Ilot[C]\vb*{F}\cdot\dd{\vb*{l}}
+    \end{Equation}
+\end{BoxDefinition}
+
+通量密度是散度，环流密度也就是所谓的旋度，但是，这里略微有些不一样的地方，试对比
+\begin{Equation}
+    \Lim[\delt{V}\to 0]\frac{1}{\delt{V}}\Isot[S]\vb*{F}\cdot\dd{\vb*{S}}\qquad\Lim[\delt{S}\to 0]\frac{1}{\delt{S}}\Ilot[C]\vb*{F}\cdot\dd{\vb*{l}}
+\end{Equation}
+通过通量密度定义散度时，当$\delt{V}\to 0$时曲面$S$总会缩至一点，无论闭曲面$S$以何种方式收缩，结果都完全相同的。但是，通过环流密度试定义旋度时，当$\delt{S}\to 0$时曲线$C$虽然也会缩至一点，但是取决于面元$\delt{S}$的取向，该极限可能会有不同的结果，我们姑且可以将其称为“方向旋度”。正如从“方向导数”到梯度，也可以类似的从“方向旋度”到旋度。即对每个点，选取该点处方向旋度的最大值作为模长，选取此时面积元$\delt{S}$的法向矢量作为方向。
+
+因此，尽管环流密度是标量，旋度却应该是矢量，旋度的正式定义如下
+\begin{BoxDefinition}[旋度]
+    定义矢量场$\vb*{F}(\vb*{r})$的旋度（Curl），为该点处的环流密度\footnote[2]{这是简单的提法，并不准确。}
+    \begin{Equation}
+        \curl F=\Curl F=\vb*{e}_\text{n}\max\Lim[\delt{S}\to 0]\frac{1}{\delt{S}}\Ilot[C]\vb*{F}\cdot\dd{\vb*{l}}
+    \end{Equation}
+    其中$C$是包围点$\vb*{r}$的任意闭取向，$\delt{S}$是其包围面积，$\delt{S}\to 0$表示取向收缩至$\vb*{r}$点。
+
+    其中，$\vb*{e}_\text{n}$表示使得环流密度取值最大的那一$\delt{S}$的法向单位矢量。
+\end{BoxDefinition}
+旋度是一个矢量场，其模表示最大环流密度，其方向代表最大环流密度的朝向。
+
+旋度也可以被认为是某种源，只不过说
+\begin{itemize}
+    \item 散度的源导致通量的产生，称为\uwave{通量源}，它导致矢量线的发出与汇聚。
+    \item 旋度的源导致环流的产生，称为\uwave{涡旋源}，它导致矢量线的正旋与逆选。
+\end{itemize}
+这样，我们就可以说
+\begin{itemize}
+    \item 若旋度$\curl\vb*{F}>0$，则该点为正涡旋源（正旋），矢量线绕该点以旋度方向右手螺旋。
+    \item 若旋度$\curl\vb*{F}<0$，则该点位负涡旋源（逆旋），矢量线绕该点以旋度方向左手螺旋。
+\end{itemize}
+旋度在各个坐标系中的形式，我们在数学物理方法中已经非常熟悉了
+\begin{BoxFormula}[直角坐标系的旋度]
+    在直角坐标系下，旋度的形式是
+    \begin{Equation}
+        \curl\vb*{F}=
+        \begin{vmatrix}
+            \vb*{e}_x&\vb*{e}_y&\vb*{e}_z\\[1mm]
+            \pdv*{x}&\pdv*{y}&\pdv*{z}\\[1mm]
+            F_x&F_y&F_z\\
+        \end{vmatrix}
+    \end{Equation}    
+\end{BoxFormula}
+
+\begin{BoxFormula}[柱坐标系的旋度]
+    在柱坐标系下，旋度的形式是
+    \begin{Equation}
+        \curl\vb*{F}=
+        \begin{vmatrix}
+            \vb*{e}_\rho&\rho\vb*{e}_\phi&\vb*{e}_z\\[1mm]
+            \pdv*{\rho}&\pdv*{\phi}&\pdv*{z}\\[1mm]
+            F_\rho&\rho F_\rho&F_z\\
+        \end{vmatrix}
+    \end{Equation}    
+\end{BoxFormula}
+
+\begin{BoxFormula}[球坐标系的旋度]
+    在球坐标系下，旋度的形式是
+    \begin{Equation}
+        \curl\vb*{F}=
+        \begin{vmatrix}
+            \vb*{e}_r&r\vb*{e}_\theta&r\sin\theta\vb*{e}_\phi\\[1mm]
+            \pdv*{r}&\pdv*{\theta}&\pdv*{\phi}\\[1mm]
+            F_r&rF_\theta&r\sin\theta F_\phi\\
+        \end{vmatrix}
+    \end{Equation}    
+\end{BoxFormula}
+
+旋度的一个重要结论是旋度定理，我们在微积分2中已经学过了
+\begin{BoxFormula}[旋度定理]
+    \uwave{旋度定理}（Curl Theorem），亦称\uwave{斯托克斯定理}（Stokes Theorem），是指
+    \begin{Equation}
+        \Isnt[S]\curl\vb*{F}\cdot\dd{\vb*{S}}=\Ilot[C]\vb*{F}\cdot\dd{\vb*{l}}
+    \end{Equation}
+    其指出，矢量场的旋度在$S$上的积分等于矢量场在$S$闭曲线$S$上的环流。
+\end{BoxFormula}
