@@ -1,0 +1,109 @@
+\section{无旋场的标量位}
+
+\subsection{无旋场的定义}
+\begin{BoxDefinition}[无旋场的定义]
+    若一个矢量场$\vb*{F}$的旋度处处为零，即
+    \begin{Equation}
+        \curl\vb*{F}=\vb*{0}
+    \end{Equation}
+    则称该矢量场为无旋场，它完全由散度源产生。
+\end{BoxDefinition}
+根据\fancyref{fml:旋度定理}，无旋场$\vb*{F}$沿任意闭合路径$C$的环流为$0$，即
+\begin{Equation}
+    \Ilot[C]\vb*{F}\cdot\dd{\vb*{l}}=\Isnt[S]\curl\vb*{F}\cdot\dd{\vb*{S}}=0
+\end{Equation}
+
+\subsection{无旋场的产生}
+现在的问题是，什么样的场一定是无旋场$\vb*{F}$呢？下面的结论将给我们答案。
+\begin{BoxProperty}[标量场的梯度无旋]
+    标量场的梯度，必为无旋场
+    \begin{Equation}
+        \curl(\grad u)=\vb*{0}
+    \end{Equation}
+\end{BoxProperty}
+\begin{Proof}
+    这个结论在数学物理方法中我们已经证明过了，但这里换一种更优雅的方式来完成。
+
+    任取一个空间曲面$S$，将$\curl(\grad u)$在$S$上积分
+    \begin{Equation}&[1]
+        I=\Isnt[S]\curl(\grad u)\cdot\dd{\vb*{S}}
+    \end{Equation}
+    设空间曲面$S$的边界曲线为$C$，根据\fancyref{thm:旋度定理}
+    \begin{Equation}&[2]
+        I=
+        \Ilot[C]\grad u\cdot\dd{\vb*{l}}=
+        \Ilot[C]\grad u\cdot\vb*{e}_l\dd{l}
+    \end{Equation}
+    运用梯度和方向导数间的关系$\grad u\cdot\vb*{e}_l=\pdv*{u}{l}$
+    \begin{Equation}&[3]
+        I=
+        \Ilot[C]\pdv{u}{l}\dd{l}=\Ilot[C]\dd{u}=0
+    \end{Equation}
+    将该积分结果代回\xrefpeq{1}，考虑到曲面$S$的任意性
+    \begin{Equation}*
+        \curl(\grad u)=0\qedhere
+    \end{Equation}
+\end{Proof}
+
+\subsection{标量位}
+既然标量场的梯度为无旋场，因此，若$\vb*{F}$是无旋场，那么$\vb*{F}$必然可以表示为标量场的梯度。
+\begin{BoxDefinition}[无旋场的标量位]
+    若$\vb*{F}$是无旋场，则必然存在标量函数$u$使得
+    \begin{Equation}
+        \vb*{F}=-\grad u
+    \end{Equation}
+    该标量函数$u$就是无旋场$\vb*{F}$的\uwave{标量位}或\uwave{标势}（Scalar Potential）。
+\end{BoxDefinition}
+
+简而言之，\empx{无旋场是其标量位的负梯度}，这里的负号来源于物理上$\vb*{E}=-\grad\phi$的习惯。
+
+在电磁场中，我们往往会将对某个无旋场性质的讨论，转化为对无旋场的标量位性质的讨论。\goodbreak
+
+无旋场$\vb*{F}$的旋度显然为零，这就是无旋场的定义
+\begin{Equation}
+    \curl\vb*{F}=\vb*{0}
+\end{Equation}
+无旋场$\vb*{F}$的散度则是有值的，设为$g$
+\begin{Equation}
+    \div\vb*{F}=g
+\end{Equation}
+在上式中代入\fancyref{def:无旋场的定义}
+\begin{Equation}
+    \div(\grad u)=-g
+\end{Equation}
+这种“先求梯度，再求散度”的形式我们很熟悉，它可以改写为
+\begin{Equation}
+    (\div\grad)u=-g
+\end{Equation}
+这里$\div\grad$称为\uwave{标量拉普拉斯算符}，记为$\laplacian$，由此，我们就可以得到一个重要的事实。
+\begin{BoxFormula}[标量泊松方程]
+    无旋场$\vb*{F}$的散度性质，可以等价的用无旋场$\vb*{F}$的标量位的泊松方程表示
+    \begin{Equation}
+        \laplacian u=-g
+    \end{Equation}
+    其中，$g$为$\vb*{F}$的散度，$u$为$\vb*{F}$的标量位，即
+    \begin{Equation}
+        \div\vb*{F}=g\qquad \curl\vb*{F}=\vb*{0}\qquad \vb*{F}=-\grad u
+    \end{Equation}
+\end{BoxFormula}
+这里列出了拉普拉斯算符在各个坐标系的形式
+\begin{BoxFormula}[直角坐标系的拉普拉斯]
+    在直角坐标系下，拉普拉斯的形式是
+    \begin{Equation}
+        \laplacian u=\pdv[2]{u}{x}+\pdv[2]{u}{y}+\pdv[2]{u}{z}
+    \end{Equation}
+\end{BoxFormula}
+\begin{BoxFormula}[柱坐标系的拉普拉斯]
+    在柱坐标系下，拉普拉斯的形式是
+    \begin{Equation}
+        \laplacian u=\frac{1}{\rho}\pdv{\rho}\qty(\rho\pdv{u}{\rho})+\frac{1}{\rho^2}\pdv[2]{u}{\phi}+\pdv[2]{u}{z}
+    \end{Equation}
+\end{BoxFormula}
+\begin{BoxFormula}[球坐标系的拉普拉斯]*
+    在球坐标系下，拉普拉斯的形式是
+    \begin{Equation}
+        \qquad\qquad\qquad
+        \laplacian u=\frac{1}{r^2}\pdv{r}\qty(r^2\pdv{u}{r})+\frac{1}{r^2\sin\theta}\pdv{\theta}\qty(\sin\theta\pdv{u}{\theta})+\frac{1}{r^2\sin^2\theta}\pdv[2]{u}{\phi}
+        \qquad\qquad\qquad
+    \end{Equation}
+\end{BoxFormula}

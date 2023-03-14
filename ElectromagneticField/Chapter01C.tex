@@ -26,7 +26,7 @@
 \begin{BoxDefinition}[标量场的方向导数]
     定义标量场$u(\vb*{r})$沿$\vb*{l}$的\uwave{方向导数}（Directional Derivative）
     \begin{Equation}
-        \eval{\pdv{u}{\vb*{l}}}=\Lim[\delt{l}\to 0]\frac{u(\vb*{r}+\delt{\vb*{l}})-u(r)}{\delt{l}}
+        \eval{\pdv{u}{l}}=\Lim[\delt{l}\to 0]\frac{u(\vb*{r}+\delt{\vb*{l}})-u(r)}{\delt{l}}
     \end{Equation}
 \end{BoxDefinition}
 标量场的方向导数仍然是一个标量场，需要注意的是，单说“方向导数”是没有意义，必须要指明是沿哪个方向的“方向导数”，每一个$\vb*{l}$的取值就将对应一个不同的方向导数$\pdv*{u}{\vb*{l}}$场。
@@ -35,7 +35,7 @@
 
 方向导数的定义是无关坐标系的，但其具体形式与坐标系有关，在直角坐标系中
 \begin{Equation}
-    \pdv{u}{\vb*{l}}=\pdv{u}{x}\cos\alpha+\pdv{u}{y}\cos\beta+\pdv{u}{z}\cos\gamma
+    \pdv{u}{l}=\pdv{u}{x}\cos\alpha+\pdv{u}{y}\cos\beta+\pdv{u}{z}\cos\gamma
 \end{Equation}
 其中$\cos\alpha,\cos\beta,\cos\gamma$分别是$\vb*{l}$的方向余弦。
 
@@ -43,9 +43,9 @@
 \begin{BoxDefinition}[标量场的梯度]
     定义标量场$u(\vb*{r})$的\uwave{梯度}（Gradient）
     \begin{Equation}
-        \grad u=\Grad u=\vb*{e}_\text{n}\max\pdv{u}{\vb*{l}}
+        \grad u=\Grad u=\vb*{e}_\text{n}\max\pdv{u}{l}
     \end{Equation}
-    其中，$\vb*{e}_\text{n}$代表对于每个点$r$使得$\pdv*{u}{\vb*{l}}$最大的$\vb*{l}$的单位矢量。
+    其中，$\vb*{e}_\text{n}$代表对于每个点$r$使得$\pdv*{u}{l}$最大的$\vb*{l}$的单位矢量。
 \end{BoxDefinition}
 
 梯度是矢量场，其大小表示该点的最大的变化率，其方向表示该点最大的变化率的方向。
