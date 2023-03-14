@@ -1,0 +1,35 @@
+\section{亥姆霍兹定理}
+矢量场的散度和旋度都是表示矢量场性质的量度，而亥姆霍兹定理之处，矢量场具有的所有性质，都可以由其散度、旋度、边界条件说明。定理的证明比较复杂，这里直接给出结论。
+\begin{BoxTheorem}[亥姆霍兹定理]
+    在边界为$S$的区域$V$内，矢量场$\vb*{F}$完全由它的散度、旋度、边界条件确定，可以表示为
+    \begin{Equation}
+        \vb*{F}(\vb*{r})=-\grad u(\vb*{r})+\curl\vb*{A}(\vb*{r})
+    \end{Equation}
+    其中标势满足
+    \begin{Equation}
+        u(\vb*{r})=
+        \frac{1}{4\pi}
+        \Itnt[V]\frac{\grad'\cdot\vb*{F}(\vb*{r'})}{\abs{\vb*{r}-\vb*{r}'}}\dd{V'}-\frac{1}{4}\Isot[S]\frac{\vb*{e}_\text{n}'\cdot\vb*{F}(\vb*{r}')}{\abs{\vb*{r}-\vb*{r}'}}\dd{S'}
+    \end{Equation}
+    其中矢势满足
+    \begin{Equation}
+        \vb*{A}(\vb*{r})=
+        \frac{1}{4\pi}
+        \Itnt[V]\frac{\grad'\times\vb*{F}(\vb*{r'})}{\abs{\vb*{r}-\vb*{r}'}}\dd{V'}-\frac{1}{4}\Isot[S]\frac{\vb*{e}_\text{n}'\times\vb*{F}(\vb*{r}')}{\abs{\vb*{r}-\vb*{r}'}}\dd{S'}
+    \end{Equation}
+    这就是\uwave{亥姆霍兹定理}或\uwave{亥姆霍兹分解}（Helmholtz Decomposition）。\footnote[2]{从数学形式上，亥姆霍兹分解和傅里叶展开有一定的相似之处（因此称为“分解”也很合理）。}
+\end{BoxTheorem}
+
+亥姆霍兹定理指出，矢量场总可以由一个无旋场和一个无散场叠加表示
+\begin{itemize}
+    \item 无旋场以标势的负梯度呈现，标势由$\vb*{F}$的散度和$\vb*{F}$在边界上的法向分量确定。
+    \item 无散场以矢势的正旋度呈现，矢势由$\vb*{F}$的旋度和$\vb*{F}$在边界上的切向分量确定。
+\end{itemize}
+亥姆霍兹定理有两个值得关注的特殊情况
+\begin{itemize}
+    \item 若区域$V$内矢量场$\vb*{F}$的散度和旋度处处为零，此时标势$u(\vb*{r})$和矢势$\vb*{A}(\vb*{r})$中的第一项积分为零，这就是说，\empx{无散且无旋的矢量场的性质，完全由矢量场的边界条件决定}。
+    \item 若区域$V$是无界的，只要$\vb*{F}$的衰减速度快于$1/\vb*{r}$，第二项积分就为零，此时我们就不再需要考虑边界条件了，因此，\empx{无界空间中矢量场的性质，完全由散度和旋度确定}，这其实也说明了，无界空间中不能存在无散且无旋的矢量场，除非这个矢量场是恒零的。
+\end{itemize}
+亥姆霍兹定理总结了矢量场的基本性质，其意义是非常重要的，故称为\uwave{矢量分析基本定理}。
+
+亥姆霍兹定理的这种想法，其实指导了我们如何去分析一个矢量场，从散度和旋度着手，得到散度方程和旋度方程，组成矢量场基本方程的微分形式。麦克斯韦方程其实就是这样得来的。
