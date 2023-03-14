@@ -1,0 +1,131 @@
+\section{无散场的矢量位}
+
+\subsection{无散场的定义}
+\begin{BoxDefinition}[无散场的定义]
+    若一个矢量场$\vb*{F}$的散度处处为零，即
+    \begin{Equation}
+        \div\vb*{F}=\vb*{0}
+    \end{Equation}
+    则称该矢量场为无散场，它完全由涡旋源产生。
+\end{BoxDefinition}
+根据\fancyref{thm:散度定理}，无散场$\vb*{F}$在任意闭合曲面$S$的通量为$0$，即
+\begin{Equation}
+    \Isot[C]\vb*{F}\cdot\dd{\vb*{S}}=\Itnt[V]\div\vb*{F}\dd{V}=0
+\end{Equation}
+在这里，我们可以梳理一下，\empx{无旋场在闭曲线的环流为零}，\empx{无散场在闭曲面的通量为零}。
+
+\subsection{无散场的产生}
+现在的问题是，什么样的场一定是无散场$\vb*{F}$呢？下面的结论将给我们答案。
+\begin{BoxProperty}[矢量场的旋度无散]
+    矢量场的旋度，必为无散场（旋度场无散）
+    \begin{Equation}
+        \div(\curl \vb*{A})=0
+    \end{Equation}
+\end{BoxProperty}\goodbreak
+\begin{Proof}
+    % 这个结论在数学物理方法中我们已经证明过了，但这里换一种更优雅的方式来完成。
+
+    任取一个空间区域$V$，将$\curl(\grad u)$在$V$上积分
+    \begin{Equation}&[1]
+        I=\Itnt[V]\div(\curl\vb*{A})\cdot\dd{\vb*{S}}
+    \end{Equation}
+    设空间区域$V$的边界曲面为$S$，根据\fancyref{thm:散度定理}
+    \begin{Equation}&[2]
+        I=
+        \Isot[S]\curl\vb*{A}\cdot\dd{\vb*{S}}
+    \end{Equation}
+    在闭合曲面$S$上作一条闭合曲线$C$，将$S$划分为$S_1$和$S_2$
+    \begin{Equation}&[3]
+        I=\Isnt[S_1]\curl\vb*{A}\cdot\dd{\vb*{S}}+\Isnt[S_2]\curl\vb*{A}\cdot\dd{\vb*{S}}
+    \end{Equation}
+    再次运用\fancyref{thm:旋度定理}，注意到$S_1,S_2$的边界均为$C$，但取向相反
+    \begin{Equation}
+        I=\Ilot[C]\vb*{A}\cdot\dd{\vb*{l}}-\Ilot[C]\vb*{A}\cdot\dd{\vb*{l}}=0
+    \end{Equation}
+    将该积分结果代回\xrefpeq{1}，考虑到区域$V$的任意性
+    \begin{Equation}*
+        \div(\curl\vb*{A})=0\qedhere
+    \end{Equation}
+\end{Proof}
+
+\subsection{无散场的矢势}
+既然矢量场的旋度为无散场，因此，若$\vb*{F}$是无散场，那么$\vb*{F}$必然可以表示为矢量场的旋度。
+\begin{BoxDefinition}[无散场的矢势]
+    若$\vb*{F}$是无散场，则必然存在矢量函数$\vb*{A}$使得
+    \begin{Equation}
+        \vb*{F}=\curl\vb*{A}
+    \end{Equation}
+    该矢量函数$\vb*{A}$就是无散场$\vb*{F}$的\uwave{矢量位}或\uwave{矢势}（Vector Potential）。
+\end{BoxDefinition}
+
+
+简而言之，\empx{无散场是其矢势的正旋度}，注意，矢量位没有标量位定义中的负号。
+
+在这里，我们有必要总结一下
+\begin{itemize}
+    \item 无旋场有标量位，无旋场是其标量位的负梯度，因为（标量的）梯度场无旋。
+    \item 无散场有矢量位，无散场是其矢量位的负旋度，因为（矢量的）旋度场无散。
+\end{itemize}
+
+在电磁场中，我们往往会将对某个无散场性质的讨论，转化为对无散场的矢量位性质的讨论。\setpeq{矢量泊松方程}
+
+无散场$\vb*{F}$的散度显然为零，这就是无散场的定义
+\begin{Equation}&[1]
+    \div\vb*{F}=\vb*{0}
+\end{Equation}
+无散场$\vb*{F}$的旋度则是有值的，设为$\vb*{G}$
+\begin{Equation}&[2]
+    \curl\vb*{F}=\vb*{G}
+\end{Equation}
+在上式中代入\fancyref{def:无散场的矢势}
+\begin{Equation}&[3]
+    \curl(\curl\vb*{A})=\vb*{G}
+\end{Equation}
+现在的问题是，这里遇到的“旋度的旋度”到底应该怎么求？\goodbreak
+
+其实，我们只需要将$\grad$当作矢量，运用矢量三重积的\fancyref{fml:拉格朗日公式}
+\begin{Equation}&[4]
+    \curl(\curl\vb*{A})=\grad(\div\vb*{A})-(\div\grad)\vb*{A}
+\end{Equation}
+实际上，依照\fancyref{def:无散场的矢势}给出的无散场$\vb*{F}$的矢势$\vb*{A}$并不是唯一的，就像先前无旋场$\vb*{F}$的标势$u$间可以相差一个任意常数那样，矢势$\vb*{A}$的任意性是表现在它的散度可以是任意值，简洁起见，我们不妨假定其满足$\div\vb*{A}=0$的约束（之后会称之为库伦规范）。
+
+将$\div\vb*{A}=0$的约束代入\xrefpeq{4}
+\begin{Equation}&[5]
+    (\div\grad)\vb*{A}=-\vb*{G}
+\end{Equation}
+这里$\div\grad$称为\uwave{矢量拉普拉斯算符}，记为$\laplacian$，由此，我们就可以得到一个重要的事实。
+\begin{BoxFormula}[矢量泊松方程]
+    无散场$\vb*{F}$的旋度性质，可以等价的用无散场$\vb*{F}$的矢势的矢量泊松方程表示
+    \begin{Equation}
+        \laplacian\vb*{F}=-\vb*{G}
+    \end{Equation}
+    特别的，在$\vb*{G}=0$的部分，这就将给出矢量拉普拉斯方程
+    \begin{Equation}
+        \laplacian \vb*{F}=0
+    \end{Equation}
+    其中，$\vb*{G}$为$\vb*{F}$的旋度，$\vb*{A}$为$\vb*{F}$的矢势，即
+    \begin{Equation}
+        \div\vb*{F}=0\qquad \curl\vb*{F}=\vb*{G}\qquad \vb*{F}=\curl\vb*{A}
+    \end{Equation}
+\end{BoxFormula}
+
+矢量拉普拉斯和标量拉普拉斯从数学形式上，都是$\div\grad$，即两个$\grad$的点积，从这一点看上两者是完全相同的，而不同之处在于，标量拉普拉斯可以理解为梯度的散度，但是，矢量拉普拉斯则不能这样理解，因为，矢量不能计算梯度（除非引入张量的概念，但这就太复杂了）。\goodbreak
+
+矢量拉普拉斯计算时，往往会通过\xrefpeq{3}转化为常规运算
+\begin{BoxFormula}[矢量拉普拉斯的转化]
+    矢量拉普拉斯可以作以下转化
+    \begin{Equation}
+        \laplacian\vb*{A}=\grad(\div\vb*{A})-\curl(\curl\vb*{A})
+    \end{Equation}
+    即，矢量拉普拉斯，就是散度的梯度，减去旋度的旋度。
+\end{BoxFormula}
+
+矢量拉普拉斯在直角坐标下，可以视为矢量各个分离的标量拉普拉斯
+\begin{BoxFormula}
+    矢量拉普拉斯在直角坐标系下，可以展开为
+    \begin{Equation}
+        \laplacian\vb*{A}=\vb*{e}_x\laplacian A_x+\vb*{e}_y\laplacian A_y+\vb*{e}_z\laplacian A_z
+    \end{Equation}
+\end{BoxFormula}
+但注意，这仅对直角坐标系适用，在柱坐标系和球坐标系下该结论并不正确。
+
