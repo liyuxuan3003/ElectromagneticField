@@ -1,0 +1,149 @@
+\section{电荷守恒与电流连续性}
+电荷周围要产生电场，电流周围要产生磁场，电荷电流是产生电磁场的源量。
+
+\subsection{电荷与电荷密度}
+自然界中存在两种\uwave{电荷}（Electric Charge）：\uwave{正电荷}和\uwave{负电荷}。带电体所带电量称为\uwave{电荷量}，电荷量并非是连续变化的，电荷量只能取值基本电荷$e=1.602\times 10^{-19}\si{C}$的整数倍，即，电荷是以离散方式分布的。基本电荷$e$恰好就是质子和电子的电荷量，质子带电$e$，电子带电$-e$。
+
+电荷通常以$q$表示，尽管我们说，电荷实际上是离散分布的，但在研究宏观电磁现象时，我们所观察到的是带电体上大量微观带电粒子的总体效应，而带电粒子的线度又远小于带电体的线度。因此，我们可以近似认为，电荷是连续分布在带电体上的，并可以用电荷密度来描述。
+
+\begin{BoxDefinition}[电荷体密度]*
+    连续分布在体积$V$内的电荷，称为\uwave{体分布电荷}或\uwave{体电荷}（Volume Charge）。
+
+    体电荷的分布，用\uwave{电荷体密度}（Volume Charge Density）表示
+    \begin{Equation}
+        \rho(\vb*{r},t)=\Lim[\delt{V}\to 0]\frac{\delt{q}(\vb*{r},t)}{\delt{V}}=\dv{q(\vb*{r},t)}{V}
+    \end{Equation}
+    体积$V$内的电荷量可以用电荷体密度$\rho(\vb*{r},t)$在$V$内的积分求出
+    \begin{Equation}
+        q(t)=\Itnt[V]\rho(\vb*{r},t)\dd{V}
+    \end{Equation}
+\end{BoxDefinition}
+
+除了电荷体密度，亦有适用于面分布的面密度和线分布的线密度。
+
+\begin{BoxDefinition}[电荷面密度]
+    连续分布在曲面$S$内的电荷，称为\uwave{面分布电荷}或\uwave{面电荷}（Surface Charge）。
+
+    面电荷的分布，用\uwave{电荷面密度}（Surface Charge Density）表示
+    \begin{Equation}
+        \rho_S(\vb*{r},t)=\Lim[\delt{S}\to 0]\frac{\delt{q}(\vb*{r},t)}{\delt{S}}=\dv{q(\vb*{r},t)}{S}
+    \end{Equation}
+    曲面$S$内的电荷量可以用电荷面密度$\rho_S(\vb*{r},t)$在$V$内的积分求出
+    \begin{Equation}
+        q(t)=\Isnt[S]\rho_S(\vb*{r},t)\dd{S}
+    \end{Equation}
+\end{BoxDefinition}
+
+\begin{BoxDefinition}[电荷线密度]
+    连续分布在曲线$l$内的电荷，称为\uwave{线分布电荷}或\uwave{线电荷}（Linear Charge）。
+
+    线电荷的分布，用\uwave{电荷线密度}（Linear Charge Density）表示
+    \begin{Equation}
+        \rho_l(\vb*{r},t)=\Lim[\delt{l}\to 0]\frac{\delt{q}(\vb*{r},t)}{\delt{l}}=\dv{q(\vb*{r},t)}{l}
+    \end{Equation}
+    曲线$l$内的电荷量可以用电荷线密度$\rho_l(\vb*{r},t)$在$l$内的积分求出
+    \begin{Equation}
+        q(t)=\Int[l]\rho_l(\vb*{r},t)\dd{l}
+    \end{Equation}
+\end{BoxDefinition}
+
+当带电体的线度，远小于观察点至带电体的距离时，此时，带电体的形状和电荷分布以及无关紧要，带电体可以近似为一个电荷集中在中心的几何点模型，称为\uwave{点电荷}(Point Charge)。
+
+点电荷的概念在电磁理论中有很重要的地位，就像质点与之经典力学那般。
+
+点电荷是电荷分布的一种极限情况，点电荷可以视为一个体积很小而带电量一定的带电球体在半径$a\to 0$时的极限。设电荷$q(t)$分布在位于$\vb*{r}'$半径为$a$的球体内，那么
+\begin{itemize}
+    \item 在$|\vb*{r}-\vb*{r}'|>a$的球外区域，电荷密度显然为零。
+    \item 在$|\vb*{r}-\vb*{r}'|<a$的球内区域，电荷密度将为非常大的数值（由于球体很小），当$a\to 0$时球心$\vb*{r}=\vb*{r'}$处的电荷密度将趋于无穷大，而$\vb*{r}\neq\vb*{r}'$处的电荷密度则均为零，但整个极限过程中，电荷总量保持为$q(t)$不变。这也就是说，电荷密度$\rho(\vb*{r},t)$在全空间的积分是定值，在$\vb*{r}=\vb*{r}'$为无穷大，在$\vb*{r}\neq\vb*{r}'$为零，这在数学上完全符合狄拉克函数的特性。
+\end{itemize}
+因此，点电荷的电荷密度可以用狄拉克函数描述。
+\begin{BoxDefinition}[点电荷]
+    点电荷的电荷密度可以用狄拉克函数描述
+    \begin{Equation}
+        \rho(\vb*{r},t)=q(t)\dirac(\vb*{r}-\vb*{r}')
+    \end{Equation}
+    其中，$q(t)$是点电荷的电荷量，$\vb*{r}'$是点电荷的位矢。
+\end{BoxDefinition}
+
+\subsection{电流与电流密度}\vspace{-0.25cm}
+\begin{BoxDefinition}[电流]
+    \uwave{电流}（Electric Current）是由电荷运动形成的，定义为
+    \begin{Equation}
+        i(t)=\Lim[\delt{t}\to 0]\frac{\delt{q}(t)}{\delt{t}}=\dv{q(t)}{t}
+    \end{Equation}
+    其中，$\delt{q}(t)$表示在$\delt{t}$的时间内通过某一曲面$S$的电荷量，$i(t)$即通过曲面$S$的电流。
+\end{BoxDefinition}
+
+电流的意义是单位时间通过某一曲面$S$的电荷量，因此，我们不能说某一点的电流是多少，但是，我们又迫切的需要了解电流的分布情况，介于不同点处的电荷运动方向往往是不同的。
+
+电流密度$\vb*{J}(\vb*{r},t)$就是为此而引入的，在$\vb*{r}$处的电流密度是如何计算的呢？我们在$\vb*{r}$处垂直电荷运动的方向上取一个面积元$\delt{S}$，其法向单位矢量为$\vb*{e}_\text{n}$，电流密度的大小即该面积元上的电流$\delt{i}$与该面积元$\delt{S}$的比在$\delt{S}\to 0$的极限，电流密度的方向就是该处$\vb*{e}_\text{n}$的方向。
+
+\begin{BoxDefinition}[电流密度]
+    \uwave{电流密度}（Current Density）描述了电流的分布
+    \begin{Equation}
+        \vb*{J}(\vb*{r},t)=\vb*{e}_\text{n}\Lim[\delt{S}\to 0]\frac{\delt{i}(\vb*{r})}{\delt{S}}=\vb*{e}_\text{n}\dv{i(\vb*{r})}{S}
+    \end{Equation}
+    电流则是电流密度的通量，通过曲面$S$的电流可以被表示为
+    \begin{Equation}
+        i(t)=\Isnt[S]\vb*{J}(\vb*{r},t)\cdot\dd{\vb*{S}}
+    \end{Equation}
+\end{BoxDefinition}
+\begin{BoxFormula}
+    电流密度，是电荷密度与电荷运动速度的乘积
+    \begin{Equation}
+        \vb*{J}(\vb*{r},t)=\rho\vb*{v}
+    \end{Equation}
+\end{BoxFormula}\nopagebreak
+
+上述的电流体密度$\vb*{J}(\vb*{r},t)$描述的是体分布电流，我们还可以定义电流面密度$\vb*{J}_S(\vb*{r},t)$来描述面分布电流。但是，我们没有“电流线密度”的概念，因为“电流线密度”就是“电流$i$”，这种线电流的模型是很常用的，例如导线的横截面相较其长度而言很小，就可以视为线电流。\goodbreak
+
+在分析电磁场时，常会使用\uwave{电流元}（Current Element）的概念，对于线电流，我们会沿电流流动方向取一个线元矢量$\dd{\vb*{l}}$，并将$i\dd{\vb*{l}}$称为电流元。而对于体分布电流和面分布电流，其电流元分别是$\vb*{J}\dd{V}$和$\vb*{J}_S\dd{S}$。在某种意义上，载流导体可以视为由电流元“积分”而来的。
+
+
+\subsection{电荷守恒定律与电流连续性方程}
+电荷是守恒的，它既不能被创造，也不能被消灭，只能从物体的一个部分转移到另一部分，或者从一个物体转移到另一个物体，这就是所谓\uwave{电荷守恒定律}（Law of Charge Conservation）。
+
+电荷守恒定律的直接结果，就是\uwave{电流连续性方程}（Continuity Equation）。
+
+\begin{BoxEquation}[电流连续性方程]
+    电流连续性方程是指，电流场$\vb*{J}(\vb*{r},t)$满足以下方程
+    \begin{Equation}
+        \div\vb*{J}+\pdv{\rho}{t}=0
+    \end{Equation}
+    特别的，对于恒定电流场
+    \begin{Equation}
+        \div{\vb*{J}}=0
+    \end{Equation}
+\end{BoxEquation}
+\begin{Proof}
+    任取一个边界曲面为$S$的空间区域$V$，应有
+    \begin{Equation}&[1]
+        \Isot[S]{\vb*{J}\cdot\dd{\vb*{S}}}=-\dv{q}{t}=-\dv{t}\Itnt[V]\rho\dd{V}
+    \end{Equation}
+    这是因为，\xrefpeq{1}左端代表的是单位时间内从$S$流出的电荷，\xrefpeq{1}右端代表的是单位时间在空间区域$V$内减少的电荷，根据前述的电荷守恒定律，这两者很明显应该是相等的。
+
+    由于$V$不会随时间变化，不妨将\xrefpeq{1}右端对时间的求导置于积分内
+    \begin{Equation}&[2]
+        \Isot[S]\vb*{J}\cdot\dd{\vb*{S}}=-\Itnt[V]\pdv{\rho}{t}\dd{V}
+    \end{Equation}
+    就\xrefpeq{2}的左端运用\fancyref{thm:散度定理}
+    \begin{Equation}
+        \Itnt[V]\div\vb*{J}\dd{V}=-\Itnt[V]\pdv{\rho}{t}\dd{V}
+    \end{Equation}
+    即
+    \begin{Equation}
+        \Itnt[V]\qty(\div\vb*{J}+\pdv{\rho}{t})\dd{V}=0
+    \end{Equation}
+    由于$V$是任取的
+    \begin{Equation}
+        \div\vb*{J}+\pdv{\rho}{t}=0
+    \end{Equation}
+    而恒定电流场中，电荷分布$\rho$不随时间变化，因此$\pdv*{\rho}{t}=0$。
+\end{Proof}
+电流连续性方程指出，\empx{时变电流场是有散场}
+\begin{itemize}
+    \item 电流场在电荷密度随时间减少的地方，发出电流线，构成电流场的源。
+    \item 电流场在电荷密度随时间增加的地方，终止电流线，构成电流场的汇。
+\end{itemize}
+恒定电流场的电荷密度不随时间变化，因此没有源或汇，换言之，\empx{恒定电流场是无散场}。
+
