@@ -1,0 +1,174 @@
+\section{真空中静电场的基本规律}
+
+电荷周围的空间存在电场，电场对电荷会产生作用力，称为电场力，这就是电场的基本特征。
+
+\subsection{电场的基本特征}
+\begin{BoxLaw}[电场的基本特性]
+    若电场中存在电荷$q$，则其所受到的电场力，具有以下特性
+    \begin{Equation}
+        \vb*{F}_\text{c}=q\vb*{E}
+    \end{Equation}
+    其中$\vb*{E}$称为\uwave{电场强度}（Electric Field Intensity），单位是\si{V\cdot m^{-1}}。
+\end{BoxLaw}
+
+\subsection{电场的基本实验定律}
+在1785年，法国科学家库伦（Coulomb）通过著名的“扭秤实验”，总结出真空中两个静止电荷$q_1$和$q_2$间的相互作用力的规律，称为\uwave{库伦定律}（Coulomb's Law），这是电场的基本实验定律，因此电场力也被称为\uwave{库伦力}（Coulomb Force）。库伦定律的内容可以叙述如下
+\begin{BoxLaw}[库伦定律]
+    设点电荷$q_1$和$q_2$的位矢分别为$\vb*{r}_1$和$\vb*{r}_2$，记$\vb*{R}_{12}=\vb*{r}_2-\vb*{r}_1$是$q_1$指向$q_2$的矢量。
+
+    那么，$q_1$在$q_2$上产生的作用力$\vb*{F}_{12}$为
+    \begin{Equation}
+        \vb*{F}_{12}=\frac{q_1q_2}{4\pi\varepsilon_0R_{12}^3}\vb*{R}_{12}
+    \end{Equation}
+    其中物理常数$\varepsilon_0$被称为\uwave{真空电容率}（Vacuum Permittivity）\footnote[2]{除了真空电容率，有时$\varepsilon_0$也被称为真空介电常数。}，其值为
+    \begin{Equation}
+        \varepsilon_0=(1/36\pi)\times 10^{-9}\si{F\cdot m^{-1}}
+    \end{Equation}
+\end{BoxLaw}
+
+库伦定律指出，电荷间的作用满足平方反比关系，同号电荷相互排斥，异号电荷相互吸引。
+
+库伦定律讨论的是两个电荷间的相互作用，设真空中有$N$个点电荷$q_1,q_2,\cdots,q_N$分别位于位矢$\vb*{r}_1',\vb*{r}_2',\cdots,\vb*{r}_N'$处，它们将作为电场的源点。那么，位于场点$\vb*{r}$处的点电荷$q$所受到的库伦力$\vb*{F}$，就可以依照力的叠加原理，视为$q,q_1$、$q,q_2$、$\cdots$、$q,q_N$两两之间的库伦力的和
+\begin{Equation}
+    \vb*{F}=\Sum[i=1][N]\frac{qq_iR_i}{4\pi\varepsilon_0R_i^3}=\frac{q}{4\pi\varepsilon_0}\Sum[i=1][N]\frac{q_i\vb*{R}_i}{R_i^3}
+\end{Equation}
+其中$\vb*{R}_i=\vb*{r}-\vb*{r}_i$，即由场点指向各个源点的矢量。
+
+而根据\fancyref{law:电场的基本特性}，我们很容易得出测试点电荷$q$处的电场强度应为
+\begin{Equation}
+    \vb*{E}(\vb*{r})=\frac{1}{4\pi\varepsilon_0}\Sum[i=1][N]\frac{q_i\vb*{R}_i}{R_i^3}
+\end{Equation}
+而对于连续带电体，上式将转化为积分
+\begin{BoxFormula}[电场强度]
+    电场强度$\vb*{E}(\vb*{r})$符合以下规律
+    \begin{Equation}
+        \vb*{E}(\vb*{r})=\frac{1}{4\pi\varepsilon_0}\Itnt[V]\frac{\rho(\vb*{r}')\vb*{R}}{R^3}\dd{V'}
+    \end{Equation}
+    其中$\vb*{R}=\vb*{r}-\vb*{r}'$，而$\rho(\vb*{r}')$则给出$V$中源点$\vb*{r}'$处的电荷密度。
+\end{BoxFormula}
+
+\subsection{距离反比的拉普拉斯}
+在开始讨论静电场的性质之前，我们先需要补充一个重要的数学公式。\cite{W2}
+\begin{BoxFormula}[距离反比的拉普拉斯]
+    设位矢$\vb*{r}$，$r=\abs{\vb*{r}}$，则有
+    \begin{Equation}
+        \laplacian(\frac{1}{r})=-4\pi\dirac(\vb*{r})
+    \end{Equation}
+\end{BoxFormula}
+\begin{Proof}
+    根据\fancyref{fml:球坐标系的拉普拉斯}，若$r\neq 0$
+    \begin{Equation}
+        \laplacian(\frac{1}{r})=\frac{1}{r^2}\pdv{r}\qty[r^2\pdv{(1/r)}{r}]=\frac{1}{r^2}\pdv{r}\qty[r^2\qty(-\frac{1}{r^2})]=0
+    \end{Equation}
+    而若$r\neq 0$，上式不再适用，我们试着对$\laplacian(1/r)$在$V$上积分
+    \begin{Equation}
+        I=\Itnt[V]\laplacian(\frac{1}{r})\dd{V}=\Itnt[V_0]\laplacian(\frac{1}{r})\dd{V}+\Itnt[V-V_{0}]\laplacian(\frac{1}{r})\dd{V}
+    \end{Equation}
+    这里将$V$拆分为两部分，$V_0$是以原点为球心，半径为$r_0$的球形区域，半径$r_0$可以任取以确保$V_0$完全在$V$之内。而$V-V_0$是剩余区域，由于$V-V_0$不包含原点，因此其积分为零。
+
+    因此，在$V$上的积分就可以转化为球形区域$V_0$上的积分
+    \begin{Equation}
+        I=\Itnt[V]\laplacian(\frac{1}{r})\dd{V}=
+        \Itnt[V_0]\laplacian(\frac{1}{r})\dd{V}
+    \end{Equation}
+    运用\fancyref{thm:散度定理}
+    \begin{Equation}
+        I=
+        \Itnt[V_0]\div\grad(\frac{1}{r})\dd{V}=
+        \Isot[S_0]\grad(\frac{1}{r})\cdot\dd{\vb*{S}}
+    \end{Equation}
+    其中$S_0$为$V_0$的边界曲面，即半径为$r_0$的球面，而球面上的积分是可以计算的
+    \begin{Equation}
+        I=\Isot[S_0]\grad(\frac{1}{r})\cdot\frac{\vb*{r}_0}{r_0}\dd{S}=\Int[0][2\pi]\Int[0][\pi]\grad(\frac{1}{r})\cdot\frac{\vb*{r}_0}{r_0}r_0^2\sin\theta\dd{\theta}\dd\phi
+    \end{Equation}
+    代入\fancyref{fml:梯度的计算公式2}
+    \begin{Equation}
+        I=\Int[0][2\pi]\Int[0][\pi]-\frac{\vb*{r}_0}{r_0^3}\cdot\frac{\vb*{r}_0}{r_0}r_0^2\sin\theta\dd{\theta}\dd\phi
+    \end{Equation}
+    注意到$r_0$被完全约去
+    \begin{Equation}
+        I=\Int[0][2\pi]\Int[0][\pi]-\sin\theta\dd{\theta}\dd\phi=-4\pi
+    \end{Equation}
+    在这里，我们看到，$\laplacian(1/r)$在$r\neq 0$时处处为零，但是，$\laplacian(1/r)$在包含$r=0$的空间上的积分却并不是零，而是有限值$-4\pi$，这就意味着$\laplacian(1/r)$需要用狄拉克函数表示，即
+    \begin{Equation}*
+        \laplacian(\frac{1}{r})=-4\pi\dirac(\vb*{r})\qedhere
+    \end{Equation}
+\end{Proof}
+
+\subsection{静电场的散度}
+\begin{BoxProperty}[静电场的散度]
+    静电场的散度满足
+    \begin{Equation}
+        \div\vb*{E}=\frac{\rho}{\varepsilon_0}
+    \end{Equation}
+    该性质也可以改写为积分形式
+    \begin{Equation}
+        \Isot[S]\vb*{E}\cdot\dd{\vb*{S}}=\frac{1}{\varepsilon_0}\Itnt[V]\rho\dd{V}
+    \end{Equation}
+    该结论称为\uwave{高斯定理}。
+
+    该式表明，电场强度$\vb*{E}$在闭曲面上的通量等于闭曲面内的总电荷与$\varepsilon_0$之比。
+\end{BoxProperty}
+
+\begin{Proof}
+    根据\fancyref{fml:电场强度}
+    \begin{Equation}&[1]
+        \vb*{E}(\vb*{r})=\frac{1}{4\pi\varepsilon_0}\Itnt[V]\frac{\rho(\vb*{r}')\vb*{R}}{R^3}\dd{V'}
+    \end{Equation}\goodbreak
+    根据\fancyref{fml:梯度的计算公式2}，$\grad(1/R)=-\vb*{R}/R^3$
+    \begin{Equation}&[2]
+        \vb*{E}(\vb*{r})=-\frac{1}{4\pi\varepsilon_0}\Itnt[V]\rho(\vb*{r}')\grad(\frac{1}{R})\dd{V'}
+    \end{Equation}
+    在\xrefpeq{2}两端取散度
+    \begin{Equation}&[3]
+        \div\vb*{E}(\vb*{r})=\div\qty[-\frac{1}{4\pi\varepsilon_0}\Itnt[V]\rho(\vb*{r}')\grad(\frac{1}{R})\dd{V'}]
+    \end{Equation}
+    由于微分算符$\grad$是对场点$\vb*{r}$的坐标的微分，而\xrefpeq{3}的积分是对源点$\vb*{r}'$坐标进行，故微分算符$\grad$可与积分运算交换顺序，而$\rho(\vb*{r}')$只与源点$\vb*{r}'$有关，也可以移到微分算符$\grad$之外
+    \begin{Equation}
+        \div\vb*{E}(\vb*{r})=-\frac{1}{4\pi\varepsilon_0}\Itnt[V]\rho(\vb*{r}')\div\grad(\frac{1}{R})\dd{V'}
+    \end{Equation}
+    梯度的散度即拉普拉斯算符
+    \begin{Equation}
+        \div\vb*{E}(\vb*{r})=-\frac{1}{4\pi\varepsilon_0}\Itnt[V]\rho(\vb*{r}')\laplacian(\frac{1}{R})\dd{V'}
+    \end{Equation}
+    利用\fancyref{fml:距离反比的拉普拉斯}，$\laplacian(1/R)=-4\pi\dirac(\vb*{R})=-4\pi\dirac(\vb*{r}-\vb*{r}')$
+    \begin{Equation}
+        \div\vb*{E}(\vb*{r})=\frac{1}{\varepsilon_0}\Itnt[V]\rho(\vb*{r}')\dirac(\vb*{r}-\vb*{r}')\dd{V'}
+    \end{Equation}
+    利用狄拉克函数的筛选性质
+    \begin{Equation}*
+        \div\vb*{E}=\frac{\rho}{\varepsilon_0}\qedhere
+    \end{Equation}
+\end{Proof}
+
+\subsection{静电场的旋度}
+\begin{BoxProperty}[静电场的旋度]
+    静电场的旋度满足
+    \begin{Equation}
+        \curl\vb*{E}=\vb*{0}
+    \end{Equation}
+    该性质也可以改写为积分形式
+    \begin{Equation}
+        \Ilot[C]\vb*{E}\cdot\dd{\vb*{l}}=0
+    \end{Equation}
+    该式表明，电场强度$\vb*{E}$在闭曲线上的旋量等于零，即，静电场是无旋场。
+\end{BoxProperty}
+\begin{Proof}
+    我们回到静电场散度中的\xrefpeq[静电场的散度]{2}
+    \begin{Equation}&[1]
+        \vb*{E}(\vb*{r})=-\frac{1}{4\pi\varepsilon_0}\Itnt[V]\rho(\vb*{r}')\grad(\frac{1}{R})\dd{V'}
+    \end{Equation}
+    由于积分是关于源点$\vb*{r}'$，而微分算符关于常点$\vb*{r}$，故微分算符可以提至积分外
+    \begin{Equation}&[2]
+        \vb*{E}(\vb*{r})=-\grad[\frac{1}{4\pi\varepsilon_0}\Itnt[V]\frac{\rho(\vb*{r'})}{R}\dd{V'}]
+    \end{Equation}
+    在\xrefpeq{2}两端取旋度
+    \begin{Equation}&[3]
+        \curl\vb*{E}=-\curl\grad[\frac{1}{4\pi\varepsilon_0}\Itnt[V]\frac{\rho(\vb*{r'})}{R}\dd{V'}]
+    \end{Equation}
+    在\xrefpeq{3}右端，是一个标量场梯度的旋度，而根据\fancyref{ppt:标量场的梯度无旋}
+    \begin{Equation}*
+        \curl\vb*{E}=\vb*{0}\qedhere
+    \end{Equation}
+\end{Proof}
+综合上述\xref{ppt:静电场的散度}和\xref{ppt:静电场的旋度}，这告诉我们，\empx{静电场是一个有源无旋场}。
