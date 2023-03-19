@@ -8,7 +8,7 @@
     \begin{Equation}
         \vb*{F}_\text{c}=q\vb*{E}
     \end{Equation}
-    其中$\vb*{E}$称为\uwave{电场强度}（Electric Field Intensity），单位是\si{V\cdot m^{-1}}。
+    其中$\vb*{E}$称为\uwave{电场强度}（Electric Field Intensity），单位是$\si{V\cdot m^{-1}}$。
 \end{BoxLaw}
 
 \subsection{电场的基本实验定律}
@@ -54,6 +54,10 @@
     \begin{Equation}
         \laplacian(\frac{1}{r})=-4\pi\dirac(\vb*{r})
     \end{Equation}
+    若记$\vb*{R}=\vb*{r}-\vb*{r}'$，$\vb*{r}$为场点，$\vb*{r}'$为源点常量，则有
+    \begin{Equation}
+        \laplacian(\frac{1}{R})=-4\pi\dirac(\vb*{R})=-4\pi\dirac(\vb*{r}-\vb*{r}')
+    \end{Equation}
 \end{BoxFormula}
 \begin{Proof}
     根据\fancyref{fml:球坐标系的拉普拉斯}，若$r\neq 0$
@@ -62,7 +66,9 @@
     \end{Equation}
     而若$r\neq 0$，上式不再适用，我们试着对$\laplacian(1/r)$在$V$上积分
     \begin{Equation}
+        \qquad\qquad\qquad
         I=\Itnt[V]\laplacian(\frac{1}{r})\dd{V}=\Itnt[V_0]\laplacian(\frac{1}{r})\dd{V}+\Itnt[V-V_{0}]\laplacian(\frac{1}{r})\dd{V}
+        \qquad\qquad\qquad
     \end{Equation}
     这里将$V$拆分为两部分，$V_0$是以原点为球心，半径为$r_0$的球形区域，半径$r_0$可以任取以确保$V_0$完全在$V$之内。而$V-V_0$是剩余区域，由于$V-V_0$不包含原点，因此其积分为零。
 
@@ -81,31 +87,29 @@
     \begin{Equation}
         I=\Isot[S_0]\grad(\frac{1}{r})\cdot\frac{\vb*{r}_0}{r_0}\dd{S}=\Int[0][2\pi]\Int[0][\pi]\grad(\frac{1}{r})\cdot\frac{\vb*{r}_0}{r_0}r_0^2\sin\theta\dd{\theta}\dd\phi
     \end{Equation}
-    代入\fancyref{fml:梯度的计算公式2}
+    代入\fancyref{fml:距离反比的梯度}，注意到$r_0$被完全约去
     \begin{Equation}
-        I=\Int[0][2\pi]\Int[0][\pi]-\frac{\vb*{r}_0}{r_0^3}\cdot\frac{\vb*{r}_0}{r_0}r_0^2\sin\theta\dd{\theta}\dd\phi
-    \end{Equation}
-    注意到$r_0$被完全约去
-    \begin{Equation}
-        I=\Int[0][2\pi]\Int[0][\pi]-\sin\theta\dd{\theta}\dd\phi=-4\pi
+        \qquad\qquad
+        I=\Int[0][2\pi]\Int[0][\pi]-\frac{\vb*{r}_0}{r_0^3}\cdot\frac{\vb*{r}_0}{r_0}r_0^2\sin\theta\dd{\theta}\dd\phi=\Int[0][2\pi]\Int[0][\pi]-\sin\theta\dd{\theta}\dd\phi=-4\pi
+        \qquad\qquad
     \end{Equation}
     在这里，我们看到，$\laplacian(1/r)$在$r\neq 0$时处处为零，但是，$\laplacian(1/r)$在包含$r=0$的空间上的积分却并不是零，而是有限值$-4\pi$，这就意味着$\laplacian(1/r)$需要用狄拉克函数表示，即
     \begin{Equation}*
         \laplacian(\frac{1}{r})=-4\pi\dirac(\vb*{r})\qedhere
     \end{Equation}
-\end{Proof}
+\end{Proof}\vspace{-0.25cm}
 
 \subsection{静电场的散度}
-\begin{BoxProperty}[静电场的散度]
+\begin{BoxProperty}[静电场的散度]*
     静电场的散度满足
     \begin{Equation}
         \div\vb*{E}=\frac{\rho}{\varepsilon_0}
     \end{Equation}
     该性质也可以改写为积分形式
     \begin{Equation}
-        \Isot[S]\vb*{E}\cdot\dd{\vb*{S}}=\frac{1}{\varepsilon_0}\Itnt[V]\rho\dd{V}
+        \Isot[S]\vb*{E}\cdot\dd{\vb*{S}}=\frac{1}{\varepsilon_0}\Itnt[V]\rho\dd{V}=\frac{q}{\varepsilon_0}
     \end{Equation}
-    该结论称为\uwave{高斯定理}。
+    该结论称为\uwave{高斯定律}（Gauss's Law）。
 
     该式表明，电场强度$\vb*{E}$在闭曲面上的通量等于闭曲面内的总电荷与$\varepsilon_0$之比。
 \end{BoxProperty}
@@ -115,7 +119,7 @@
     \begin{Equation}&[1]
         \vb*{E}(\vb*{r})=\frac{1}{4\pi\varepsilon_0}\Itnt[V]\frac{\rho(\vb*{r}')\vb*{R}}{R^3}\dd{V'}
     \end{Equation}\goodbreak
-    根据\fancyref{fml:梯度的计算公式2}，$\grad(1/R)=-\vb*{R}/R^3$
+    根据\fancyref{fml:距离反比的梯度}，$\grad(1/R)=-\vb*{R}/R^3$
     \begin{Equation}&[2]
         \vb*{E}(\vb*{r})=-\frac{1}{4\pi\varepsilon_0}\Itnt[V]\rho(\vb*{r}')\grad(\frac{1}{R})\dd{V'}
     \end{Equation}
@@ -151,7 +155,7 @@
     \begin{Equation}
         \Ilot[C]\vb*{E}\cdot\dd{\vb*{l}}=0
     \end{Equation}
-    该式表明，电场强度$\vb*{E}$在闭曲线上的旋量等于零，即，静电场是无旋场。
+    该式表明，电场强度$\vb*{E}$在闭曲线上的环流等于零，即，静电场是无旋场。
 \end{BoxProperty}
 \begin{Proof}
     我们回到静电场散度中的\xrefpeq[静电场的散度]{2}
@@ -171,4 +175,3 @@
         \curl\vb*{E}=\vb*{0}\qedhere
     \end{Equation}
 \end{Proof}
-综合上述\xref{ppt:静电场的散度}和\xref{ppt:静电场的旋度}，这告诉我们，\empx{静电场是一个有源无旋场}。

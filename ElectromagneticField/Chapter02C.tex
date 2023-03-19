@@ -1,0 +1,222 @@
+\section{真空中静磁场的基本规律}
+电流周围的空间存在磁场，磁场对电流产生作用力，称为磁场力，这就是磁场的基本特征。
+
+\subsection{磁场的基本特征}
+\begin{BoxLaw}[磁场的基本特征]
+    若磁场中存在速度$\vb*{v}$的电荷$q$，则其所受到的磁场力，具有以下特性
+    \begin{Equation}
+        \vb*{F}_\text{m}=q\vb*{v}\times\vb*{B}
+    \end{Equation}
+    其中$\vb*{B}$称为\uwave{磁场强度}（Magnetic Induction Intensity），单位是$\si{T}$或$\si{Wb. m^{-2}}$。
+\end{BoxLaw}
+我们通常将运动电荷受到的磁场力称为\uwave{洛伦兹力}（Lorentz Force）。\footnote{有时洛伦兹力亦指运动电荷受到的电场力和磁场力的总和，即$\vb*{F}=q(\vb*{E}+\vb*{v}\times\vb*{B})$。}
+
+\subsection{磁场的基本实验定律}
+在1820年，法国科学家安培（Ampere）通过实验，总结出真空中两电流回路$C_1$和$C_2$之间相互作用力的规律，称为\uwave{安培力定律}（Ampere's Force Law）。这是磁场的基本实验定律。
+
+\begin{BoxLaw}[安培力定律]*
+    设分别载有恒定电流$I_1,I_2$的载流细导线回路$C_1,C_2$，记两者的电流元$I_1\dd{\vb*{l}_1},I_2\dd{\vb*{l}_2}$的位置矢量分别为$\vb*{r}_1$和$\vb*{r}_2$，记$\vb*{R}_{12}=\vb*{r}_2-\vb*{r}_1$是电流元$I_1\dd{\vb*{l}_1}$指向$I_2\dd{\vb*{l}_2}$的矢量。
+
+    那么，$C_1$在$C_2$上产生的作用力$\vb*{F}_{12}$为
+    \begin{Equation}
+        \vb*{F}_{12}=\frac{\mu_0}{4\pi}\Ilot[C_2]\Ilot[C_1]\frac{I_2\dd{\vb*{l}_2}\times(I_1\dd{\vb*{l}_1}\times\vb*{R}_{12})}{R_{12}^3}
+    \end{Equation}
+    或者，$I_1\dd{\vb*{l}_1}$在$I_2\dd{\vb*{l}_2}$上产生的作用力$\dd{\vb*{F}_{12}}$为
+    \begin{Equation}
+        \dd{\vb*{F}_{12}}=\frac{\mu_0}{4\pi}\frac{I_2\dd{\vb*{l}_2}\times(I_1\dd{\vb*{l}_1}\times\vb*{R}_{12})}{R_{12}^3}
+    \end{Equation}
+    
+    其中物理常数$\mu_0$被称为\uwave{真空磁导率}（Vacuum Permeability），其值为
+    \begin{Equation}
+        \mu_0=(4\pi)\times 10^{-7}\si{H\cdot m^{-1}}
+    \end{Equation}
+\end{BoxLaw}
+
+我们通常将电流受到的磁场力称为\uwave{安培力}（Ampere's Force），与电荷的库仑力对应。
+
+我们注意到电流元间的安培力$\dd{\vb*{F}_{12}}$满足
+\begin{Equation}
+    \dd{\vb*{F}_{12}}=\frac{\mu_0}{4\pi}\frac{I_2\dd{\vb*{l}_2}\times(I_1\dd{\vb*{l}_1}\times\vb*{R}_{12})}{R_{12}^3}
+\end{Equation}
+而根据\fancyref{law:磁场的基本特征}
+\begin{Equation}
+    \dd{\vb*{F}_{12}}=I_2\dd{\vb*{l}_2}\times\dd{\vb*{B}_{12}}
+\end{Equation}
+因此$I_1\dd{\vb*{l}}_1$在$\vb*{r}_2$处产生的磁感强度$\dd{\vb*{B}_{12}}$为
+\begin{Equation}
+    \dd{\vb*{B}_{12}}=\frac{\mu_0}{4\pi}\frac{I_1\dd{\vb*{l}_1}\times\vb*{R}_{12}}{R_{12}^3}
+\end{Equation}
+或者改用通常场点和源点的写法
+\begin{Equation}[毕奥萨伐尔定律1]
+    \dd{\vb*{B}}=\frac{\mu_0}{4\pi}\frac{I\dd{l'}\times\vb*{R}}{R^3}\qquad\vb*{R}=\vb*{r}-\vb*{r}'
+\end{Equation}
+由此可见，电流元$I\dd{\vb*{l}'}$在场点$\vb*{r}$产生的磁感强度的方向可以由右手螺旋法则确定，即，右手四指由$I\dd{\vb*{l}'}$转向（源点$\vb*{r}'$指向场点$\vb*{r}$的）矢量$\vb*{R}=\vb*{r}-\vb*{r}'$时，右手大拇指所指的方向。
+
+而进一步的，整个回路$C$在场点$\vb*{r}$产生的磁感强度就是
+\begin{Equation}[毕奥萨伐尔定律2]
+    \vb*{B}(\vb*{r})=\frac{\mu_0}{4\pi}\Ilot[C]\frac{I\dd{\vb*{l}'}\times\vb*{R}}{R^3}
+\end{Equation}
+这里\xref{eq:毕奥萨伐尔定律1}和\xref{eq:毕奥萨伐尔定律2}均称为\uwave{毕奥--萨法尔定律}（Biot-Savart Law），是1820年毕奥（Biot）和萨伐尔（Savart）根据安培闭合回路相互作用力的实验结果，通过理论上的分析总结出来的。\goodbreak
+
+而对于连续电流分布体，上式的电流元$\vb*{I}\dd{\vb*{l}'}$应用体电流的电流元$\vb*{J}(\vb*{r}')\dd{V}'$代替\nopagebreak
+\begin{BoxFormula}[磁感强度]
+    磁感强度$\vb*{B}(\vb*{r})$符合以下规律
+    \begin{Equation}
+        \vb*{B}(\vb*{r})=\frac{\mu_0}{4\pi}\Itnt[V]\frac{\vb*{J}(\vb*{r}')\times\vb*{R}}{R^3}\dd{V'}
+    \end{Equation}
+    其中$\vb*{R}=\vb*{r}-\vb*{r}'$，而$\vb*{J}(\vb*{r}')$则给出$V$中源点$\vb*{r}'$处的电流密度。
+\end{BoxFormula}
+
+\subsection{静磁场的散度}
+\begin{BoxProperty}[静磁场的散度]
+    静磁场的散度满足
+    \begin{Equation}
+        \div\vb*{B}=0
+    \end{Equation}
+    该性质也可以改写为积分形式
+    \begin{Equation}
+        \Isot[S]\vb*{B}\cdot\dd{\vb*{S}}=0
+    \end{Equation}
+    该式表明，磁感强度$\vb*{B}$在闭曲面上的通量等于零，即，静磁场是无散场。
+\end{BoxProperty}
+
+\begin{Proof}
+    根据\fancyref{fml:磁感强度}
+    \begin{Equation}&[1]
+        \vb*{B}(\vb*{r})=\frac{\mu_0}{4\pi}\Itnt[V]\frac{\vb*{J}(\vb*{r}')\times\vb*{R}}{R^3}\dd{V'}
+    \end{Equation}
+    根据\fancyref{fml:距离反比的梯度}，$\grad(1/R)=-\vb*{R}/R^3$
+    \begin{Equation}&[2]
+        \vb*{B}(\vb*{r})=-\frac{\mu_0}{4\pi}\Itnt[V]\vb*{J}(\vb*{r}')\times\grad(\frac{1}{R})\dd{V'}
+    \end{Equation}
+    根据矢量恒等式
+    \begin{Equation}&[3]
+        \curl(u\vb*{F})=\grad u\times\vb*{F}+u\curl\vb*{F}
+    \end{Equation}
+    移项
+    \begin{Equation}&[4]
+        \vb*{F}\times\grad u=u\curl\vb*{F}-\curl(u\vb*{F})
+    \end{Equation}
+    这里$\vb*{F}$和$u$分别为
+    \begin{Equation}&[5]
+        \vb*{F}=\vb*{J}(\vb*{r}')\qquad u=\frac{1}{R}
+    \end{Equation}
+    这样\xrefpeq{5}就可以转化为
+    \begin{Equation}&[6]
+        \vb*{B}(\vb*{r})=\frac{\mu_0}{4\pi}\Itnt[V]\qty[\curl(\frac{\vb*{J}(\vb*{r}')}{R})-\frac{1}{R}\curl\vb*{J}(\vb*{r}')]\dd{V'}
+    \end{Equation}
+    此处$\grad$是对场点的微分运算，而$\vb*{J}(\vb*{r}')$是源点的函数，故$\curl\vb*{J}(\vb*{r}')=\vb*{0}$
+    \begin{Equation}&[7]
+        \vb*{B}(\vb*{r})=\frac{\mu_0}{4\pi}\Itnt[V]\curl\frac{\vb*{J}(\vb*{r}')}{R}\dd{V'}
+    \end{Equation}
+    此处$\grad$是对场点的微分运算，而积分是关于源点的，故$\grad$可以提出积分外
+    \begin{Equation}&[8]
+        \vb*{B}(\vb*{r})=\curl\frac{\mu_0}{4\pi}\Itnt[V]\frac{\vb*{J}(\vb*{r}')}{R}\dd{V'}
+    \end{Equation}
+    在\xrefpeq{8}两端取散度
+    \begin{Equation}&[9]
+        \div\vb*{B}=\div\qty(\curl\frac{\mu_0}{4\pi}\Itnt[V]\frac{\vb*{J}(\vb*{r}')}{R}\dd{V'})
+    \end{Equation}
+    在\xrefpeq{9}右端，是一个矢量场旋度的散度，而根据\fancyref{ppt:矢量场的旋度无散}
+    \begin{Equation}*
+        \div\vb*{B}=0\qedhere
+    \end{Equation}
+\end{Proof}
+
+\subsection{静磁场的旋度}
+\begin{BoxProperty}[静磁场的旋度]
+    静磁场的旋度满足
+    \begin{Equation}
+        \curl\vb*{B}=\mu_0\vb*{J}(\vb*{r})
+    \end{Equation}
+    该性质也可以改写为积分形式
+    \begin{Equation}
+        \Ilot[C]\vb*{B}\cdot\dd{\vb*{l}}=\mu_0\Isnt[S]\vb*{J}(\vb*{r})\cdot\dd{\vb*{S}}=\mu_0I
+    \end{Equation}
+    该结论称为\uwave{安培环路定理}（Ampere's Circuital Law）。
+
+    该式表明，磁感强度$\vb*{B}$在闭曲线上的环流等于闭曲线内的总电流与$\mu_0$之积。
+\end{BoxProperty}
+
+\begin{Proof}
+    我们回到静磁场散度中的\xrefpeq[静磁场的散度]{8}
+    \begin{Equation}&[1]
+        \vb*{B}(\vb*{r})=\curl\frac{\mu_0}{4\pi}\Itnt[V]\frac{\vb*{J}(\vb*{r}')}{R}\dd{V'}
+    \end{Equation}
+    在\xrefpeq{1}两端取旋度
+    \begin{Equation}&[2]
+        \curl\vb*{B}=\curl\curl\frac{\mu_0}{4\pi}\Itnt[V]\frac{\vb*{J}(\vb*{r}')}{R}\dd{V'}
+    \end{Equation}
+    这里旋度可以置于积分内
+    \begin{Equation}&[3]
+        \curl\vb*{B}=\frac{\mu_0}{4\pi}\Itnt[V]\curl\curl\frac{\vb*{J}(\vb*{r}')}{R}\dd{V'}
+    \end{Equation}
+    根据矢量恒等式
+    \begin{Equation}&[4]
+        \curl\curl\vb*{F}=\grad(\div\vb*{F})-\laplacian\vb*{F}
+    \end{Equation}
+    这样\xrefpeq{3}可以转化为
+    \begin{Equation}&[5]
+        \qquad\qquad
+        \curl\vb*{B}=\frac{\mu_0}{4\pi}\grad\Itnt[V]\div\frac{\vb*{J}(\vb*{r}')}{R}\dd{V'}-\frac{\mu_0}{4\pi}\Itnt[V]\laplacian\frac{\vb*{J}(\vb*{r}')}{R}\dd{V'}=I_1-I_2
+        \qquad\qquad
+    \end{Equation}
+    我们先来计算$I_2$，将$\vb*{J}(\vb*{r}')$提出拉普拉斯外，随后应用\fancyref{fml:距离反比的拉普拉斯}
+    \begin{Equation}&[6]
+        \qquad\qquad
+        I_2=\frac{\mu_0}{4\pi}\Itnt[V]\vb*{J}(\vb*{r}')\laplacian\qty(\frac{1}{R})\dd{V'}=-\mu_0\Itnt[V]\vb*{J}(\vb*{r}')\dirac(\vb*{r}-\vb*{r}')\dd{V'}=-\mu_0\vb*{J}(\vb*{r})
+        \qquad\qquad
+    \end{Equation}
+    我们随后计算$I_1$，其难点在于$\div(\vb*{J}(r')/R)$的计算，我们需要将$\grad$转化为$\grad'$。\footnote{我们会问，我们不是已经有\xref{fml:场点坐标和源点坐标的转化}指出$\grad f(\vb*{R})=-\grad' f(\vb*{R})$，这里又在推导什么呢？事实是，\xref{fml:场点坐标和源点坐标的转化}的结论仅限于梯度运算，其只能代表在梯度运算下转换场点坐标和源点坐标相当于一个负号，而散度运算下$\div f(\vb*{R})=-\grad'\cdot f(\vb*{R})$未必成立。}
+    \begin{Equation}&[7]
+        I_1=\frac{\mu_0}{4\pi}\grad\Itnt[V]\div\frac{\vb*{J}(\vb*{r}')}{R}\dd{V'}
+    \end{Equation}
+
+    根据矢量恒等式
+    \begin{Equation}&[8]
+        \div(u\vb*{F})=\grad u\cdot\vb*{F}+u\div\vb*{F}
+    \end{Equation}
+    这样$\div(\vb*{J}(\vb*{r}')/R)$就可以展开为
+    \begin{Equation}&[9]
+        \div\frac{\vb*{J}(\vb*{r}')}{R}=\grad\qty(\frac{1}{R})\cdot\vb*{J}(\vb*{r}')+\frac{1}{R}\div\vb*{J}(\vb*{r}')
+    \end{Equation}
+    注意到$\div\vb*{J}(\vb*{r}')=0$
+    \begin{Equation}&[10]
+        \div\frac{\vb*{J}(\vb*{r}')}{R}=\grad\qty(\frac{1}{R})\cdot\vb*{J}(\vb*{r}')
+    \end{Equation}
+    应用\fancyref{fml:场点坐标和源点坐标的转化}
+    \begin{Equation}&[11]
+        \div\frac{\vb*{J}(\vb*{r}')}{R}=-\grad'\qty(\frac{1}{R})\cdot\vb*{J}(\vb*{r}')
+    \end{Equation}
+    逆用\xrefpeq{8}
+    \begin{Equation}&[12]
+        \grad u\cdot\vb*{F}=\div(u\vb*{F})-u\div\vb*{F}
+    \end{Equation}
+    这样\xrefpeq{11}可以化为
+    \begin{Equation}&[13]
+        \div\frac{\vb*{J}(\vb*{r}')}{R}=\frac{1}{R}\grad'\cdot\vb*{J}(\vb*{r}')-\grad'\cdot\frac{\vb*{J}(\vb*{r}')}{R}
+    \end{Equation}
+    这里是恒定电流场，应用\fancyref{eqt:电流连续性方程}，即$\grad'\cdot\vb*{J}(\vb*{r}')=\vb*{0}$
+    \begin{Equation}&[14]
+        \div\frac{\vb*{J}(\vb*{r}')}{R}=-\grad'\cdot\frac{\vb*{J}(\vb*{r}')}{R}
+    \end{Equation}
+    将\xrefpeq{14}代入\xrefpeq{7}，运用\fancyref{thm:散度定理}
+    \begin{Equation}&[15]
+        I_1=-\frac{\mu_0}{4\pi}\grad\Itnt[V]\grad'\cdot\frac{\vb*{J}(\vb*{r}')}{R}\dd{V'}=-\frac{\mu_0}{4\pi}\grad\Isot[S]\frac{\vb*{J}(\vb*{r}')}{\vb*{R}}\cdot\dd{\vb*{S}'}
+    \end{Equation}
+    这里积分曲面$S$是电流分布$\vb*{J}(\vb*{r}')$的边界，在边界上$\vb*{J}(\vb*{r}')=\vb*{0}$，故
+    \begin{Equation}&[16]
+        I_1=0
+    \end{Equation}
+    这样将\xrefpeq{16}和\xrefpeq{7}给出的$I_1,I_2$代入\xrefpeq{5}
+    \begin{Equation}*
+        \curl\vb*{B}=\mu_0\vb*{J}(\vb*{r})\qedhere
+    \end{Equation}
+\end{Proof}
+
+在此，我们做一些总结
+\begin{itemize}
+    \item 静电场以电场强度$\vb*{E}$表示，是有源无旋的矢量场，静止电荷是产生静电场的通量源。
+    \item 静磁场以磁感强度$\vb*{B}$表示，是有旋无源的矢量场，恒定电流是产生静磁场的涡旋源。
+\end{itemize}
+至此，我们对真空中静电场和静磁场的性质就有了比较全面的了解了。
