@@ -1,0 +1,17 @@
+\documentclass{xStandalone}
+
+\begin{document}
+\begin{tikzpicture}
+    \draw[gray] (-3,0) coordinate (A)
+        circle (0.25) node {$\cdot$};
+    \draw[gray] (+3,0) coordinate (B)
+        circle (0.25) node {$\times$} node[above=0.25cm] {$\dd{\vb*{l}}$};
+    \draw[gray,dashed] ($(A)+(0,0.25)$) coordinate (A') -- node[pos=0.4,above] {\footnotesize 回路$C$} ($(B)+(0,0.25)$) coordinate (B');
+    \draw[gray,dashed] ($(A)-(0,0.25)$) -- ($(B)-(0,0.25)$);
+    \draw[gray,-latex] ($(A')!0.5!(B')$) -- ++(0,2) node[above] {$\vb*{S}$};
+
+    \draw[-latex] ($(B)-(0.5,0)$) node[left] {$i$} arc[radius=1,start angle=180,end angle=-185];
+    \path ($(B)+(0.5,0)$) node {$\times$} node[below right] {$\delt{\vb*{S}}$};
+    \path ($(B)+(0.5,-1)$) node[below] {\footnotesize 分子电流};
+\end{tikzpicture}
+\end{document}

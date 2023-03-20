@@ -1,0 +1,413 @@
+\section{介质的电磁特性}
+任何物质都是由分别带正电荷和负电荷的粒子组成，因此，当物质被引入电磁场中时，构成物质的带电粒子将与电磁场产生相互作用而改变其状态，从宏观效应看，在电磁场的作用下，物质会产生极化、磁化、传导三种现象。虽然一般来说，在电磁场的作用下任何物质都可能会同时产三种效应，但是由于不同物质的电磁性质差异很大，因此主要以其中某一种效应为主
+\begin{enumerate}
+    \item \uwave{传导}（Conduction）主要存在于导体中，因为导体中带正电的原子核和带负电的电子间的相互作用很弱，因此即便在最微弱的电场力作用下，电子也能脱离原子核的束缚在导体中作定向运动，形成传导电流。这种自由电子携带的电荷称为\uwave{自由电荷}（Free Charge）。
+    \item \uwave{极化}（Polarization）存在于电介质中。电介质其实就是绝缘体，电介质中的电子与原子核结合的相当紧密，电子都被束缚在原子核周围，因而，电场作用下，介质中的电荷只能作微小的位移，称为介质极化。这种介质中的电荷称为\uwave{束缚电荷}（Bound Charge）。
+    \item \uwave{磁化}（Magnetization）存在于磁介质中。磁介质的主要特征就是电子的轨道运动和自旋形成小环形电流，磁场作用下，介质中的小环形电流会转动而有序排列，称为介质磁化。
+\end{enumerate}
+
+% 在这一小节，我们将分别介绍着三种介质的电磁特性。
+
+\subsection{电介质的极化特性}
+我们知道，物质分子中的正电荷和负电荷并不集中在一个点上，而是连续分布在一个线度很小的体积内，但是在研究宏观电磁现象时，可以将分子中的全部正电荷和全部负电荷分别等效为一个“正电荷中心”和一个“负电荷中心”。据此，依据正负电荷中心是否重合,我们可以将电介质的分子分为\uwave{无极分子}（Nonpolar Molecule）和\uwave{有极分子}（Polar Molecule）两类
+\begin{itemize}
+    \item 无极分子的正负电荷中心重合，因此不会呈现出宏观电荷分布。
+    \item 有极分子的正负电荷中心错开了一定距离，可以视为一个电偶极子，但是，由于分子无规则热运动的影响，电偶极子的取向是杂乱的，因此也不会呈现出任何宏观电荷分布。
+\end{itemize}
+
+以上讨论的是没有外电场的情况，但是，如果施加了外电场，情况就会不同。无极分子在外电场的作用下，正电荷顺电场方向移动，负电荷逆电场方向移动，使得正负电荷不再重合，形成许多沿外电场方向有序排列的感生电偶极子，称为\uwave{位移极化}。有极分子在外电场的作用下，其固有电偶极子将在电场作用下偏转，获得统一的取向，沿外电场有序排列，称为\uwave{取向极化}。
+
+电介质极化的结果是，电介质内部出现大量有序排列的电偶极子（位移极化和取向极化的差异在于这些有序排列的电偶极子是怎么来的，但就结果而言，两者是一致的），因此，电介质中就可能会出现宏观电荷分布，这就是所谓的\uwave{束缚电荷}或\uwave{极化电荷}，这些极化电荷也要产生电场，从而改变原来的电场分布。因此，空间的电场强度$\vb*{E}$可以视为以下两部分的叠加
+\begin{Equation}
+    \vb*{E}=\vb*{E}_0+\vb*{E}_P
+\end{Equation}
+其中，$\vb*{E}_0$是自由电荷产生的电场，$\vb*{E}_P$是极化电荷产生的附加电场。
+
+\subsubsection{电极化矢量的定义}
+电介质的极化程度决定了附加电场的强弱，因此我们需要一个描述极化程度的量。
+\begin{BoxDefinition}[电极化矢量]
+    \uwave{电极化矢量}（Electric Polarization）定义为单位体积中电偶极矩的矢量和
+    \begin{Equation}
+        \vb*{P}=\Lim[\delt{V}\to 0]\frac{\Sum[i]\vb*{p}_i}{\delt{V}}
+    \end{Equation}
+    这等价于下面的表述
+    \begin{Equation}
+        \vb*{P}=n\vb*{p}
+    \end{Equation}
+    这里$n,\vb*{p}$分别为某一点处的分子数密度和（平均）分子电偶极矩。
+\end{BoxDefinition}
+
+\subsubsection{电极化矢量与极化电荷分布}
+电介质极化后，极化电荷可能分布在电介质的内部和表面。
+
+第一步，我们计算电介质内部的极化电荷分布，我们可以在电介质内部任取一个闭曲面$S$，当电介质发生极化时，电偶极子可能就会穿过这个闭合曲面$S$，\empx{正电荷在外，负电荷在内}。
+
+我们在闭合曲面$S$上取一个面积微元$\dd{\vb*{S}}$，记其法向单位矢量为$\vb*{e}_n$，设$\dd{\vb*{S}}$附近的电偶极矩均为$\vb*{p}=q\vb*{l}$，这样可以设出一个体积元$\dd{V}=\dd{S}\cdot\vb*{l}$，而很明显的是，只有当电偶极子的负电荷位于体积元$\dd{V}$内时，相应的正电荷才能刚好穿过$\dd{\vb*{S}}$，因此，如果我们设单位体积的分子数为$n$，那么穿出面元$\dd{\vb*{S}}$的极化电荷$\dd{q_P'}$就应当是下式，并应用\fancyref{def:电极化矢量}
+\begin{Equation}
+    \dd{q_P'}=nq\delt{V}=nq\vb*{l}\cdot\dd{\vb*{S}}=n\vb*{p}\cdot\dd{\vb*{S}}=\vb*{P}\cdot\dd{\vb*{S}}
+\end{Equation}
+我们更关心的是留在面元$\dd{\vb*{S}}$内的电荷，这是上式的负值
+\begin{Equation}
+    \dd{q_P}=-\vb*{P}\cdot\dd{\vb*{S}}
+\end{Equation}
+因此，留在整个闭合面$S$内的极化电荷就是下式，并应用\fancyref{thm:散度定理}
+\begin{Equation}
+    q_P=-\Isot[S]\vb*{P}\cdot\dd{\vb*{S}}=-\Itnt[V]\div\vb*{P}\dd{V}
+\end{Equation}
+而另外一方面，极化电荷总是极化电荷密度的积分
+\begin{Equation}
+    q_P=\Itnt[V]\rho_P\dd{V}
+\end{Equation}
+而对比上两式就可以得到
+\begin{BoxFormula}[极化电荷的体密度]
+    极化电荷的体密度，是电极化矢量的负散度
+    \begin{Equation}
+        \rho_P=-\div\vb*{P}
+    \end{Equation}
+\end{BoxFormula}
+第二步，我们计算电介质表面的极化电荷分布，表面的极化电荷是怎么来的呢？事实上，如果我们取闭合曲面$S$为电介质的外表面，那么从$S$穿出的极化电荷就是表面的极化电荷，因此
+\begin{Equation}
+    q_{SP}=\Isot[S]\vb*{P}\cdot\dd{\vb*{S}}=\Isot[S]\vb*{P}\cdot\vb*{e}_\text{n}\dd{S}
+\end{Equation}
+而另外一方面，极化面电荷是极化面电荷密度的积分
+\begin{Equation}
+    q_{SP}=\Isot[S]\rho_{SP}\dd{S}
+\end{Equation}
+而对比上两式就可以得到
+\begin{BoxFormula}[极化电荷的面密度]
+    极化电荷的面密度，是电极化矢量与法向单位矢量的点积
+    \begin{Equation}
+        \rho_{SP}=\vb*{P}\cdot\vb*{e}_\text{n}
+    \end{Equation}
+\end{BoxFormula}
+
+\subsubsection{电介质中的静电场基本方程}
+\setpeq{电介质中的静电场基本方程}
+如果考虑极化电荷，先前的\fancyref{ppt:静电场的散度}应当改写为
+\begin{Equation}&[1]
+    \div\vb*{E}=\frac{1}{\varepsilon_0}(\rho+\rho_P)
+\end{Equation}
+如果在\xrefpeq{1}中代入\fancyref{fml:极化电荷的体密度}
+\begin{Equation}&[2]
+    \div\vb*{E}=\frac{1}{\varepsilon_0}(\rho-\div\vb*{P})
+\end{Equation}
+将\xrefpeq{2}整理一下
+\begin{Equation}&[3]
+    \div(\varepsilon_0\vb*{E}+\vb*{P})=\rho
+\end{Equation}
+由此可见，矢量$\varepsilon_0\vb*{E}+\vb*{P}$的散度仅与自由电荷$\rho$有关，将其定义为一个辅助矢量。\goodbreak
+\begin{BoxDefinition}[电位移矢量]
+    \uwave{电位移矢量}（Electric Displacement）定义为$\vb*{E}$和$\vb*{P}$的组合
+    \begin{Equation}
+        \vb*{D}=\varepsilon_0\vb*{E}+\vb*{P}
+    \end{Equation}
+\end{BoxDefinition}
+
+这样\xrefpeq[电介质中的静电场基本方程]{3}就可以表述为
+\begin{BoxProperty}[电介质中的静电场基本方程]
+    电位移矢量的散度，即该点的自由电荷密度
+    \begin{Equation}
+        \div\vb*{D}=\rho
+    \end{Equation}
+    积分形式为
+    \begin{Equation}
+        \Isot[S]\vb*{D}\cdot\dd{\vb*{S}}=q
+    \end{Equation}
+\end{BoxProperty}
+
+\subsubsection{电介质的本构关系}
+研究表明，大多数常见的电介质在极化时，电极化矢量$\vb*{P}$与电场强度$\vb*{E}$是成正比的。
+\begin{BoxProperty}[电极化矢量与电场强度]
+    电极化矢量与电场强度成正比，表述为
+    \begin{Equation}
+        \vb*{P}=\varepsilon_0\chi_\text{e}\vb*{E}
+    \end{Equation}
+    这里$\chi_\text{e}$是\uwave{电极化率}，是一个与电介质有关的常数。
+
+    这里假定电介质是各向同性的，如果是各向异性的，那么$\chi_e$将是一个二阶张量$\bar{\bar{\chi_e}}$
+    \begin{Equation}
+        \qquad\qquad\qquad
+        \vb*{P}=\varepsilon_0\bar{\bar{\chi_\text{e}}}\cdot\vb*{E}\qquad
+        \begin{pmatrix}
+            P_x\\
+            P_y\\
+            P_z\\
+        \end{pmatrix}
+        =\varepsilon_0
+        \begin{pmatrix}
+            \chi_\text{exx}&\chi_\text{exy}&\chi_\text{exz}\\
+            \chi_\text{eyx}&\chi_\text{eyy}&\chi_\text{eyz}\\
+            \chi_\text{ezx}&\chi_\text{ezy}&\chi_\text{ezz}
+        \end{pmatrix}
+        \begin{pmatrix}
+            E_x\\
+            E_y\\
+            E_z
+        \end{pmatrix}
+        \qquad\qquad\qquad
+    \end{Equation}
+\end{BoxProperty}
+电极化率的值与电场强度大小无关的电介质，称为线性介质，反之称为非线性介质，在电场不是很强的情况下，多数介质都是线性的，但是在强电场的作用下就可能呈现出非线性特性。
+
+这里，如果将\fancyref{ppt:电极化矢量与电场强度}代入\fancyref{def:电位移矢量}
+\begin{Equation}[电本构]
+    \vb*{D}=\varepsilon_0\vb*{E}+\vb*{P}=\varepsilon_0\vb*{E}+\varepsilon_0\chi_\text{e}\vb*{E}=\varepsilon_0(1+\chi_\text{e})\vb*{P}=\varepsilon_0\varepsilon_\text{r}\vb*{E}=\varepsilon\vb*{E}
+\end{Equation}
+这里连续引入了两个常数，相对电容率$\varepsilon_\text{r}$和电容率$\varepsilon$
+\begin{BoxDefinition}[电介质的相对电容率]
+    电介质的\uwave{相对电容率}（Relative Permittivity）定义为
+    \begin{Equation}
+        \varepsilon_\text{r}=(1+\chi_\text{e})
+    \end{Equation}
+\end{BoxDefinition}
+\begin{BoxDefinition}[电介质的电容率]
+    电介质的\uwave{电容率}（Permittivity）定义为
+    \begin{Equation}
+        \varepsilon=\varepsilon_0(1+\chi_\text{e})=\varepsilon_0\varepsilon_\text{r}
+    \end{Equation}
+\end{BoxDefinition}
+\xrefeq{电本构}称为\uwave{电介质的本构关系}，它建立了电位移矢量$\vb*{D}$和电场强度$\vb*{E}$的关系
+\begin{BoxProperty}[电介质的本构关系]
+    电位移矢量与电场强度成正比，表述为
+    \begin{Equation}
+        \vb*{D}=\varepsilon\vb*{E}
+    \end{Equation}
+\end{BoxProperty}
+如果电介质是各向异性的，那么$\varepsilon,\varepsilon_\text{r}$与$\chi_\text{e}$一样均需改为二阶张量，总的说
+\begin{itemize}
+    \item 若电介质是各向同性的，则电极化矢量$\vb*{P}$和电位移矢量$\vb*{D}$与电场强度$\vb*{E}$方向一致。
+    \item 若电介质是各向异性的，则电极化矢量$\vb*{P}$和电位移矢量$\vb*{D}$与电场强度$\vb*{E}$方向不同。
+\end{itemize}
+
+\subsection{磁介质的极化特性}
+我们将具有磁效应的物质称为磁介质，在物理学中，通常用一个简单的原子模型来解释物质的磁性。电子在自己的轨道上以恒定速度绕原子核运动，形成一个环形电流，它相当于一个磁偶极子，将其磁矩称为\uwave{轨道磁矩}（Orbital Magnetic Moment）。另外，电子和原子核本身还要自旋，这种自旋形成的电流也相当于一个磁偶极子，将其磁矩称为\uwave{自旋磁矩}（Spin Magnetic Moment）。通常来说，我们可以忽略自旋磁矩而只考虑轨道磁矩，将磁介质中的每个分子等效为一个环形电流，称为\uwave{分子电流}或\uwave{束缚电流}，而分子电流的磁矩称为\uwave{分子磁矩}，记为
+\begin{Equation}
+    \vb*{m}=i\delt{\vb*{S}}
+\end{Equation}
+磁介质的分子磁矩各不相同，可以分为以下三类
+\begin{itemize}
+    \item \uwave{顺磁体}具有\uwave{顺磁性}（Paramagnetism），指$\vb*{m}\neq\vb*{0}$的磁介质，包括空气、铝、钯等，它们类似于发生取向极化的电介质，在无外磁场时，顺磁体中的分子电流取向杂乱无章，互相抵消，在有外磁场时，顺磁体中的分子电流将沿磁场有序取向，使介质中的磁场增强。
+    \item \uwave{抗磁体}具有\uwave{抗磁性}（Diamagnetism），指$\vb*{m}=\vb*{0}$的磁介质，包括金、银 、铜等，它们则类似于发生位移极化的电介质，在有外磁场时，电子将在磁场中发生进动，电子进动也会产生磁矩，但是，很特别的是，这种磁矩与外磁场方向相反，使介质中的磁场减弱。
+    \item \uwave{铁磁体}具有\uwave{铁磁性}（Ferromagnetism），它是一个比较特殊的磁介质，铁磁体中分子电流的排列具有类似于准晶体的短程有序性，在局部分子电流取向一致形成\uwave{磁畴}（Magnetic Domain），在整体上各个磁畴的取向不一致，因此不显磁性。但是，如果我们施加了外磁场，磁畴将会转动而与外磁场方向趋于一致，从而产生远强于通常顺磁体的磁性。
+\end{itemize}
+
+\subsubsection{磁化矢量的定义}
+磁介质的磁化程度通过磁化矢量$\vb*{M}$表述，其地位相当于电极化矢量$\vb*{P}$表述。
+\begin{BoxDefinition}
+    \uwave{磁化矢量}（Magnetization）定义为单位体积中磁偶极矩的矢量和
+    \begin{Equation}
+        \vb*{M}=\Lim[\delt{V}\to 0]\frac{\Sum[i]\vb*{m}_i}{\delt{V}}
+    \end{Equation}
+    这等价于下面的表述
+    \begin{Equation}
+        \vb*{M}=n\vb*{m}
+    \end{Equation}
+    这里$n,\vb*{m}$分别为某一点处的分子数密度和（平均）分子磁偶极矩。
+\end{BoxDefinition}
+
+\subsubsection{磁化矢量与分子电流分布}
+磁介质极化后，磁化电流可能分布在磁介质的内部和表面。
+
+第一步，我们计算磁介质内部的磁化电流分布，我们可以在磁介质内部任取一个由回路$C$限定的曲面$\vb*{S}$，这里$\vb*{S}$的法线方向与$C$的绕行方向构成右手螺旋规则，现在，我们来计算穿过曲面的磁化电流$I_M$，显然只有那些与回路$C$交链的分子电流才对磁化电流$I_M$有贡献。这里有必要解释的是，什么是“交链”？简而言之，\empx{交链就是指两个环相套}，只有套在回路$C$上的那些分子电流才能穿过且仅穿过一次曲面$S$，否则，要么分子电流与曲面不交，要么分子电流两次以相反方向穿过曲面，而如\xref{fig:回路与分子电流的交链}所示，当分子电流的环面$\delt{\vb*{S}}$与回路上的微元$\dd{\vb*{l}}$相同时，分子电流对$I_M$是正贡献，反之，如果$\delt\vb*{S}$与$\dd{\vb*{l}}$相反，分子电流对$I_M$是负贡献。
+
+\begin{Figure}[回路与分子电流的交链]
+    \begin{FigureSub}[方向相同]
+        \includegraphics[scale=0.7]{build/Chapter02D_01.fig.pdf}
+    \end{FigureSub}\hspace{1.5cm}
+    \begin{FigureSub}[方向相反]
+        \includegraphics[scale=0.7]{build/Chapter02D_02.fig.pdf}
+    \end{FigureSub}
+\end{Figure}
+
+而只有分子电流中心在体积元$\dd{V}=\delt{S}\cdot\dd{\vb*{l}}$内的分子电流才能与回路$C$交联，故
+\begin{Equation}
+    \dd{I_M}=ni\delt{V}=ni\delt{S}\cdot\dd{\vb*{l}}=n\vb*{m}\cdot\dd{\vb*{l}}=\vb*{M}\cdot\dd{\vb*{l}}
+\end{Equation}
+因此，穿过整个曲面$S$的磁化电流就是下式，并应用\fancyref{thm:旋度定理}
+\begin{Equation}
+    I_M=\Ilot[C]\vb*{M}\cdot\dd{\vb*{l}}=\Isnt[S]\curl\vb*{M}\cdot\dd{\vb*{S}}
+\end{Equation}
+而另外一方面，磁化电流总是磁化电流密度的积分
+\begin{Equation}
+    I_M=\Isnt[S]\vb*{J}_M\cdot\dd{\vb*{S}}
+\end{Equation}
+而对比上两式就可以得到
+\begin{BoxFormula}[磁化电流的体密度]
+    磁化电流的体密度，是磁化矢量的旋度
+    \begin{Equation}
+        \vb*{J}_M=\curl\vb*{M}
+    \end{Equation}
+\end{BoxFormula}
+第二步，我们计算磁介质表面的磁化电流分布，这出现在回路$C$取在紧贴表面的情况中\setpeq{磁化电流的面密度}
+\begin{Equation}&[1]
+    I_{MS}=\Ilot[C]\vb*{M}\cdot\dd{\vb*{l}}=\Ilot[C]\vb*{M}\cdot\vb*{e}_{l}\dd{l}
+\end{Equation}
+这里比较费解的是面电流和面电流密度的关系，面电流垂直流过$\dd{l}$而不是沿$\dd{l}$流动
+\begin{Equation}&[2]
+    I_{MS}=\Ilot[C]\vb*{J}_{MS}\cdot\vb*{e}_\text{t}\dd{l}
+\end{Equation}
+这里$\vb*{e}_\text{t}$是垂直$\dd{l}$的单位矢量，而先前\xrefpeq{1}中的$\vb*{e}_l$是平行$\dd{l}$的单位矢量，若再定义$\vb*{e}_\text{n}$是垂直磁介质表面的单位矢量，很明显$\vb*{e}_l,\vb*{e}_\text{n},\vb*{e}_\text{t}$三者垂直，满足$\vb*{e}_l=\vb*{e}_\text{n}\times\vb*{e}_\text{t}$的关系，故
+\begin{Equation}&[3]
+    I_{MS}=\Ilot[C]\vb*{M}\cdot(\vb*{e}_\text{n}\times\vb*{e}_\text{t})\dd{l}
+\end{Equation}
+这里可以运用\fancyref{fml:标量三重积的轮换对称性}
+\begin{Equation}&[4]
+    I_{MS}=\Ilot[C](\vb*{M}\times \vb*{e}_\text{n})\cdot\vb*{e}_\text{t}\dd{l}
+\end{Equation}
+这样一来，对比\xrefpeq{2}和\xrefpeq{4}，就可以得到
+\begin{BoxFormula}[磁化电流的面密度]
+    磁化电流的面密度，是磁化矢量与法相单位矢量的叉积
+    \begin{Equation}
+        \vb*{J}_{SM}=\vb*{M}\times\vb*{e}_\text{n}
+    \end{Equation}
+\end{BoxFormula}
+
+\subsubsection{磁介质中静磁场的基本方程}
+如果考虑磁化电流，先前的\fancyref{ppt:静磁场的旋度}应当改写为\setpeq{磁介质中静磁场的基本方程}
+\begin{Equation}&[1]
+    \curl\vb*{B}=\mu_0(\vb*{J}+\vb*{J}_M)
+\end{Equation}
+如果在\xrefpeq{1}中代入\fancyref{fml:磁化电流的体密度}
+\begin{Equation}&[2]
+    \curl\vb*{B}=\mu_0(\vb*{J}+\curl\vb*{M})
+\end{Equation}
+将\xrefpeq{2}整理一下
+\begin{Equation}&[3]
+    \curl(\mu_0^{-1}\vb*{B}-\vb*{M})=\vb*{J}
+\end{Equation}
+由此可见，矢量$\mu_0^{-1}\vb*{B}-\vb*{M}$的旋度仅余传导电流$\vb*{J}$有关，将其定义为一个辅助矢量。
+\begin{BoxDefinition}[磁场强度]
+    \uwave{磁场强度}（Magnetic Field Intensity）定义为$\vb*{B}$和$\vb*{M}$的组合
+    \begin{Equation}
+        \vb*{H}=\mu_0^{-1}\vb*{B}-\vb*{M}
+    \end{Equation}
+\end{BoxDefinition}
+这样\xrefpeq[磁介质中静磁场的基本方程]{3}就可以表述为
+\begin{BoxProperty}[磁介质中的静磁场基本方程]
+    磁场强度的旋度，即该点的传导电流密度
+    \begin{Equation}
+        \curl\vb*{H}=\vb*{J}
+    \end{Equation}
+    积分形式为
+    \begin{Equation}
+        \Ilot[C]\vb*{H}\cdot\dd{\vb*{l}}=I
+    \end{Equation}
+\end{BoxProperty}
+
+\subsubsection{磁介质的本构关系}
+研究表明，大多数常见的电介质在磁化时，磁化矢量$\vb*{M}$与磁场强度$\vb*{H}$是成正比的。
+\begin{BoxProperty}[磁化矢量与磁场强度]
+    磁化矢量与磁场强度成正比，表述为
+    \begin{Equation}
+        \vb*{M}=\chi_\text{m}\vb*{H}
+    \end{Equation}
+    这里$\chi_\text{m}$是磁化率，是一个与磁介质有关的常数。
+    
+    这里假定磁介质是各向同性的，如果是各向异性的，那么$\chi_\text{m}$将是一个二阶张量$\bar{\bar{\chi_\text{m}}}$
+    \begin{Equation}
+        \qquad\qquad\qquad
+        \vb*{M}=\bar{\bar{\chi_\text{m}}}\cdot\vb*{H}\qquad
+        \begin{pmatrix}
+            M_x\\
+            M_y\\
+            M_z\\
+        \end{pmatrix}
+        =\varepsilon_0
+        \begin{pmatrix}
+            \chi_\text{mxx}&\chi_\text{mxy}&\chi_\text{mxz}\\
+            \chi_\text{myx}&\chi_\text{myy}&\chi_\text{myz}\\
+            \chi_\text{mzx}&\chi_\text{mzy}&\chi_\text{mzz}
+        \end{pmatrix}
+        \begin{pmatrix}
+            H_x\\
+            H_y\\
+            H_z
+        \end{pmatrix}
+        \qquad\qquad\qquad
+    \end{Equation}
+\end{BoxProperty}\goodbreak
+这里出现了电介质和磁介质间一个比较明显的差异，需要特别关注
+\begin{itemize}
+    \item 电介质在该处，是极化矢量$\vb*{P}$与场矢量$\vb*{E}$间的关系，满足$\vb*{P}=\varepsilon_0\chi_\text{e}\vb*{E}$
+    \item 磁介质在该处，是磁化矢量$\vb*{M}$与场的辅助矢量$\vb*{H}$间的关系，满足$\vb*{M}=\chi_\text{m}\vb*{H}$，无$\mu_0$
+\end{itemize}
+
+这里，如果将\fancyref{ppt:磁化矢量与磁场强度}代入\fancyref{def:磁场强度}
+\begin{Equation}[磁介质的相对磁导率]
+    \qquad\qquad
+    \vb*{B}=\mu_0\vb*{H}+\mu_0\vb*{M}=\mu_0\vb*{H}+\mu_0\chi_\text{m}\vb*{M}=\mu_0(1+\chi_\text{m})\vb*{M}=\mu_0\mu_\text{r}\vb*{H}=\mu\vb*{H}
+    \qquad\qquad
+\end{Equation}
+这里连续引入了两个常数，相对磁导率$\mu_\text{r}$和磁导率$\mu$
+\begin{BoxDefinition}[磁介质的相对磁导率]
+    磁介质的相对磁导率（Relative Permeability）定义为
+    \begin{Equation}
+        \mu_\text{r}=(1+\chi_\text{m})
+    \end{Equation}
+\end{BoxDefinition}
+\begin{BoxDefinition}[磁介质的磁导率]
+    磁介质的磁导率（Permeability）定义为
+    \begin{Equation}
+        \mu=\mu_0(1+\chi_\text{m})=\mu_0\mu_\text{r}
+    \end{Equation}
+\end{BoxDefinition}
+\xrefeq{磁介质的相对磁导率}称为\uwave{磁介质的本构关系}，它建立了磁感强度$\vb*{B}$和磁场强度$\vb*{H}$的关系
+\begin{BoxProperty}[磁介质的本构关系]
+    磁感强度与磁场强度成正比，表述为
+    \begin{Equation}
+        \vb*{B}=\mu\vb*{H}
+    \end{Equation}
+\end{BoxProperty}
+这里是电介质和磁介质的另外一个差异
+\begin{itemize}
+    \item 电介质的本构关系中，场辅助矢量在等式左端，场矢量在等式右端，即$\vb*{D}=\varepsilon\vb*{E}$
+    \item 磁介质的本构关系中，场矢量在等式左端，场辅助矢量在等式右端，即$\vb*{B}=\mu\vb*{H}$
+\end{itemize}
+综合以上讨论可以得出，从场矢量和场辅助矢量的观点看，电场的$\vb*{E},\vb*{D}$对应$\vb*{B},\vb*{H}$，但如果换一个角度，从数学地位上看，电场的$\vb*{E},\vb*{D}$对应磁场的$\vb*{H},\vb*{B}$。事实上，在后面的许多分析和计算中，我们将主要采用电场强度$\vb*{E}$和磁场强度$\vb*{H}$，尽管后者实际是磁场中的辅助矢量。
+
+这里我们可以通过$\chi_\text{m},\mu_\text{r}$更为全面的认识顺磁体、抗磁体、铁磁体
+\begin{itemize}
+    \item 若$\chi_\text{m}>0$，即$\mu_\text{r}>1$的磁介质，就是顺磁体。
+    \item 若$\chi_\text{m}<0$，即$\mu_\text{r}<1$的磁介质，就是抗磁体。
+\end{itemize}
+但事实是，无论是顺磁体还是抗磁体，其磁化效应都很弱，其$\mu_\text{r}$均可以近似视为$1$，这是相较于铁磁质而言的，对于铁磁质，其$\vb*{B},\vb*{H}$间的本构关系是非线性的，并且与$\vb*{B},\vb*{H}$间的变化历史有关联（即所谓磁滞回线的），通常铁磁质的磁导率$\mu_\text{r}$可以达到$10^2$至$10^3$的数量级。
+
+\subsection{导体的传导特性}
+导体内部有大量能自由运动的电子，它们在外电场的作用下可以做宏观定向运动而形成的电流，因此我们必然能建立一个电场强度$\vb*{E}$和电流密度$\vb*{J}$间的关系，这就是\uwave{导体的本构关系}。
+\begin{BoxProperty}[导体的本构关系]
+    电流密度与电场强度成正比，表述为
+    \begin{Equation}
+        \vb*{J}=\sigma\vb*{E}
+    \end{Equation}
+\end{BoxProperty}
+这里$\sigma$是导体的\uwave{电导率}（Electrical Conductivity）。
+
+这里的本构关系适用于线性各向同性的导体，事实上，这就是\uwave{欧姆定律}的微分形式。
+
+在导体中，电荷收到电场力的作用而运动，因此，电场要对电荷做功，设体密度$\rho$的电荷在电场力的作用下以平均速度$\vb*{v}$运动，则作用于体积元$\dd{V}$内的电荷$\rho\dd{V}$的电场力为
+\begin{Equation}
+    \dd{\vb*{F}}=(\rho\dd{V})\vb*{E}
+\end{Equation}
+在$\dd{t}$时间内，若电荷运动距离为$\dd{\vb*{l}}$，则电场做功
+\begin{Equation}
+    \dd{W}=\dd{\vb*{F}}\cdot\dd{\vb*{l}}=(\rho\dd{V})\vb*{E}\cdot\dd{\vb*{l}}=(\rho\dd{V})\vb*{E}\cdot\vb*{v}\dd{t}
+\end{Equation}
+注意到根据\fancyref{fml:电流密度与电荷密度}，此处$\rho\vb*{v}=\vb*{J}$
+\begin{Equation}
+    \dd{W}=\vb*{J}\cdot\vb*{E}\dd{V}\dd{t}
+\end{Equation}
+因此，单位体积的损耗功率，即损耗功率密度为
+\begin{Equation}
+    p_\text{L}=\dv{V}\qty(\dv{W}{t})=\vb*{J}\cdot\vb*{E}
+\end{Equation}
+这其实就是\uwave{焦耳定律}在连续体中的微分形式，还可以进一步代入欧姆定律$\vb*{J}=\sigma\vb*{E}$
+\begin{Equation}
+    p_\text{L}=\sigma\vb*{E}\cdot\vb*{E}=\sigma E^2
+\end{Equation}
+这里将两项结论总结如下
+\begin{BoxProperty}[导体的焦耳定律]
+    导体的焦耳定律的微分形式可以表述为
+    \begin{Equation}
+        p_\text{L}=\vb*{J}\cdot\vb*{E}=\sigma E^2
+    \end{Equation}
+\end{BoxProperty}
