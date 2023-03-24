@@ -71,6 +71,9 @@
 %设定取消脚注缩进
 \setlength{\footnotemargin}{0em}
 
+%设定脚注间的间距
+\addtolength{\footnotesep}{0.65mm}
+
 %设定页面底部对齐
 \flushbottom
 
