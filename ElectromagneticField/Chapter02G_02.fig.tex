@@ -1,0 +1,65 @@
+\documentclass{xStandalone}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.2]
+
+\draw[dashed]
+    (0,0) coordinate (L1)
+    -- ++
+    (5,0) coordinate (L2);
+
+\fill[red,fill opacity=0.1]  (L1) 
+rectangle ($(L2)+(0,+2)$) coordinate(L2A);
+\fill[blue,fill opacity=0.1] (L1) 
+rectangle ($(L2)+(0,-2)$) coordinate(L2B);
+
+\path (L1) node[above right] {\tiny 介质1};
+\path (L1) node[below right] {\tiny 介质2};
+
+\path ($(L1)!0.25!(L2)$) coordinate (PL);
+\path ($(L1)!0.75!(L2)$) coordinate (PR);
+
+\path ($(PL)+(0,+0.6)$) coordinate (A) node[above left] {$A$};
+\path ($(PL)+(0,-0.6)$) coordinate (D) node[below left] {$D$};
+
+\path (A-|PR) coordinate (B) node[above right] {$B$};
+\path (D-|PR) coordinate (C) node[below right] {$C$};
+
+\draw (A) rectangle (C);
+\draw[ultra thick] (A) -- (B);
+\draw[ultra thick] (C) -- (D);
+
+
+\path ($(L1)!0.5!(L2)$) coordinate (O)node[above left] {$P$};
+
+\draw[thick,-latex] (O) -- ++(0,1.8) node[right] {$\vb*{e}_\text{n}$} coordinate (En);
+
+\draw[dotted] (O) -- ++(0,-1.5) coordinate (En');
+
+\draw[thick,-latex] (O) -- ++(60:1.5) node[above right] {$\vb*{B}_1$} coordinate (H1);
+
+\draw[thick,latex-] (O) -- ++(-110:1.5) node[left] {$\vb*{B}_2$} coordinate (H2);
+
+\path (A) ++(0.25,0) node[above right] {$\delt{S}$};
+
+\path pic["{$\theta_1$}",
+draw=black,
+angle radius=0.3cm,
+angle eccentricity=3.5] 
+{angle=H1--O--En};
+
+\path pic["{$\theta_2$}",
+draw=black,
+angle radius=0.4cm,
+angle eccentricity=3] 
+{angle=H2--O--En'};
+
+\path (O) node[point] {} ;
+
+\draw[gray,ultra thin] (A) -- ++(-0.4,0) coordinate(A'');3
+\draw[gray,ultra thin] (D) -- (D-|A'') coordinate(D'');
+
+\draw[gray,ultra thin,<->] ($(A)!0.3!(A'')$) -- node[pos=0.3,left] {\small $\delt{h}$} ($(D)!0.3!(D'')$);
+
+\end{tikzpicture}
+\end{document}

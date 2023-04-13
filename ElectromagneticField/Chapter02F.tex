@@ -40,17 +40,7 @@
 \end{enumerate}
 我们可能会注意到，尽管麦克斯韦方程组的数学形式非常优美，但是好像总有一些不对称，这种不对称性其实来自，我们只有“电荷和电流”，并没有所谓“磁荷和磁流”，假如磁荷真的存在的话\cite{W3}，那么$\div\vb*{B}$即为磁荷，而$\curl\vb*{E}$中亦要补充磁流项，这样方程就完全对应了。\footnote{虽然这样说，但或许正是电场和磁场间，以及千千万万更多事物间的不对称性，才有了我们这个精彩而灵动的世界。}
 
-麦克斯韦方程组亦有积分形式，列写如下
-\begin{Gather}[12pt]
-    \Ilot[C]\vb*{H}\cdot\dd{\vb*{l}}=\Isnt[S]\qty(\vb*{J}+\pdv{\vb*{D}}{t})\cdot\dd{\vb*{S}}\\
-    \Ilot[C]\vb*{E}\cdot\dd{\vb*{l}}=-\Isnt[S]\pdv{\vb*{B}}{t}\cdot\dd{\vb*{S}}\\
-    \Isot[S]\vb*{B}\cdot\dd{\vb*{S}}=0\\
-    \Isot[S]\vb*{D}\cdot\dd{\vb*{S}}=\Itnt[V]\rho\dd{V}
-\end{Gather}
-但在实际应用中，我们还是会更多的使用麦克斯韦方程的微分形式而不是积分形式。
-
-
-实际上，在时变条件下，麦克斯韦方程组的四个方程之间并不是完全独立的，我们可以由它的两个旋度方程部分推导出两个散度方程，至多允许与原有的两个散度方程相差一个常数。\footnote{所以，实际上还是不独立的？或者说，两个散度方程的意义就是明确这个常数的值？}
+实际上，在时变条件下，麦克斯韦方程组的四个方程之间并不是完全独立的，我们可以由它的两个旋度方程部分推导出两个散度方程，至多允许与原有的两个散度方程相差一个常数。
 
 \paragraph{由电场旋度方程推导磁场散度方程}
 我们在电场的旋度方程\xrefpeq{电场旋度}两端取散度
@@ -77,6 +67,16 @@
     \pdv{t}(\div\vb*{D}-\rho)=0
 \end{Equation}
 这表明$\div\vb*{D}-\rho$是常数，这与电场散度方程\xrefpeq{电场散度}的$\div\vb*{D}=\rho$至多相差一个常数。
+
+\begin{BoxEquation}[麦克斯韦方程组的积分形式]
+    麦克斯韦方程组亦有积分形式
+    \begin{Gather}[12pt]
+        \Ilot[C]\vb*{H}\cdot\dd{\vb*{l}}=\Isnt[S]\qty(\vb*{J}+\pdv{\vb*{D}}{t})\cdot\dd{\vb*{S}}\\
+        \Ilot[C]\vb*{E}\cdot\dd{\vb*{l}}=-\Isnt[S]\pdv{\vb*{B}}{t}\cdot\dd{\vb*{S}}\\
+        \Isot[S]\vb*{B}\cdot\dd{\vb*{S}}=0\\
+        \Isot[S]\vb*{D}\cdot\dd{\vb*{S}}=\Itnt[V]\rho\dd{V}
+    \end{Gather}
+\end{BoxEquation}
 
 \subsection{电准静态电磁场}
 在麦克斯韦方程组中，若$\pdv*{\vb*{B}}{t}$项可以忽略，即感应电场远小于库伦电场，例如电容器中的电磁场，则可以得到\uwave{电准静态电磁场}，电准静态下，尽管$\vb*{E},\vb*{D}$时变，但却适用静电场的规律。
