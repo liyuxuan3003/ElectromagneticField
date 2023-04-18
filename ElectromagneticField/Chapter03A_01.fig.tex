@@ -1,0 +1,23 @@
+\documentclass{xStandalone}
+
+\begin{document}
+\begin{tikzpicture}
+    \path (0,0) coordinate (O);
+    \path (O) ++(6,+2) coordinate (A);
+    \path (O) ++(6,-2) coordinate (B);
+    
+    \fill[red ,fill opacity=0.1] (O) rectangle (A);
+    \fill[blue,fill opacity=0.1] (O) rectangle (B);
+
+    \path (O) node[above right=0.2cm] {\small 电介质1};
+    \path (O) node[below right=0.2cm] {\small 电介质2};
+
+    \path ($(O)!0.6!(O-|A)$) ++(0,+1) coordinate (P1) node[above right] {$P_1$} node[left] {$\varphi_1$} node[point] {};
+    \path ($(O)!0.6!(O-|B)$) ++(0,-1) coordinate (P2) node[below right] {$P_2$} node[left] {$\varphi_2$} node[point] {};
+
+    \draw[ultra thin] (P1) ++(0.5,0) coordinate (P1') -- ++(1,0) coordinate (P1'');
+    \draw[ultra thin] (P2) ++(0.5,0) coordinate (P2') -- ++(1,0) coordinate (P2'');
+
+    \draw[ultra thin,<->]  ($(P1')!0.3!(P1'')$) -- node[above right] {$\delt{l}$} ($(P2')!0.3!(P2'')$);
+\end{tikzpicture}
+\end{document}
