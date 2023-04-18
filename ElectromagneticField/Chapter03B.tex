@@ -1,0 +1,196 @@
+\section{静电场与电容}
+电容是导体系统的一种基本属性，它是描述导体系统储存电荷能力的物理量。本节中我们首先将介绍电容器的概念和电容的定义，随后将电容推广至多导体系统中，讨论部分电容的概念。
+
+\subsection{电容器和电容}
+\uwave{电容器}（Capacitor）是广泛使用的电路元件，从电磁学的观点看，它是由两个导体构成的系统，试想这两个导体带有的净电荷为零，当在两导体间加电压$U$时，很显然，这两个导体上的电荷是总会是等量异号的，一个导体的电荷量为$+q$，一个导体的电荷量就为$-q$。而实验表明，两个导体间的电压$U$总是与两个导体带的电荷$q$成正比，这个比值就是所谓的电容。
+
+\begin{BoxDefinition}[电容]
+    定义\uwave{电容}（Capacitance）为电容器的电荷与电压的比值，记作
+    \begin{Equation}
+        C=\frac{q}{U}
+    \end{Equation}
+    电容在国际单位制中的单位是 \si{F}（法拉）。
+\end{BoxDefinition}
+
+电容只与导体的形状和相互位置有关，与导体具有的电势和电荷量均无关。
+
+电容的一个特例是孤立导体，此时$U$即为该导体的电势（电势即相对无穷远的电压）
+\begin{Equation}
+    C=\frac{q}{\varphi}
+\end{Equation}
+类比的，通常的电容器的电容也可以用电势表示为
+\begin{Equation}
+    C=\frac{q}{\varphi_1-\varphi_2}
+\end{Equation}
+现在的问题是，电容描述了孤立导体或双导体系统的性质，那么，我们如何才能将这种想法推广到多导体系统中呢？我们会遇到一些麻烦，因为在多导体系统中，任何两个导体间的电压不仅要受到这两个导体所带的电荷影响，还要受到其余导体上的电荷的影响，换言之，从一个导体上发出的电场线不会全部终止在另外一个导体上。为此，我们需要通过电位系数和电容系数，引出部分电容的概念，即一个导体在其余导体的影响之下，与另一个导体构成的电容。
+
+
+设空间中存在$N+1$个导体，各导体所带的电荷量分别为$q_0,q_1,q_2,\cdots,q_n$，构成多导体系统。
+
+若所有导体的电荷量之和为零，即
+\begin{Equation}
+    q_0+q_1+q_2+\cdots+q_N=0
+\end{Equation}\nopagebreak
+则称该多导体系统为静电独立系统，该条件相当于双导体系统中两导体分别带电$+q$和$-q$。\goodbreak
+
+\subsection{电势系数}
+\begin{BoxDefinition}[电势系数]
+    在多导体系统中，各导体的电势与各导体上的电荷呈线性关系
+    \begin{Equation}
+        \begin{pmatrix}
+            \varphi_1\\
+            \varphi_2\\
+            \vdots\\
+            \varphi_N
+        \end{pmatrix}=
+        \begin{pmatrix}
+            \alpha_{11}&\alpha_{12}&\cdots&\alpha_{1N}\\
+            \alpha_{21}&\alpha_{22}&\cdots&\alpha_{2N}\\
+            \vdots&\vdots&\ddots&\vdots\\
+            \alpha_{N1}&\alpha_{N2}&\cdots&\alpha_{NN}\\
+        \end{pmatrix}
+        \begin{pmatrix}
+            q_1\\
+            q_2\\
+            \vdots\\
+            q_N
+        \end{pmatrix}
+    \end{Equation}
+    其中$\alpha_{ij}$称为\uwave{电势系数}，$\alpha_{ii}$称为\uwave{自电势系数}，$\alpha_{ij}(i\neq j)$称为\uwave{互电势系数}。
+\end{BoxDefinition}
+
+\begin{BoxFormula}[电势系数的计算]
+    电势系数$\alpha_{ij}$可以在令除$q_{j}$外的$q_i=0$时，由下式得到
+    \begin{Equation}
+        \alpha_{ij}=\eval{\frac{\varphi_i}{q_j}}_{q_i=0,i\neq j}
+    \end{Equation}
+\end{BoxFormula}
+\begin{Proof}
+    电势系数与各导体的电势和电荷量无关，因此对于$\varphi_i$，计算其$\alpha_{ij}$时，对于每个$j$的取值，可以令除了$q_{j}$外的$q_i=0$，这样一来，关于$\varphi_i$的那行方程就可以化简为
+    \begin{Equation}
+        \varphi_i=\alpha_{i1}q_1+\alpha_{i2}q_2+\cdots+\alpha_{ij}q_j+\cdots+\alpha_{iN}q_N=\alpha_{ij}q_j
+    \end{Equation}
+    从而得到
+    \begin{Equation}*
+        \alpha_{ij}=\frac{\varphi_i}{q_j}\qedhere
+    \end{Equation}
+\end{Proof}
+
+\subsection{电容系数}
+\begin{BoxDefinition}[电容系数]
+    在多导体系统中，各导体的电荷与各导体上的电势呈线性关系
+    \begin{Equation}
+        \begin{pmatrix}
+            q_1\\
+            q_2\\
+            \vdots\\
+            q_N
+        \end{pmatrix}=
+        \begin{pmatrix}
+            \beta_{11}&\beta_{12}&\cdots&\beta_{1N}\\
+            \beta_{21}&\beta_{22}&\cdots&\beta_{2N}\\
+            \vdots&\vdots&\ddots&\vdots\\
+            \beta_{N1}&\beta_{N2}&\cdots&\beta_{NN}\\
+        \end{pmatrix}
+        \begin{pmatrix}
+            \varphi_1\\
+            \varphi_2\\
+            \vdots\\
+            \varphi_N
+        \end{pmatrix}
+    \end{Equation}
+    其中$\beta_{ij}$称为\uwave{电容系数}，$\beta_{ii}$称为\uwave{自电容系数}，$\beta_{ij}(i\neq j)$称为\uwave{互电容系数}。
+\end{BoxDefinition}
+
+\begin{BoxFormula}[电容系数的计算]
+    电容系数$\beta_{ij}$可以在令除$\varphi_{j}$外的$\varphi_i=0$时，由下式得到
+    \begin{Equation}
+        \beta_{ij}=\eval{\frac{q_i}{\varphi_j}}_{\var_i=0,i\neq j}
+    \end{Equation}
+\end{BoxFormula}
+\begin{Proof}
+    电容系数与各导体的电势和电荷量无关，因此对于$q_i$，计算其$\beta_{ij}$时，对于每个$j$的取值，可以令除了$\varphi_{j}$外的$q_i=0$，这样一来，关于$\varphi_i$的那行方程就可以化简为
+    \begin{Equation}
+        q_i=\beta_{i1}\varphi_1+\beta_{i2}\varphi_2+\cdots+\beta_{ij}\varphi_j+\cdots+\beta_{iN}\varphi_N=\beta_{ij}\varphi_j
+    \end{Equation}
+    从而得到
+    \begin{Equation}*
+        \beta_{ij}=\frac{q_i}{\varphi_j}\qedhere
+    \end{Equation}
+\end{Proof}
+这里我们来对比一下电势系数和电容系数的计算方法
+\begin{itemize}
+    \item 电势系数$\alpha_{ij}$等于第$j$个导体带单位电荷，其余导体不带电荷，第$i$个导体的电位。
+    \item 电容系数$\beta_{ij}$等于第$j$个导体具有单位电位，其余导体接地，第$i$个导体电荷。
+\end{itemize}
+
+电势系数和电容系数其实是两个互逆的方程组的系数，前者的未知量是电荷，后者的未知量是电势。因此，电势系数和电容系数互为对方方程组的解，故$\alpha_{ij}$和$\beta{ij}$间有以下关系
+\begin{BoxFormula}[电势系数和电容系数的关系]
+    电势系数$\alpha_{ij}$和电容系数$\beta_{ij}$间的关系
+    \begin{Equation}
+        \beta_{ij}=(-1)^{i+j}\frac{M_{ij}}{\abs{\alpha_{ij}}_{N\times N}}
+    \end{Equation}
+    其中，$\abs{\alpha_{ij}}_{N\times N}$是$\alpha_{ij}$组成的行列式，$M_{ij}$是其余子式。
+\end{BoxFormula}
+
+\subsection{部分电容}
+根据\fancyref{def:电容系数}，将矩阵形式展开
+\begin{Equation}
+    \begin{cases}
+        q_1=\beta_{11}\varphi_1+\beta_{12}\varphi_2+\cdots+\beta_{1N}\varphi_{N}\\
+        q_2=\beta_{21}\varphi_1+\beta_{22}\varphi_2+\cdots+\beta_{2N}\varphi_{N}\\
+        \quad\vdots\\
+        q_N=\beta_{N1}\varphi_1+\beta_{N2}\varphi_2+\cdots+\beta_{NN}\varphi_{N}\\
+    \end{cases}
+\end{Equation}
+做一些改写，使非对角线项变为与相应导体的电势差
+\begin{Equation}
+    \begin{cases}
+        q_1=+(\beta_{11}+\beta_{12}+\cdots+\beta_{1N})(\varphi_{1}-0)-\beta_{12}(\varphi_{1}-\varphi_{2})-\cdots-\beta_{1N}(\varphi_{1}-\varphi_{N})\\
+        q_2=-\beta_{21}(\varphi_2-\varphi_{1})+(\beta_{21}+\beta_{22}+\cdots+\beta_{2N})(\varphi_{2}-0)-\cdots-\beta_{2N}(\varphi_2-\varphi_N)\\
+        \quad\vdots\\
+        q_N=-\beta_{N1}(\varphi_N-\varphi_1)-\beta_{N2}(\varphi_N-\varphi_2)-\cdots+(\beta_{N1}+\beta_{N2}+\cdots+\beta_{NN})(\varphi_N-0)\\
+    \end{cases}
+\end{Equation}
+此时，如果我们引入部分电容的定义
+\begin{BoxDefinition}[部分电容]
+    定义\uwave{部分电容} $C_{ij}$为
+    \begin{Equation}
+        C_{ij}=-\beta_{ij}(i\neq j)\qquad
+        C_{ii}=\Sum[j=1][N]\beta_{ij}
+    \end{Equation}
+\end{BoxDefinition}
+这样方程组就可以表示为
+\begin{Equation}
+    \qquad\qquad\quad
+    \begin{cases}
+        q_1=C_{11}(\varphi_1-0)+C_{12}(\varphi_1-\varphi_2)+\cdots+C_{1N}(\varphi_1-\varphi_N)\\
+        q_2=C_{21}(\varphi_2-\varphi_1)+C_{22}(\varphi_2-0)+\cdots+C_{2N}(\varphi_2-\varphi_N)\\
+        \quad\vdots\\
+        q_N=C_{N1}(\varphi_N-\varphi_1)+C_{N2}(\varphi_N-\varphi_2)+\cdots+C_{NN}(\varphi_N-0)
+    \end{cases}
+    \qquad\qquad\quad
+\end{Equation}
+这表明多导体系统中，任何一个导体的电荷量都可以看作$N$部分电荷构成，即
+\begin{Equation}
+    q_i=\Sum[j=1][N]q_{ij}
+\end{Equation}
+其中，$q_{ii}=C_{ii}(\varphi_i-0)$与第$i$个导体的电位$\varphi_i$成比例，所以部分电容$C_{ii}$的意义即第$i$个导体与参考导体间的部分电容，称为第$i$个导体的\uwave{固有部分电容}。$q_{ij}=C_{ij}(\varphi_i-\varphi_j)(i\neq j)$正比于第$i$个导体和第$j$个导体间的电势差$U_{ij}=(\varphi_i-\varphi_j)$，所以部分电容$C_{ij}(i\neq j)$的意义即第$i,j$个导体间的部分电容，因此，称为第$i$个导体和第$j$个导体间的\uwave{互有部分电容}。
+
+根据\fancyref{def:部分电容}和\fancyref{fml:电容系数的计算}，容易得出部分电容的计算法。
+
+\begin{BoxFormula}[固有部分电容]
+    计算第$i$个导体的固有部分电容$C_{ii}$时，令各导体等势
+    \begin{Equation}
+        C_{ii}=\eval{\frac{q_i}{\varphi_j}}_{\varphi_1=\varphi_2=\cdots=\varphi_N}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{BoxFormula}[互有部分电容]*
+    计算第$i$个和第$j$个导体间的互有部分电容$C_{ij}$，令$\varphi_j$外的导体电势为零
+    \begin{Equation}
+        C_{ij}=\eval{-\frac{q_i}{\varphi_j}}_{\varphi_i=0(i\neq j)}
+    \end{Equation}
+\end{BoxFormula}
+
+最后指出，电势系数、电容系数、部分电容均具有对称性，即$\alpha_{ij}=\alpha_{ji}, \beta_{ij}=\beta_{ji}, C_{ij}=C_{ji}$。
