@@ -1,0 +1,67 @@
+\section{静电场的能量}
+静电场最基本的特征是对电荷有作用力，这表明静电场具有能量。我们或许会认为静电场的能量来自场源电荷，但是大量实践表明，更合理的解释是，静电场的能量是定域在空间中的。
+
+\begin{BoxFormula}[静电场的能量]
+    静电场的能量定域在电场不为零的空间中，能量密度满足
+    \begin{Equation}
+        w_\text{e}=\frac{1}{2}D\cdot E
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    设电荷分布区域为$V$，其边界曲面记为$S$，现在考虑电荷系统从零开始被充电，当充电完毕后，电荷分布为$\rho$，电势分布为$\varphi$。根据\xref{sec:静电场与电容}的内容，我们知道充电过程中电荷分布和电势分布将以同一比例因子$\alpha$增加，换言之，若充电过程中，某一时刻的电荷分布为$\alpha\rho$，则该时刻的电势分布即为$\alpha\varphi$。电荷与电势的乘积就是能量，故$\alpha$至$\alpha+\dd{\alpha}$过程中，外电源做功为
+    \begin{Equation}&[1]
+        \dd{W_\text{e}}=\Itnt[V](\alpha\varphi)\rho\dd{\alpha}\dd{V}
+    \end{Equation}
+    这里，$\alpha\varphi$即当前的电势分布，$\rho\dd{\alpha}$即该微元过程增加的电荷密度，在$V$上积分。
+
+    而讨论整个充电过程外电源的做功，即对$\alpha$在$[0,1]$上积分
+    \begin{Equation}&[2]
+        W_\text{e}=\Int[0][1]\alpha\dd{\alpha}\Itnt[V]\rho\varphi\dd{V}
+    \end{Equation}
+    这很容易求出
+    \begin{Equation}&[3]
+        W_\text{e}=\frac{1}{2}\Itnt[V]\rho\varphi\dd{V}
+    \end{Equation}
+    这里算得的$W_\text{e}$就是静电场的能量，下面我们将其以电场矢量表示。
+
+    根据\fancyref{eqt:麦克斯韦方程组}，我们可以在\xrefpeq{3}中代入$\div\vb*{D}=\rho$
+    \begin{Equation}&[4]
+        W_\text{e}=\frac{1}{2}\Itnt[V]\qty(\div\vb*{D})\varphi\dd{V}
+    \end{Equation}
+    根据矢量分析的公式
+    \begin{Equation}&[5]
+        \div(\varphi\vb*{D})=\grad\varphi\cdot\vb*{D}+(\div\vb*{D})\varphi
+    \end{Equation}
+    这样\xrefpeq{4}就可以被改写为
+    \begin{Equation}&[6]
+        W_\text{e}=\frac{1}{2}\Itnt[V]\div(\varphi\vb*{D})\dd{V}+\frac{1}{2}\Itnt[V]\grad\varphi\cdot\vb*{D}\dd{V}
+    \end{Equation}
+    就\xrefpeq{6}的第一项运用\fancyref{thm:散度定理}，就第二项运用$\vb*{E}=-\grad\vb*{E}$
+    \begin{Equation}&[7]
+        W_\text{e}=\frac{1}{2}\Isot[S]\varphi\vb*{D}\cdot\dd{\vb*{S}}+\frac{1}{2}\Itnt[V]\vb*{E}\cdot\vb*{D}\dd{V}
+    \end{Equation}
+    我们可以令$V\to\R^3$，即使体积分转为对整个空间的积分，因为反正只有那些有电荷分布的空间才对积分有贡献。而当$V\to\R^3$时闭曲面$S$的表面积也将无限扩大，此时，只要电荷是分布在有限区域内，那么当$S$无限扩大时，有限区域内的电荷就都可以近似为一个点电荷。
+
+    而对于点电荷，我们有
+    \begin{Equation}&[8]
+        \varphi\propto\frac{1}{r}\qquad
+        |\vb*{D}|\propto\frac{1}{r^2}
+    \end{Equation}
+    即
+    \begin{Equation}&[9]
+        |\varphi\vb*{D}|\propto\frac{1}{r^3}
+    \end{Equation}
+    因此，当$S$无限扩大，即$r\to\infty$时
+    \begin{Equation}&[10]
+        \frac{1}{2}\Isot[S]\varphi\vb*{D}\cdot\dd{\vb*{S}}\propto\frac{1}{r^3}r^2\propto\frac{1}{r}\to 0
+    \end{Equation}
+    这样一来，\xrefpeq{7}就可以简化为
+    \begin{Equation}
+        W_\text{e}=\frac{1}{2}\Itnt[\R^3]\vb*{E}\cdot\vb*{D}\dd{V}
+    \end{Equation}
+    因此，能量密度就是
+    \begin{Equation}
+        w_\text{e}=\frac{1}{2}\vb*{E}\cdot\vb*{D}
+    \end{Equation}
+\end{Proof}
