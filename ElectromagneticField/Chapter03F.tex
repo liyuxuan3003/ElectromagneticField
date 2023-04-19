@@ -1,0 +1,125 @@
+\section{静磁场的能量}
+静磁场和静电场一样，其能量都是定域在空间中的。
+\begin{BoxFormula}[静磁场的能量]
+    静磁场的能量定域在磁场不为零的空间中，能量密度满足
+    \begin{Equation}
+        w_\text{m}=\frac{1}{2}\vb*{B}\cdot\vb*{H}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    设有$N$个回路$C_1,C_2,\cdots,C_N$且各回路$C_k$中的电流$i_k$从零开始以相同比例$\alpha\in[0,1]$上升，即$i_k=\alpha I_k$，很显然，在$\dd{t}$时间内，回路$C_k$中的电流将相应增加$\dd{i_k}=I_k\dd{\alpha}$。
+
+    根据\fancyref{law:法拉第电磁感应定律}，回路$C_k$中的感应电动势为
+    \begin{Equation}&[1]
+        \Emf_{\text{in}k}=-\dv{\Psi_k}{t}
+    \end{Equation}
+    而为了克服感应电动势，回路$C_k$的外加电压$u_k$应当满足
+    \begin{Equation}&[2]
+        u_k=-\Emf_{\text{in}k}=\dv{\Psi_k}{t}
+    \end{Equation}
+    电压与电荷的积即能量，因而在$\dd{t}$时间内回路$C_k$中增加的磁场能量$\dd{W}_{\text{m}k}$为
+    \begin{Equation}&[3]
+        \dd{W_{\text{m}k}}=u_k\dd{q_k}
+    \end{Equation}
+    在\xrefpeq{3}中代入\xrefpeq{2}，并考虑到$\dd{q_k}=i_k\dd{t}$
+    \begin{Equation}&[4]
+        \dd{W_{\text{m}k}}=\dv{\Psi_k}{t}i_k\dd{t}
+    \end{Equation}
+    注意到$\dd{t}$被约去
+    \begin{Equation}&[5]
+        \dd{W_{\text{m}k}}=i_k\dd{\Psi_k}
+    \end{Equation}
+    我们将\xrefpeq{5}从$k=1$到$k=N$求和，即得$N$个回路在$\dd{t}$时间内增加的磁场能量
+    \begin{Equation}&[6]
+        \dd{W_\text{m}}=\Sum[k=1][N]\dd{W_{\text{m}k}}=\Sum[k=1][N]i_k\dd{\Psi_k}
+    \end{Equation}
+    现在的问题是，这里回路$C_k$上的磁链
+    $\Psi_k$应当如何表示？事实上
+    \begin{Equation}&[7]
+        \Psi_k=\Sum[l=1][N]M_{kl}i_l
+    \end{Equation}
+    其中，$M_{kl}$是回路$C_k,C_l(l\neq k)$间的互感，$M_{kk}=L_{k}$是回路$C_k$的自感。
+
+    将\xrefpeq{7}代入\xrefpeq{6}
+    \begin{Equation}&[8]
+        \dd{W_\text{m}}=\Sum[k=1][N]\Sum[l=1][N]i_kM_{kl}\dd{i_l}
+    \end{Equation}
+    根据证明首的论述，这里$i_k=\alpha I_k$，而$\dd{i_l}=I_l\dd{\alpha}$
+    \begin{Equation}&[9]
+        \dd{W_\text{m}}=\Sum[k=1][N]\Sum[l=1][N]M_{kl}I_kI_l\alpha\dd{\alpha}
+    \end{Equation}
+    将上式从$0$到$1$对$\alpha$积分
+    \begin{Equation}&[10]
+        W_\text{m}=\Sum[k=1][N]\Sum[l=1][N]M_{kl}I_kI_l\Int[0][1]\alpha\dd{\alpha}
+    \end{Equation}
+    即
+    \begin{Equation}&[11]
+        W_\text{m}=\frac{1}{2}\Sum[k=1][N]\Sum[l=1][N]M_{kl}I_kI_l
+    \end{Equation}
+    当充电完成后，\xrefpeq{7}即
+    \begin{Equation}&[12]
+        \Psi_k=\Sum[l=1][N]M_{kl}I_l
+    \end{Equation}
+    将\xrefpeq{12}代入\xrefpeq{11}
+    \begin{Equation}&[13]
+        W_\text{m}=\frac{1}{2}\Sum[k=1][N]I_k\Psi_k
+    \end{Equation}
+    而另外一方面，磁链也可以用磁矢势表述
+    \begin{Equation}&[14]
+        \Psi_k=\Isot[S_k]\vb*{B}\cdot\dd{\vb*{S}_k}=\Ilot[C_k]\curl\vb*{B}\cdot\dd{\vb*{l}_k}=\Ilot[C_k]\vb*{A}\cdot\dd{\vb*{l}_k}
+    \end{Equation}
+    将\xrefpeq{14}代入\xrefpeq{13}
+    \begin{Equation}&[15]
+        W_\text{m}=\frac{1}{2}\Sum[k=1][N]I_k\Ilot[C_k]\vb*{A}\cdot\dd{\vb*{l}_k}
+    \end{Equation}
+    而一般的说，电流总是体分布的，此时将$I_k\dd{\vb*{l}_k}$替换为$\vb*{J}\dd{V}$，求和替换为积分
+    \begin{Equation}&[16]
+        W_\text{m}=\frac{1}{2}\Itnt[V]\vb*{A}\cdot\vb*{J}\dd{V}
+    \end{Equation}
+    根据\fancyref{eqt:麦克斯韦方程组}，代入$\vb*{J}=\curl\vb*{H}$
+    \begin{Equation}&[17]
+        W_\text{m}=\frac{1}{2}\Itnt[V]\vb*{A}\cdot(\curl\vb*{H})\dd{V}
+    \end{Equation}
+    根据乘积法则
+    \begin{Equation}&[18]
+        \div(\vb*{A}\times\vb*{H})=
+        (\div\vb*{A})\times\vb*{H}+
+        \vb*{A}\cdot(\curl\vb*{H})
+    \end{Equation}
+    就\xrefpeq{18}右端第一项，运用\fancyref{fml:标量三重积的轮换对称性}
+    \begin{Equation}&[19]
+        \div(\vb*{A}\times\vb*{H})=
+        \vb*{H}\cdot(\curl\vb*{A})+
+        \vb*{A}\cdot(\curl\vb*{H})
+    \end{Equation}
+    将\xrefpeq{19}代入\xrefpeq{17}
+    \begin{Equation}&[20]
+        W_\text{m}=\frac{1}{2}\Itnt[V]\vb*{H}\cdot(\curl\vb*{A})\dd{V}-\frac{1}{2}\Itnt[V]\div(\vb*{A}\times\vb*{H})\dd{V}
+    \end{Equation}
+    就\xrefpeq{20}，第一项运用\fancyref{def:磁矢势}，第二项运用\fancyref{thm:旋度定理}
+    \begin{Equation}&[21]
+        W_\text{m}=\frac{1}{2}\Itnt[V]\vb*{H}\cdot\vb*{B}\dd{V}-\frac{1}{2}\Isot[S]\vb*{A}\times\vb*{H}\cdot\dd{\vb*{S}}
+    \end{Equation}
+    由于当$V$趋于无限大时，我们有
+    \begin{Equation}&[22]
+        |\vb*{A}|\propto\frac{1}{r}\qquad
+        |\vb*{H}|\propto\frac{1}{r^2}
+    \end{Equation}
+    即
+    \begin{Equation}&[23]
+        |\vb*{A}\times\vb*{H}|\propto\frac{1}{r^3}
+    \end{Equation}
+    因此，当$S$无限扩大，即$r\to\infty$时
+    \begin{Equation}&[24]
+        \frac{1}{2}\Isot[S]\vb*{A}\times\vb*{H}\cdot\dd{\vb*{S}}\propto\frac{1}{r^3}r^2\propto\frac{1}{r}\to 0
+    \end{Equation}
+    这样一来，\xrefpeq{21}就可以简化为
+    \begin{Equation}
+        W_\text{m}=\frac{1}{2}\Itnt[\R^3]\vb*{H}\cdot\vb*{B}\dd{V}
+    \end{Equation}
+    因此，能量密度就是
+    \begin{Equation}*
+        w_\text{m}=\frac{1}{2}\vb*{H}\cdot\vb*{B}\qedhere
+    \end{Equation}
+\end{Proof}
