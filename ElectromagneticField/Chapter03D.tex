@@ -1,0 +1,178 @@
+\section{静磁场的分析}
+
+\subsection{磁矢势的定义}
+根据\fancyref{ppt:静磁场的散度}，磁感强度$\vb*{B}$是无散的
+\begin{Equation}
+    \div\vb*{B}=0
+\end{Equation}
+根据\fancyref{def:无散场的矢势}，无散场可以定义矢势，现在，我们定义$\vb*{B}$的矢势。
+
+\begin{BoxDefinition}[磁矢势]
+    定义磁感强度$\vb*{B}$的矢势为\uwave{磁矢势}（Magnetic Vector Potential），记作
+    \begin{Equation}
+        \vb*{B}(\vb*{r})=\curl\vb*{A}(\vb*{r})
+    \end{Equation}
+    这就是说，磁矢势的旋度是磁感强度。
+\end{BoxDefinition}
+诚然，如果我们能完全从矢量分析的角度（这是极好的），通过无旋场的标势和无散场的矢势的观点来理解电势$\varphi(\vb*{r})$和磁矢势$\vb*{A}(\vb*{r})$，那两者是完全对应的。但是，我们经常会有这样的困惑，势往往与能量相关，\empx{电势可以诠释为“每单位电荷储存的能量”}，磁矢势却好像没有代表什么能量，事实上在早期，磁矢势确实被认为没有明确的物理意义，但詹姆斯·麦克斯韦对此却颇不以为然\cite{W5}，它认为，\empx{磁矢势可以诠释为“每单位电荷储存的动量”}，这就对应了。
+
+磁矢势和电势一样，都不能由其定义完全确定，但不同的是，电势具有的是一个任意常数的不确定性，磁矢势具有的则是叠加一个任意无旋场的不确定性，试想，若
+\begin{Equation}
+    \curl\vb*{A}=\vb*{B}
+\end{Equation}
+那么，必然同时有
+\begin{Equation}
+    \curl(\vb*{A}+\grad\psi)=\vb*{B}
+\end{Equation}
+这是因为梯度场$\grad\psi$必然是一个无旋场，对旋度的计算无影响。
+
+根据\fancyref{thm:亥姆霍兹定理}，唯一确定一个矢量场，需要同时给出其旋度和散度，磁矢势的旋度是被定义确定的，因此，还需要规定磁矢势的散度，在静磁场中，常使用的是以下规范。
+\begin{BoxDefinition}[磁矢势的库伦规范]
+    在静磁场中，常令磁矢势遵循\uwave{库伦规范}（Coulomb Gauge），即
+    \begin{Equation}
+        \div\vb*{A}=0
+    \end{Equation}
+\end{BoxDefinition}
+
+电势通过规定参考点就可以唯一确定，磁矢势则需要通过规定散度唯一确定，很明显，后者要比前者复杂很多，为何有这样的差异？这就是因为磁矢势是矢量场，而矢量的任意性强很多。
+
+\subsection{磁矢势的微分方程}
+在静磁场中，我们往往会将磁场的矢量方程及其边界条件
+\begin{Gather}[6pt]
+    \curl\vb*{H}=\vb*{J}\qquad\vb*{e}_\text{n}\times(\vb*{H}_1-\vb*{H}_2)=\vb*{J}_S\\
+    \div\vb*{B}=0\qquad\vb*{e}_\text{n}\cdot(\vb*{B}_1-\vb*{B}_2)=0
+\end{Gather}
+转化为关于磁矢势$\vb*{A}(\vb*{r})$的矢量方程。
+
+\begin{BoxEquation}[静磁场的微分方程]
+    静磁场可以有磁矢势的泊松方程描述
+    \begin{Equation}&[A]
+        \laplacian\vb*{A}=-\mu\vb*{J}(\vb*{r})
+    \end{Equation}
+    边界条件满足
+    \begin{Equation}&[B]
+        \vb*{A}_1=\vb*{A}_2\qquad
+        \vb*{e}_\text{n}\times\qty(\frac{1}{\mu_1}\curl\vb*{A}_1-\frac{1}{\mu_2}\curl\vb*{A}_2)=\vb*{J}_S
+    \end{Equation}
+\end{BoxEquation}
+
+\begin{Proof}
+    根据\fancyref{eqt:麦克斯韦方程组}和\fancyref{def:磁矢势}
+    \begin{Equation}
+        \vb*{J}=\curl\vb*{H}=\curl(\mu^{-1}\vb*{B})=\mu^{-1}\curl(\curl\vb*{A})
+    \end{Equation}
+    即
+    \begin{Equation}
+        \curl\curl\vb*{A}=\mu\vb*{J}
+    \end{Equation}
+    根据\fancyref{fml:矢量拉普拉斯的转化}
+    \begin{Equation}
+        \grad(\div\vb*{A})-\laplacian\vb*{A}=\mu\vb*{J}
+    \end{Equation}
+    根据\fancyref{def:磁矢势的库伦规范}，由于$\div\vb*{A}=0$
+    \begin{Equation}
+        \laplacian\vb*{A}=-\mu\vb*{J}
+    \end{Equation}
+    下面我们来将$\vb*{B},\vb*{H}$的边界条件转化为$\vb*{A}$的边界条件，这需要一定的矢量分析。
+
+    根据\fancyref{fml:磁感应强度的边界条件}
+    \begin{Equation}
+        \vb*{e}_\text{n}\cdot(\vb*{B}_1-\vb*{B}_2)=0
+    \end{Equation}
+    代入\fancyref{def:磁矢势}
+    \begin{Equation}
+        \vb*{e}_\text{n}\cdot(\curl\vb*{A}_1)=\vb*{e}_\text{n}\cdot(\curl\vb*{A}_2)
+    \end{Equation}
+    运用\fancyref{fml:标量三重积的轮换对称性}
+    \begin{Equation}
+        \div(\vb*{A}_1\times\vb*{e}_\text{n})=
+        \div(\vb*{A}_2\times\vb*{e}_\text{n})
+    \end{Equation}
+    运用乘积法则
+    \begin{Equation}
+        \qquad\qquad\qquad\qquad
+        (\div\vb*{A}_1)\times\vb*{e}_\text{n}+\vb*{A}_1\times(\div\vb*{e}_\text{n})=
+        (\div\vb*{A}_2)\times\vb*{e}_\text{n}+\vb*{A}_2\times(\div\vb*{e}_\text{n})
+        \qquad\qquad\qquad\qquad
+    \end{Equation}
+    根据\fancyref{def:磁矢势的库伦规范}，这里$\div\vb*{A}_1=\div\vb*{A}_2=0$
+    \begin{Equation}
+        \vb*{A}_1\times(\div\vb*{e}_\text{n})=\vb*{A}_2\times(\div\vb*{e}_\text{n})
+    \end{Equation}
+    这里的$\div\vb*{e}_\text{n}$可以被约去，因此在边界两侧
+    \begin{Equation}
+        \vb*{A}_1=\vb*{A}_2
+    \end{Equation}
+    根据\fancyref{fml:磁场强度的边界条件}
+    \begin{Equation}
+        \vb*{e}_\text{n}\times(\vb*{H}_1-\vb*{H}_2)=\vb*{J}_S
+    \end{Equation}
+    运用介质方程
+    \begin{Equation}
+        \vb*{e}_\text{n}\times\qty(\frac{1}{\mu}\vb*{B}_1-\frac{1}{\mu}\vb*{B}_2)=\vb*{J}_S
+    \end{Equation}
+    代入\fancyref{def:磁矢势}
+    \begin{Equation}
+        \vb*{e}_\text{n}\times\qty(\frac{1}{\mu_1}\curl\vb*{A}_1-\frac{1}{\mu_2}\curl\vb*{A}_2)=\vb*{J}_S
+    \end{Equation}
+    由此就解得了\xrefpeq{B}的边界条件。
+\end{Proof}
+
+\subsection{磁矢势的计算}
+\begin{BoxFormula}[磁矢势]
+    磁矢势$\vb*{A}(\vb*{r})$符合以下规律
+    \begin{Equation}
+        \vb*{A}(\vb*{r})=\frac{\mu}{4\pi}\Itnt[V]\frac{\vb*{J}}{R}\dd{V'}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{eqt:静磁场的微分方程}
+    \begin{Equation}
+        \laplacian\vb*{A}=-\mu\vb*{J}
+    \end{Equation}
+    在直角坐标系中，上式的矢量拉普拉斯可以分解为三个标量拉普拉斯
+    \begin{Gather}[6pt]
+        \laplacian A_x=-\mu J_x\\
+        \laplacian A_y=-\mu J_y\\
+        \laplacian A_z=-\mu J_z
+    \end{Gather}
+    这三个分量式与\fancyref{eqt:静电场的微分方程}是类似的
+    \begin{Equation}
+        \laplacian\varphi=-\frac{\rho}{\varepsilon}
+    \end{Equation}
+    我们已知电势满足\fancyref{fml:电势}
+    \begin{Equation}
+        \varphi(\vb*{r})=\frac{1}{4\pi\varepsilon}\Itnt[V]\frac{\rho(\vb*{r}')}{R}\dd{V'}
+    \end{Equation}
+    我们因此可以从微分式的相似性，推定磁矢势的各分量满足
+    \begin{Gather}[12pt]
+        A_x=\frac{\mu}{4\pi}\Itnt[V]\frac{J_x(\vb*{r'})}{R}\dd{V'}\\
+        A_y=\frac{\mu}{4\pi}\Itnt[V]\frac{J_y(\vb*{r'})}{R}\dd{V'}\\
+        A_z=\frac{\mu}{4\pi}\Itnt[V]\frac{J_z(\vb*{r'})}{R}\dd{V'}
+    \end{Gather}
+    而将上面三个式子叠加在一起，即得
+    \begin{Equation}*
+        \vb*{A}(\vb*{r})=\frac{\mu}{4\pi}\Itnt[V]\frac{\vb*{J}}{R}\dd{V'}\qedhere
+    \end{Equation}
+\end{Proof}
+
+\subsection{磁标势的定义}
+通常来说，磁场是不可以定义标势的，因为磁场是有旋的
+\begin{Equation}
+    \curl\vb*{H}=\vb*{J}
+\end{Equation}
+但是，如果我们所研究的空间不存在自由电流，即有$\vb*{J}=\vb*{0}$，那么
+\begin{Equation}
+    \curl\vb*{H}=0
+\end{Equation}
+此时我们就可以定义所谓的磁标势，由此可见，磁标势只是特定情况下可以存在的概念。
+\begin{BoxDefinition}[磁标势]
+    定义磁场强度$\vb*{H}$在标势为\uwave{磁标势}（Magnetic Scalar Potential），记作
+    \begin{Equation}
+        \vb*{H}(\vb*{r})=-\grad\psi_\text{m}
+    \end{Equation}
+    这就是说，磁标势的负梯度是磁场强度。
+
+    该定义仅成立于$\vb*{J}=\vb*{0}$的空间区域，对于$\vb*{J}\neq\vb*{0}$的空间区域不适用。
+\end{BoxDefinition}
