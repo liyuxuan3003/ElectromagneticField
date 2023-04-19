@@ -1,0 +1,79 @@
+\section{静磁场与电感}
+
+\subsection{电感器和电感}
+电感器（Inductor）是广泛使用的电路元件，电感其实就是一个回路（通常会是一个线圈），而实验表明，穿过回路的磁链$\Psi$总是与回路中通过的电流$I$成正比，该比值就是所谓的电感。
+
+\begin{BoxDefinition}[电感]*
+    定义\uwave{电感}（Inductance）为电感器的磁链与电流的比值，记作
+    \begin{Equation}
+        L=\frac{\Psi}{I}
+    \end{Equation}
+    电感在国际单位制中的单位是\ \si{H}（亨利）。 
+\end{BoxDefinition}
+
+\subsection{自感和互感}
+为什么通常只有电感会区分\uwave{自感}（Self Inductance）和\uwave{互感}（Mutual Inductance），而电容则通常不会有自容和互容之类的提法？这其实是由电容和电感的定义形式所决定的。
+
+孤立导体的电容其实就是“自容”
+\begin{Equation}
+    C=\frac{q}{\varphi}
+\end{Equation}
+孤立回路的电感其实就是“自感”
+\begin{Equation}
+    L=\frac{\Psi}{I}
+\end{Equation}
+两个导体构成的系统的电容其实就是“互容”
+\begin{Equation}
+    C=\frac{q}{\varphi_1-\varphi_2}
+\end{Equation}
+两个回路构成的系统的电感其实就是“互感”，但且慢，我们怎么定义两个回路间的电感？设有$C_1,C_2$两个回路，记$\Psi_{12}$为$C_1$在$C_2$上产生的磁链，记$\Psi_{21}$为$C_2$在$C_1$上产生的磁链
+\begin{Equation}
+    M_{12}=\frac{\Psi_{12}}{I_2}\qquad
+    M_{21}=\frac{\Psi_{21}}{I_1}
+\end{Equation}
+
+这里$M_{12}$和$M_{21}$分别称为“$C_1$对$C_2$的互感”和“$C_2$对$C_1$的互感”，由此可见，\empx{互感衡量的是自身回路的电流能在对方的回路上产生的磁链大小}。这就引出了为何只有电感需要区分自感和互感：就电容而言，从孤立导体到双导体系统，自容是过渡为互容，在该过程中，电势变为了电势差。而有所不同的是，就电感而言，从孤立回路到双回路系统，自感的概念仍然是存在的，互感是与自感同时存在的，因此需要区分两者。此外，互容的值只有一个，互感的值则有两个，定义上看两者未必是相等的。不过幸运的是，两个互感$M_{12},M_{21}$其实是相等的。
+
+\begin{BoxFormula}[纽曼公式]
+    两个回路$C_1,C_2$间的互感值相等，且均等于
+    \begin{Equation}
+        M=\frac{\mu}{4\pi}\Ilot[C_1]\Ilot[C_2]\frac{\dd{\vb*{l}_1}\cdot\dd{\vb*{l}_2}}{\abs{\vb*{r}_1-\vb*{r}_2}}
+    \end{Equation}
+    该公式称为\uwave{纽曼公式}（Neumann Formula）。
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{fml:磁矢势}，由$C_1$在$C_2$上任意一点$\vb*{r}_2$产生的磁矢势
+    \begin{Equation}&[1]
+        \vb*{A}(\vb*{r}_2)=\frac{\mu}{4\pi}\Ilot[C_1]\frac{I_1\dd{\vb*{l}_1}}{\abs{\vb*{r}_2-\vb*{r}_1}}
+    \end{Equation}
+    根据\fancyref{fml:磁矢势}，由$C_2$在$C_1$上任意一点$\vb*{r}_1$产生的磁矢势
+    \begin{Equation}&[2]
+        \vb*{A}(\vb*{r}_1)=\frac{\mu}{4\pi}\Ilot[C_2]\frac{I_2\dd{\vb*{l}_2}}{\abs{\vb*{r}_1-\vb*{r}_2}}
+    \end{Equation}
+    由$C_1$在回路$C_2$上产生的磁链为，应用\fancyref{thm:旋度定理}和\fancyref{def:磁矢势}
+    \begin{Equation}&[3]
+        \Psi_{12}=\Isot[S_2]\vb*{B}_1\cdot\dd{\vb*{S}_2}=\Ilot[C_2]\curl\vb*{B}_1\cdot\dd{\vb*{l}_2}=\Ilot[C_2]\vb*{A}_1\cdot\dd{\vb*{l}_2}
+    \end{Equation}
+    由$C_2$在回路$C_1$上产生的磁链为，应用\fancyref{thm:旋度定理}和\fancyref{def:磁矢势}
+    \begin{Equation}&[4]
+        \Psi_{21}=\Isot[S_1]\vb*{B}_2\cdot\dd{\vb*{S}_1}=\Ilot[C_1]\curl\vb*{B}_2\cdot\dd{\vb*{l}_1}=\Ilot[C_1]\vb*{A}_2\cdot\dd{\vb*{l}_1}
+    \end{Equation}
+    在\xrefpeq{3}中代入\xrefpeq{1}
+    \begin{Equation}&[5]
+        \Psi_{12}=\frac{\mu}{4\pi}\Ilot[C_2]\Ilot[C_1]\frac{I_1\dd{\vb*{l}_1}\cdot\dd{\vb*{l}_2}}{\abs{\vb*{r}_2-\vb*{r}_1}}
+    \end{Equation}
+    在\xrefpeq{4}中代入\xrefpeq{2}
+    \begin{Equation}&[6]
+        \Psi_{21}=\frac{\mu}{4\pi}\Ilot[C_1]\Ilot[C_2]\frac{I_2\dd{\vb*{l}_2}\cdot\dd{\vb*{l}_1}}{\abs{\vb*{r}_1-\vb*{r}_2}}
+    \end{Equation}
+    因此$M_{12}$为
+    \begin{Equation}&[7]
+        M_{12}=\frac{\Psi_{12}}{I_1}=\frac{\mu}{4\pi}\Ilot[C_2]\Ilot[C_1]\frac{\dd{\vb*{l}_1}\cdot\dd{\vb*{l}_2}}{\abs{\vb*{r}_2-\vb*{r}_1}}
+    \end{Equation}
+    因此$M_{21}$为
+    \begin{Equation}&[8]
+        M_{21}=\frac{\Psi_{21}}{I_2}=\frac{\mu}{4\pi}\Ilot[C_1]\Ilot[C_2]\frac{\dd{\vb*{l}_2}\cdot\dd{\vb*{l}_1}}{\abs{\vb*{r}_1-\vb*{r}_2}}
+    \end{Equation}
+    注意到\xrefpeq{7}和\xrefpeq{8}除了顺序略有不同，是相等的，故$M=M_{12}=M_{21}$。
+\end{Proof}

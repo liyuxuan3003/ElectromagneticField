@@ -122,7 +122,7 @@
 \begin{BoxFormula}[磁矢势]
     磁矢势$\vb*{A}(\vb*{r})$符合以下规律
     \begin{Equation}
-        \vb*{A}(\vb*{r})=\frac{\mu}{4\pi}\Itnt[V]\frac{\vb*{J}}{R}\dd{V'}
+        \vb*{A}(\vb*{r})=\frac{\mu}{4\pi}\Itnt[V]\frac{\vb*{J(\vb*{r}')}}{R}\dd{V'}
     \end{Equation}
 \end{BoxFormula}
 
@@ -153,7 +153,7 @@
     \end{Gather}
     而将上面三个式子叠加在一起，即得
     \begin{Equation}*
-        \vb*{A}(\vb*{r})=\frac{\mu}{4\pi}\Itnt[V]\frac{\vb*{J}}{R}\dd{V'}\qedhere
+        \vb*{A}(\vb*{r})=\frac{\mu}{4\pi}\Itnt[V]\frac{\vb*{J}(\vb*{r}')}{R}\dd{V'}\qedhere
     \end{Equation}
 \end{Proof}
 
@@ -172,7 +172,5 @@
     \begin{Equation}
         \vb*{H}(\vb*{r})=-\grad\psi_\text{m}
     \end{Equation}
-    这就是说，磁标势的负梯度是磁场强度。
-
-    该定义仅成立于$\vb*{J}=\vb*{0}$的空间区域，对于$\vb*{J}\neq\vb*{0}$的空间区域不适用。
+    这就是说，磁标势的负梯度是磁场强度。该定义仅成立于$\vb*{J}=\vb*{0}$的空间区域。
 \end{BoxDefinition}
