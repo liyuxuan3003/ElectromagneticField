@@ -1,0 +1,59 @@
+\section{电磁场的波动方程}
+电磁场总共有$\vb*{H},\vb*{E},\vb*{B},\vb*{D}$四个矢量，两个有关电场，两个有关磁场，但在线性各向同性的介质中，运用$\vb*{D}=\varepsilon\vb*{E}$和$\vb*{B}=\mu\vb*{H}$的本构关系，可以只保留一个电场矢量和一个磁场矢量。通常来说，讨论电磁场的波动方程时，我们会选择以电场强度$\vb*{E}$和磁场强度$\vb*{H}$作为自变量。
+
+\begin{BoxEquation}[电磁场的波动方程]
+    电磁场中，矢量$\vb*{E},\vb*{H}$满足以下波动方程
+    \begin{Gather}[10pt]
+        \laplacian\vb*{E}-\mu\varepsilon\pdv[2]{\vb*{E}}{t}=\mu\pdv{\vb*{J}}{t}+\varepsilon^{-1}\grad\rho\xlabelpeq{A}\\
+        \laplacian\vb*{H}-\mu\varepsilon\pdv[2]{\vb*{H}}{t}=-\curl\vb*{J}\xlabelpeq{B}
+    \end{Gather}
+\end{BoxEquation}
+\begin{Proof}
+    根据\fancyref{eqt:麦克斯韦方程组}，应用本构关系
+    \begin{Gather}[8pt]
+        \curl\vb*{H}=\vb*{J}+\varepsilon\pdv{\vb*{E}}{t}\xlabelpeq{1}\\
+        \curl\vb*{E}=-\mu\pdv{\vb*{H}}{t}\xlabelpeq{2}\\
+        \div\vb*{H}=0\xlabelpeq{3}\\
+        \div\vb*{E}=\frac{\rho}{\varepsilon}\xlabelpeq{4}
+    \end{Gather}
+    现在$\vb*{H},\vb*{E}$是相互耦合的，我们的目标就是将两者分离为两个独立的方程。
+
+    \paragraph{电场强度部分}
+    在\xrefpeq{2}两端取旋度，得到
+    \begin{Equation}&[5]
+        \curl(\curl\vb*{E})=-\mu\pdv{t}\qty(\curl\vb*{H})
+    \end{Equation}
+    在\xrefpeq{5}中就$\curl\vb*{H}$代入\xrefpeq{1}
+    \begin{Equation}&[6]
+        \curl(\curl\vb*{E})=-\mu\pdv{t}\qty(\vb*{J}+\varepsilon\pdv{\vb*{E}}{t})=-\mu\pdv{\vb*{J}}{t}-\mu\varepsilon\pdv[2]{\vb*{E}}{t}
+    \end{Equation}
+    而另外一方面，根据\fancyref{fml:矢量拉普拉斯的转化}和\xrefpeq{4}
+    \begin{Equation}&[7]
+        \curl(\curl\vb*{E})=\grad(\div\vb*{E})-\laplacian\vb*{E}=\varepsilon^{-1}\grad\rho-\laplacian\vb*{E}
+    \end{Equation}
+    现在联立\xrefpeq{6}和\xrefpeq{7}
+    \begin{Equation}&[8]
+        \laplacian\vb*{E}-\mu\varepsilon\pdv[2]{\vb*{E}}{t}=\mu\pdv{\vb*{J}}{t}+\varepsilon^{-1}\grad\rho
+    \end{Equation}
+    这就得到了\xrefpeq{A}。
+
+    \paragraph{磁场强度部分}
+    在\xrefpeq{1}两端取旋度，得到
+    \begin{Equation}&[9]
+        \curl(\curl\vb*{H})=\curl\vb*{J}+\varepsilon\pdv{t}(\curl\vb*{E})
+    \end{Equation}
+    在\xrefpeq{9}中就$\curl\vb*{E}$代入\xrefpeq{2}
+    \begin{Equation}&[10]
+        \curl(\curl\vb*{H})=\curl\vb*{J}-\mu\varepsilon\pdv[2]{\vb*{H}}{t}
+    \end{Equation}
+    而另外一方面，根据\fancyref{fml:矢量拉普拉斯的转化}和\xrefpeq{3}
+    \begin{Equation}&[11]
+        \curl(\curl\vb*{H})=\grad(\div\vb*{H})-\laplacian\vb*{H}=-\laplacian\vb*{H}
+    \end{Equation}
+    现在联立\xrefpeq{10}和\xrefpeq{11}
+    \begin{Equation}
+        \laplacian\vb*{H}-\mu\varepsilon\pdv[2]{\vb*{H}}{t}=-\curl\vb*{J}
+    \end{Equation}
+    这就得到了\xrefpeq{B}。
+\end{Proof}
+但是，矢量波动方程的求解是极为困难的，我们需要寻求更简单的方法。
