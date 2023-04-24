@@ -81,16 +81,10 @@
     \begin{Equation}&[17]
         W_\text{m}=\frac{1}{2}\Itnt[V]\vb*{A}\cdot(\curl\vb*{H})\dd{V}
     \end{Equation}
-    根据乘积法则
-    \begin{Equation}&[18]
-        \div(\vb*{A}\times\vb*{H})=
-        (\div\vb*{A})\times\vb*{H}+
-        \vb*{A}\cdot(\curl\vb*{H})
-    \end{Equation}
-    就\xrefpeq{18}右端第一项，运用\fancyref{fml:标量三重积的轮换对称性}
+    这里需要运用矢量叉积的散度公式
     \begin{Equation}&[19]
         \div(\vb*{A}\times\vb*{H})=
-        \vb*{H}\cdot(\curl\vb*{A})+
+        \vb*{H}\cdot(\curl\vb*{A})-
         \vb*{A}\cdot(\curl\vb*{H})
     \end{Equation}
     将\xrefpeq{19}代入\xrefpeq{17}
