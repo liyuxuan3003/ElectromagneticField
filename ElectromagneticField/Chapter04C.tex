@@ -1,0 +1,131 @@
+\section{电磁能量守恒定律}
+
+\subsection{电磁场的能量}
+电场和磁场都具有能量，根据\fancyref{fml:静电场的能量}和\fancyref{fml:静磁场的能量}
+\begin{Equation}
+    w_\text{e}=\frac{1}{2}\vb*{E}\cdot\vb*{D}\qquad
+    w_\text{m}=\frac{1}{2}\vb*{H}\cdot\vb*{B}
+\end{Equation}
+在时变电磁场中，电磁场的能量密度$w$即电场和磁场的能量密度$w_\text{e},w_\text{m}$之和
+\begin{BoxFormula}[电磁场的能量]
+    电磁场的能量密度满足
+    \begin{Equation}
+        w=w_\text{e}+w_\text{m}=\frac{1}{2}\vb*{E}\cdot\vb*{D}+\frac{1}{2}\vb*{H}\cdot\vb*{B}
+    \end{Equation}
+\end{BoxFormula}
+
+在时变电磁场中，场随时间变化，空间各点的电磁能量密度也要随时间改变，从而引起电磁能量的流动。为了描述电磁能量的流动的状况，引入电磁\uwave{能流密度}（Energy Flux Density）的概率，其方向表示电磁能量的流动方向，其大小表示单位时间内穿过与能量方向相垂直的单位面积的电磁能量\footnote{因此，确切的说，能流密度应该称为功率流密度，介于其通量是功率。}。电磁能流密度矢量又称为\uwave{坡印廷矢量}（Poynting Vector），常用$\vb*{S}$表示。
+
+\subsection{坡印廷定理}
+电磁能量与其他能量一样，也服从能量守恒定律，这具体表现为坡印廷定理。
+
+电荷受到电磁场的作用力会产生运动，因此电磁场会对电荷做功，这时电磁能量就会转化为其他形式的能量，设处于电磁场中的电荷$q$以速度$\vb*{v}$运动，设电场和磁场分别为$\vb*{E}$和$\vb*{B}$，根据\fancyref{law:电场的基本特性}和\fancyref{law:磁场的基本特征}，电荷受到的电磁力为
+\begin{Equation}
+    \vb*{F}=q\vb*{E}+q\vb*{v}\times\vb*{B}
+\end{Equation}
+正如我们熟悉的那样，磁场力$q\vb*{v}\times\vb*{B}$垂直于运动方向$\vb*{v}$，故，磁场力只会改变电荷的运动方向，而不对其做功。所以，电磁力中其实只有电场力会对电荷做功，做功的功率为
+\begin{Equation}
+    P=\vb*{F}\cdot\vb*{v}=(q\vb*{E})\cdot\vb*{v}+(q\vb*{v}\times\vb*{B})\cdot\vb*{v}=q\vb*{E}\cdot\vb*{v}
+\end{Equation}\goodbreak
+而对于连续分布的电荷，电磁场对单位体积中的电荷做功的功率为
+\begin{Equation}
+    p=\rho\vb*{v}\cdot\vb*{E}
+\end{Equation}
+根据\fancyref{fml:电流密度与电荷密度}
+\begin{Equation}
+    p=\vb*{J}\cdot\vb*{E}
+\end{Equation}
+这样，电磁场对于体积$V$中所有电荷做功的功率为
+\begin{Equation}
+    P=\Itnt[V]p\dd{V}=\Itnt[V]\vb*{J}\cdot\vb*{E}\dd{V}
+\end{Equation}
+现在让我们来思考一个问题，假如在区域$V$中的电磁场的能量随时间减小，这些能量将会有两个可能的去处，要么是流出了区域$V$，要么是对区域$V$中的电荷做功，即单位时间中
+\begin{center}
+    \small 
+    减少的电磁能量$=$损耗的电磁能量$+$流出的电磁能量
+\end{center}
+\begin{enumerate}
+    \item 单位时间减少的电磁能量，即区域$V$中电磁能量对时间的负导数。
+    \item 单位时间损耗的电磁能量，即区域$V$中电磁场对电荷做功的功率。
+    \item 单位时间流出的电磁能量，即坡印廷矢量在区域$V$的边界$S$上的的通量。
+\end{enumerate}
+
+若用数学式表达，这就是
+\begin{BoxTheorem}[坡印廷定理]
+    \uwave{坡印廷定理}（Poynting's Theorem）描述了电磁能量的守恒性质
+    \begin{Equation}
+        -\dv{t}\Itnt[V]w\dd{V}=\Itnt[V]\vb*{J}\cdot\vb*{E}\dd{V}+\Isot[S]\vb*{S}\cdot\dd{\vb*{S}}
+    \end{Equation}
+    亦可以写作微分形式
+    \begin{Equation}
+        -\pdv{w}{t}=\vb*{J}\cdot\vb*{E}+\div\vb*{S}
+    \end{Equation}
+\end{BoxTheorem}
+
+\subsection{坡印廷矢量}
+\fancyref{thm:坡印廷定理}正确反映了电磁场中能量守恒的特性，但尚有一个问题，即表征电磁能量流动状况的坡印廷矢量$\vb*{S}$与电磁矢量间的关系是什么？实际上，坡印廷定理可以完全由\fancyref{eqt:麦克斯韦方程组}导出，通过这种方式，可以确定坡印廷矢量$\vb*{S}$的具体表达。
+
+\begin{BoxFormula}[坡印廷矢量]
+    坡印廷矢量满足
+    \begin{Equation}
+        \vb*{S}=\vb*{E}\times\vb*{H}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{eqt:麦克斯韦方程组}
+    \begin{Equation}&[1]
+        \curl\vb*{H}=\vb*{J}+\pdv{\vb*{D}}{t}\qquad
+        \curl\vb*{E}=-\pdv{\vb*{B}}{t}
+    \end{Equation}
+    将\xrefpeq{1}中的两式，分别用$\vb*{E}$和$\vb*{H}$点乘
+    \begin{Gather}[10pt]
+        \vb*{E}\cdot(\curl\vb*{H})=\vb*{E}\cdot\vb*{J}+\vb*{E}\cdot\pdv{\vb*{D}}{t}\xlabelpeq{2}\\
+        \vb*{H}\cdot(\curl\vb*{E})=-\vb*{H}\cdot\pdv{\vb*{B}}{t}\xlabelpeq{3}
+    \end{Gather}
+    将\xrefpeq{2}与\xrefpeq{3}相减
+    \begin{Equation}&[4]
+        \vb*{E}\cdot(\curl\vb*{H})-\vb*{H}\cdot(\curl\vb*{E})=\vb*{E}\cdot\vb*{J}+\vb*{E}\cdot\pdv{\vb*{D}}{t}+\vb*{H}\cdot\pdv{\vb*{B}}{t}
+    \end{Equation}
+    对于\xrefpeq{4}右端第二项
+    \begin{Equation}&[5]
+        \vb*{E}\cdot\pdv{\vb*{D}}{t}=\vb*{E}\cdot\pdv{(\varepsilon\vb*{E})}{t}=\frac{1}{2}\pdv{(\varepsilon\vb*{E}\cdot\vb*{E})}{t}=\pdv{t}\qty(\frac{1}{2}\vb*{E}\cdot\vb*{D})
+    \end{Equation}
+    对于\xrefpeq{4}右端第三项
+    \begin{Equation}&[6]
+        \vb*{H}\cdot\pdv{\vb*{B}}{t}=\vb*{H}\cdot\pdv{(\mu\vb*{H})}{t}=\frac{1}{2}\pdv{(\mu\vb*{H}\cdot\vb*{H})}{t}=\pdv{t}\qty(\frac{1}{2}\vb*{H}\cdot\vb*{B})
+    \end{Equation}
+    将\xrefpeq{5}和\xrefpeq{6}代入\xrefpeq{4}
+    \begin{Equation}&[7]
+        \vb*{E}\cdot(\curl\vb*{H})-\vb*{H}\cdot(\curl\vb*{E})=\pdv{t}\qty(\frac{1}{2}\vb*{E}\cdot\vb*{D}+\frac{1}{2}\vb*{H}\cdot\vb*{B})+\vb*{E}\cdot\vb*{J}
+    \end{Equation}
+    这里需要运用矢量叉积的散度公式
+    \begin{Equation}&[8]
+        \div(\vb*{E}\times\vb*{H})=\vb*{H}\cdot(\curl\vb*{E})-\vb*{E}\cdot(\curl\vb*{H})
+    \end{Equation}
+    将\xrefpeq{8}代入\xrefpeq{7}
+    \begin{Equation}&[9]
+        -\div(\vb*{E}\times\vb*{H})=\pdv{t}\qty(\frac{1}{2}\vb*{E}\cdot\vb*{D}+\frac{1}{2}\vb*{H}\cdot\vb*{B})+\vb*{E}\cdot\vb*{J}
+    \end{Equation}
+    移项整理
+    \begin{Equation}&[10]
+        -\pdv{t}\qty(\frac{1}{2}\vb*{E}\cdot\vb*{D}+\frac{1}{2}\vb*{H}\cdot\vb*{B})=\vb*{J}\cdot\vb*{E}+\div(\vb*{E}\times\vb*{H})
+    \end{Equation}
+    在体积$V$上，对\xrefpeq{9}进行积分
+    \begin{Equation}&[11]
+        \qquad\qquad
+        -\dv{t}\Itnt[V]\qty(\frac{1}{2}\vb*{E}\cdot\vb*{D}+\frac{1}{2}\vb*{H}\cdot\vb*{B})=\Itnt[V]\vb*{E}\cdot\vb*{J}\dd{V}+\Itnt[V]\div(\vb*{E}\times\vb*{H})\dd{V}
+        \qquad\qquad
+    \end{Equation}
+    根据\fancyref{thm:散度定理}
+    \begin{Equation}&[12]
+        \qquad\qquad\qquad
+        -\dv{t}\Itnt[V]\qty(\frac{1}{2}\vb*{E}\cdot\vb*{D}+\frac{1}{2}\vb*{H}\cdot\vb*{B})=\Itnt[V]\vb*{E}\cdot\vb*{J}\dd{V}+\Isot[S]\vb*{E}\times\vb*{H}\dd{V}
+        \qquad\qquad\qquad
+    \end{Equation}\goodbreak
+    将\xrefpeq{12}与\fancyref{thm:坡印廷定理}对比即得
+    \begin{Equation}*
+        \vb*{S}=\vb*{E}\times\vb*{H}\qedhere
+    \end{Equation}
+\end{Proof}
+由此可见，坡印廷矢量$\vb*{S}$完全由$\vb*{E},\vb*{H}$确定，并垂直于$\vb*{E},\vb*{H}$构成的平面。
