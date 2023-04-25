@@ -1,0 +1,91 @@
+\section{时变电磁场的唯一性定理}
+在分析有界区域的时变电磁场问题时，常常需要在给定的初始条件和边界条件下，求解麦克斯韦方程组。那么，在什么定解条件下，有界区域中的麦克斯韦方程组的解才是唯一的呢？
+\begin{BoxTheorem}[时变电磁场的唯一性定理]
+    设$V$是以闭合曲面$S$为边界的有界区域，如果
+    \begin{itemize}
+        \item 给定$t=0$时刻的电场强度$\vb*{E}$和磁场强度$\vb*{H}$的初始值。
+        \item 给定$t\geq 0$时边界曲面上电场强度$\vb*{E}$或磁场强度$\vb*{H}$的切向分量。
+    \end{itemize}
+    那么，区域$V$内的电磁场可以由麦克斯韦方程组唯一确定。
+\end{BoxTheorem}
+
+\begin{Proof}
+    使用反证法，假设区域$V$内的解不是唯一的，那么至少存在两组解$\vb*{E}_1,\vb*{H}_1$和$\vb*{E}_2,\vb*{H}_2$在区域$V$内满足麦克斯韦方程组，且$\vb*{E}_1,\vb*{H}_1$和$\vb*{E}_2,\vb*{H}_2$还具有完全相同的初值条件和边值条件。
+
+    $\vb*{E}_1,\vb*{H}_1$满足\fancyref{eqt:麦克斯韦方程组}
+    \begin{Gather}[10pt]
+        \curl\vb*{H}_1=\sigma\vb*{E}_1+\varepsilon\pdv{\vb*{E}_1}{t}\\
+        \curl\vb*{E}_1=-\mu\pdv{\vb*{H}_1}{t}\\
+        \div(\mu\vb*{H}_1)=0\\
+        \div(\varepsilon\vb*{E}_1)=\rho
+    \end{Gather}
+    $\vb*{E}_2,\vb*{H}_2$满足\fancyref{eqt:麦克斯韦方程组}
+    \begin{Gather}[10pt]
+        \curl\vb*{H}_2=\sigma\vb*{E}_2+\varepsilon\pdv{\vb*{E}_2}{t}\\
+        \curl\vb*{E}_2=-\mu\pdv{\vb*{H}_2}{t}\\
+        \div(\mu\vb*{H}_2)=0\\
+        \div(\varepsilon\vb*{E}_2)=\rho
+    \end{Gather}
+    我们令
+    \begin{Equation}&[1]
+        \vb*{E}_0=\vb*{E}_1-\vb*{E}_2\qquad
+        \vb*{H}_0=\vb*{H}_1-\vb*{H}_2
+    \end{Equation}
+    而$\vb*{E}_0,\vb*{H}_0$则满足
+    \begin{Gather}[10pt]
+        \curl\vb*{H}_0=\sigma\vb*{E}_0+\varepsilon\pdv{\vb*{E}_0}{t}\\
+        \curl\vb*{E}_0=-\mu\pdv{\vb*{H}_0}{t}\\
+        \div(\mu\vb*{H}_0)=0\\
+        \div(\varepsilon\vb*{E}_0)=\rho
+    \end{Gather}
+    由于$\vb*{E}_1,\vb*{H}_1$和$\vb*{E}_2,\vb*{H}_2$具有相同的初值条件和边值条件
+    \begin{itemize}
+        \item 在$t=0$时，在区域$V$内，$\vb*{E}_0$和$\vb*{H}_0$的初始值为令。
+        \item 在$t\geq 0$时，在边界$S$上，$\vb*{E}_0$和$\vb*{H}_0$至少有一个的切向分量为零，这是因为定理条件给定了边界上$\vb*{E}_0$或$\vb*{H}_0$在边界上的切向分量，而$\vb*{E}_1,\vb*{H}_1$和$\vb*{E}_2,\vb*{H}_2$的边界条件相同。
+    \end{itemize}
+    根据\fancyref{thm:坡印廷定理}
+    \begin{Equation}&[2]
+        -\dv{t}\Itnt[V]w\dd{V}=\Itnt[V]\vb*{J}\cdot\vb*{E}\dd{V}+\Isot[S]\vb*{S}\cdot\dd{\vb*{S}}
+    \end{Equation}
+    代入\fancyref{fml:电磁场的能量}和\fancyref{fml:坡印廷矢量}，并运用本构关系
+    \begin{Equation}&[3]
+        \qquad\quad
+        -\dv{t}\Itnt[V]\qty(\frac{1}{2}\mu\abs{\vb*{H}_0}^2+\frac{1}{2}\varepsilon\abs{\vb*{E}_0}^2)\dd{V}=\Itnt[V]\sigma\abs{\vb*{E}_0}^2\dd{V}+\Isot[S](\vb*{E}_0\times\vb*{H}_0)\cdot\vb*{e}_\text{n}\dd{S}
+        \qquad\quad
+    \end{Equation}
+    根据$\vb*{E}_0$和$\vb*{H}_0$的边界条件，两者中至少有一个的切向分量为零，即
+    \begin{Equation}&[4]
+        \vb*{e}_\text{n}\times\vb*{E}_0=\vb*{0}
+        \quad\text{or}\quad
+        \vb*{e}_\text{n}\times\vb*{H}_0=\vb*{0}
+    \end{Equation}
+    而同时，根据\fancyref{fml:标量三重积的轮换表示}
+    \begin{Equation}&[5]
+        \qty(\vb*{E}_0\times\vb*{H}_0)\cdot\vb*{e}_\text{n}|_S=
+        (\vb*{e}_\text{n}\times\vb*{E}_0)\cdot\vb*{H}_0|_S=
+        (\vb*{H}_0\times\vb*{e}_\text{n})\cdot\vb*{E}_0|_S  
+    \end{Equation}
+    将\xrefpeq{5}代入\xrefpeq{4}中
+    \begin{Equation}&[6]
+        \qty(\vb*{E}_0\times\vb*{H}_0)\cdot\vb*{e}_\text{n}|_S=0
+    \end{Equation}
+    将\xrefpeq{6}代入\xrefpeq{3}，即可简化为
+    \begin{Equation}&[7]
+        -\dv{t}\Itnt[V]\qty(\frac{1}{2}\mu\abs{\vb*{H}_0}^2+\frac{1}{2}\varepsilon\abs{\vb*{E}_0}^2)\dd{V}=\Itnt[V]\sigma\abs{\vb*{E}_0}^2\dd{V}
+    \end{Equation}
+    将\xrefpeq{7}两端在$[0,t]$上对$t$积分，由于$\vb*{E}_0,\vb*{H}_0$的初始值为零
+    \begin{Equation}&[8]
+        -\Itnt[V]\qty(\frac{1}{2}\mu\abs{\vb*{H}_0}^2+\frac{1}{2}\varepsilon\abs{\vb*{E}_0}^2)\dd{V}=\Int[0][t]\qty(\Itnt[V]\sigma\abs{\vb*{E}_0}^2\dd{V})\dd{t}
+    \end{Equation}
+    但注意到\xrefpeq{8}中的两个三重积分项是非负的，因此如果\xrefpeq{8}要成立，就应有
+    \begin{Equation}&[9]
+        \vb*{E}_0=\vb*{0}\qquad
+        \vb*{H}_0=\vb*{0}
+    \end{Equation}
+    即
+    \begin{Equation}
+        \vb*{E}_1=\vb*{E}_2\qquad
+        \vb*{H}_1=\vb*{H}_2
+    \end{Equation}
+    因此并不存在多个解，这就证明了唯一性定理。
+\end{Proof}
