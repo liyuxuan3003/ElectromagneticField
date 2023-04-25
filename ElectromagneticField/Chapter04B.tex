@@ -1,0 +1,137 @@
+\section{电磁场的位函数}
+在静态电磁场中，我们曾引入电势（电位）和磁矢势（磁矢位）分别描述电场和磁场。而在时变电磁场中我们仍然可以沿用这种想法，引入电磁场的标量位和矢量位，以简化问题的分析。
+
+\subsection{电磁场的矢量位与标量位}
+在时变电磁场中，磁场仍然是无散的，因此，电磁场的矢量位的定义与磁矢势完全相同。
+\begin{BoxDefinition}[电磁场的矢量位]
+    定义电磁场的矢量位为
+    \begin{Equation}
+        \vb*{B}=\curl\vb*{A}
+    \end{Equation}
+\end{BoxDefinition}
+在时变电磁场中，主要问题出在，电场不再是无旋的，即
+\begin{Equation}
+    \curl\vb*{E}=-\pdv{\vb*{B}}{t}
+\end{Equation}
+因此，我们就不再能像\fancyref{def:电势}那样定义标量位。
+
+而为了解决这个问题，我们考虑在上式中代入\fancyref{def:电磁场的矢量位}
+\begin{Equation}
+    \curl\vb*{E}=-\pdv{t}\qty(\curl\vb*{A})
+\end{Equation}
+即
+\begin{Equation}
+    \curl(\vb*{E}+\pdv{\vb*{A}}{t})=\vb*{0}
+\end{Equation}
+由此可见，在时变电磁场中，尽管$\vb*{E}$不再无旋，但$\vb*{E}+\pdv*{\vb*{A}}{t}$是无旋的，以此定义标量位。
+\begin{BoxDefinition}[电磁场的标量位]
+    定义电磁场的标量位为
+    \begin{Equation}
+        \vb*{E}+\pdv{\vb*{A}}{t}=-\grad\varphi
+    \end{Equation}
+\end{BoxDefinition}
+由此，电场强度$\vb*{E}$和磁感强度$\vb*{B}$就可以用位函数$\vb*{A},\varphi$表示了
+\begin{Equation}
+    \vb*{B}=\curl\vb*{A}\qquad
+    \vb*{E}=-\pdv{\vb*{A}}{t}-\grad\varphi
+\end{Equation}
+现在的问题在于，由\fancyref{def:电磁场的矢量位}和\fancyref{def:电磁场的标量位}定义的矢量位$\vb*{A}$和标量位$\varphi$并不是唯一的，还存在另外的$\vb*{A}'$和$\vb*{\varphi}'$，使得
+\begin{Equation}
+    \vb*{B}=\curl\vb*{A}'\qquad
+    \vb*{E}=-\pdv{\vb*{A}'}{t}-\grad\varphi'
+\end{Equation}
+实际上，设$\psi$为任意标量函数，令
+\begin{Equation}
+    \vb*{A}'=\vb*{A}+\grad\psi\qquad
+    \varphi'=\varphi-\pdv{\psi}{t}
+\end{Equation}
+对于磁场部分，应用\fancyref{ppt:标量场的梯度无旋}
+\begin{Equation}
+    \vb*{B}'=\curl(A+\grad\psi)=\curl\vb*{A}+\curl(\grad\psi)=\curl\vb*{A}=\vb*{B}
+\end{Equation}
+对于电场部分
+\begin{Equation}
+    \vb*{E}'=-\pdv{\vb*{A}'}{t}-\grad\varphi'=-\pdv{t}\qty(\vb*{A}+\grad\psi)-\grad(\varphi-\pdv{\psi}{t})
+\end{Equation}
+稍作整理
+\begin{Equation}
+    \vb*{E}'=-\pdv{\vb*{A}}{t}-\grad\pdv{\psi}{t}-\pdv\varphi+\grad\pdv{\psi}{t}
+\end{Equation}
+即
+\begin{Equation}
+    \vb*{E}'=-\pdv{\vb*{A}}{t}-\pdv\varphi=\vb*{E}
+\end{Equation}
+由于$\psi$为任意标量函数，这会使$\vb*{A},\vb*{\psi}$有无穷多组，为此，我们需要额外规定矢量位$\vb*{A}$的散度。不同于静磁场的\fancyref{def:库伦规范}，在电磁场中，使用的是以下的洛伦兹规范
+\begin{BoxDefinition}[洛伦兹规范]
+    在电磁场中，常令矢量位遵循\uwave{洛伦兹规范}（Lorenz Gauge）
+    \begin{Equation}
+        \div\vb*{A}=-\mu\varepsilon\pdv{\varphi}{t}
+    \end{Equation}
+\end{BoxDefinition}
+
+\subsection{达朗贝尔方程}
+达朗贝尔方程，就是用位函数表示的电磁场的波动方程。
+
+\begin{BoxEquation}[达朗贝尔方程]
+    电磁场中，达朗贝尔方程描述了位函数满足的波动方程
+    \begin{Gather}[10pt]
+        \laplacian\vb*{A}-\mu\varepsilon\pdv[2]{\vb*{A}}{t}=-\mu\vb*{J}\xlabelpeq{A}\\ 
+        \laplacian\varphi-\mu\varepsilon\pdv[2]{\varphi}{t}=-\varepsilon^{-1}\rho\xlabelpeq{B}
+    \end{Gather}
+\end{BoxEquation}
+\begin{Proof}
+    \paragraph{矢量位部分}
+    根据\fancyref{eqt:麦克斯韦方程组}的\xrefpeq[麦克斯韦方程组]{磁场旋度}
+    \begin{Equation}&[1]
+        \curl\vb*{H}=\vb*{J}+\varepsilon\pdv{\vb*{E}}{t}
+    \end{Equation}
+    运用本构关系$B=\mu\vb*{H}$代换
+    \begin{Equation}&[2]
+        \curl\vb*{B}=\mu\vb*{J}+\mu\varepsilon\pdv{\vb*{E}}{t}
+    \end{Equation}
+    根据\fancyref{def:电磁场的矢量位}和\fancyref{def:电磁场的标量位}
+    \begin{Equation}&[3]
+        \curl(\curl\vb*{A})=\mu\vb*{J}+\mu\varepsilon\pdv{t}\qty(-\pdv{\vb*{A}}{t}-\grad\varphi)
+    \end{Equation}
+    即
+    \begin{Equation}&[4]
+        \curl(\curl\vb*{A})=\mu\vb*{J}-\mu\varepsilon\pdv[2]{\vb*{A}}{t}-\mu\varepsilon\grad\pdv{\varphi}{t}
+    \end{Equation}
+    应用\fancyref{fml:矢量拉普拉斯的转化}
+    \begin{Equation}
+        \grad(\div\vb*{A})-\laplacian\vb*{A}=\mu\vb*{J}-\mu\varepsilon\pdv[2]{\vb*{A}}{t}-\mu\varepsilon\grad\pdv{\varphi}{t}
+    \end{Equation}
+    移项
+    \begin{Equation}
+        \laplacian\vb*{A}-\mu\varepsilon\pdv[2]{\vb*{A}}{t}-\grad(\div\vb*{A})-\mu\varepsilon\grad\pdv{\varphi}{t}=-\mu\vb*{J}
+    \end{Equation}
+    整理，合并梯度项
+    \begin{Equation}
+        \laplacian\vb*{A}-\mu\varepsilon\pdv[2]{\vb*{A}}{t}-\grad\qty[\div\vb*{A}+\mu\varepsilon\pdv{\varphi}{t}]=-\mu\vb*{J}
+    \end{Equation}
+    根据\fancyref{def:洛伦兹规范}，即$\div\vb*{A}=-\mu\varepsilon\pdv*{\varphi}{t}$
+    \begin{Equation}
+        \laplacian\vb*{A}-\mu\varepsilon\pdv[2]{\vb*{A}}{t}=-\mu\vb*{J}
+    \end{Equation}
+    这就得到了\xrefpeq{A}。
+
+    \paragraph{标量位部分}
+    根据\fancyref{eqt:麦克斯韦方程组}的\xrefpeq{电场散度}
+    \begin{Equation}
+        \div\vb*{E}=\frac{\rho}{\varepsilon}
+    \end{Equation}
+    根据\fancyref{def:电磁场的标量位}
+    \begin{Equation}
+        \div(-\pdv{\vb*{A}}{t}-\grad\varphi)=\frac{\rho}{\varepsilon}
+    \end{Equation}
+    稍作整理
+    \begin{Equation}
+        \laplacian\varphi+\pdv{t}(\div\vb*{A})=\varepsilon^{-1}\rho
+    \end{Equation}
+    根据\fancyref{def:洛伦兹规范}，即$\div\vb*{A}=-\mu\varepsilon\pdv*{\varphi}{t}$
+    \begin{Equation}
+        \laplacian\varphi-\mu\varepsilon\pdv[2]{\varphi}{t}=\varepsilon^{-1}\rho
+    \end{Equation}
+    这就得到了\xrefpeq{B}。
+\end{Proof}
+由此可以看出\fancyref{def:洛伦兹规范}的妙处，它显著简化了标量位和矢量位的波动方程。
