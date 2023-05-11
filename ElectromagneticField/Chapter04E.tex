@@ -1,0 +1,528 @@
+\section{时谐电磁场}
+在时变电磁场中，如果场源以一定的角频率随时间呈时谐（正弦或余弦）变化，则所产生的电磁场也以同样的角频率时谐变化，称为\uwave{时谐电磁场}（Time-Harmonic Electromagnetic Field）。
+
+在工程上，应用的最多的就是时谐电磁场，同时，由于任意的时变电磁场都可以通过傅里叶分析方法展开为不同频率的时谐场的叠加。因此，研究时谐电磁场具有重要的实际价值和理论意义。那么，时谐场应如何研究呢？正如我们在电路基础的交变电路中所熟悉的那样，时谐物理量可以转化为复数域中的相量表示。在本章，我们会将电磁矢量和电磁定律全面复数化。
+
+\subsection{时谐电磁场的复数表示}
+设时谐标量函数$u(\vb*{r},t)$，满足
+\begin{Equation}
+    u(\vb*{r},t)=u_\text{m}(\vb*{r})\cos[\omega(t)+\phi(\vb*{r})]
+\end{Equation}
+或记为
+\begin{Equation}
+    u(\vb*{r},t)=\Re[u_\text{m}(\vb*{r})\e^{\j\phi(\vb*{r})}\e^{j\omega t}]=\Re[\dot{u}(\vb*{r})\e^{\j\omega t}]
+\end{Equation}
+其中
+\begin{Equation}
+    u(\vb*{r},t)\leftrightarrow\dot{u}(\vb*{r})=u_\text{m}(\vb*{r})\e^{\j\phi(\vb*{r})}
+\end{Equation}
+称为$u(\vb*{r},t)$的\uwave{复振幅}（Complex Amplitude）或\uwave{相量}（Phasor）。
+
+以上定义我们在电路基础中已经很熟悉了。现在的问题是，这种定义怎么推广到一个时谐矢量？假如$\vb*{F}(\vb*{r},t)$是一个时谐矢量，那显然，其各个分量$F_x(\vb*{r},t),F_y(\vb*{r},t),F_z(\vb*{r},t)$应当是时谐标量，各分量可以具有不同的振幅$F_{x\text{m}},F_{y\text{m}},F_{z\text{m}}$和初相$\phi_x(\vb*{r}),\phi_y(\vb*{r}),\phi_z(\vb*{r})$，但是，各分量的角频率$\omega$应当是一致的。由此可见，\empx{时谐矢量的相量，应为其各分量的相量所组成的矢量}。\setpeq{复矢量}
+
+设时谐矢量函数$\vb*{F}(\vb*{r},t)$，其各分量满足
+\begin{Equation}&[1]
+    F_i(\vb*{r},t)=F_\text{i\text{m}}(\vb*{r})\cos[\omega t+\phi_i(\vb*{r})]\qquad i=x,y,z
+\end{Equation}
+或记为
+\begin{Equation}&[2]
+    F_i(\vb*{r},t)=\Re[F_{i\text{m}}(\vb*{r})\e^{\j\phi_i(\vb*{r})}\e^{\j\omega t}]\qquad i=x,y,z
+\end{Equation}
+由于$\vb*{F}(\vb*{r},t)$是其各分量$F_x,F_y,F_z$构成的矢量
+\begin{Equation}&[3]
+    \vb*{F}(\vb*{r},t)=\vb*{e}_xF_x(\vb*{r},t)+\vb*{e}_yF_y(\vb*{r},t)+\vb*{e}_zF_z(\vb*{r},t)    
+\end{Equation}
+将\xrefpeq{2}代入\xrefpeq{3}中，注意到$\e^{\j\omega t}$是公共项
+\begin{Equation}&[4]
+    \qquad\qquad
+    \vb*{F}(\vb*{r},t)=\Re\qty\Big[\qty\Big(
+        \vb*{e}_xF_{x\text{m}}(\vb*{r})\e^{\j\phi_x(\vb*{r})}+
+        \vb*{e}_yF_{y\text{m}}(\vb*{r})\e^{\j\phi_y(\vb*{r})}+
+        \vb*{e}_zF_{z\text{m}}(\vb*{r})\e^{\j\phi_z(\vb*{r})}
+    )\e^{\j\omega t}]
+    \qquad\qquad
+\end{Equation}
+将\xrefpeq{4}圆括号中的与时间无关的的部分记为$\vb*{\dot{F}}(\vb*{r})$
+\begin{Equation}
+    \vb*{F}(\vb*{r},t)=\Re[\vb*{\dot{F}}(\vb*{r})\e^{\j\omega t}]
+\end{Equation}
+这里$\vb*{\dot{F}}(\vb*{r})$就是矢量$\vb*{F}(\vb*{r},t)$对应的相量，由于相量$\vb*{\dot{F}}(\vb*{r})$是矢量，故也称为\uwave{复矢量}。
+
+\begin{BoxDefinition}[复矢量]
+    设$\vb*{F}(\vb*{r},t)$是一个时谐矢量，定义其复矢量$\vb*{\dot{F}}(\vb*{r})$为
+    \begin{Equation}
+        \vb*{\dot{F}}(\vb*{r})=
+        \vb*{e}_xF_{x\text{m}}(\vb*{r})\e^{\j\phi_x(\vb*{r})}+
+        \vb*{e}_yF_{y\text{m}}(\vb*{r})\e^{\j\phi_y(\vb*{r})}+
+        \vb*{e}_zF_{z\text{m}}(\vb*{r})\e^{\j\phi_z(\vb*{r})}
+    \end{Equation}
+\end{BoxDefinition}
+\begin{BoxFormula}[时谐矢量与复矢量]
+    时谐矢量和其复矢量间的关系是
+    \begin{Equation}
+        \vb*{F}(\vb*{r},t)=\Re[\vb*{\dot{F}}(\vb*{r})\e^{\j\omega t}]
+    \end{Equation}
+\end{BoxFormula}
+
+另外，正如我们在电路基础中熟悉的那样，时谐矢量的导数可以很容易的用复矢量表示。
+\begin{BoxFormula}[时谐矢量的导数]
+    时谐矢量的导数可以表示为
+    \begin{Equation}
+        \dv{F(\vb*{r},t)}{t}=\Re[\j\omega\vb*{\dot{F}}(\vb*{r})\e^{\j\omega t}]
+    \end{Equation}
+    % 换言之，若$\vb*{F}(\vb*{r},t)\leftrightarrow\vb*{\dot{F}}(\vb*{r})$，则
+    % \begin{Equation}
+    %     \dv{F(\vb*{r},t)}{t}\leftrightarrow\j\omega\vb*{\dot{F}}(\vb*{r})
+    % \end{Equation}
+\end{BoxFormula}
+
+\subsection{复矢量的麦克斯韦方程}
+根据\fancyref{eqt:麦克斯韦方程组}，我们知道通常的麦克斯韦方程组的形式为
+\begin{Gather}*[10pt]
+    \curl\vb*{H}=\vb*{J}+\pdv{\vb*{D}}{t}\xlabelpeq{磁场旋度}\\
+    \curl\vb*{E}=-\pdv{\vb*{B}}{t}\xlabelpeq{电场旋度}\\
+    \div\vb*{B}=0\xlabelpeq{磁场散度}\\
+    \div\vb*{D}=\rho\xlabelpeq{电场散度}
+\end{Gather}
+而对于时谐电磁场，我们很容易将麦克斯韦方程组复矢量化
+\begin{BoxEquation}[麦克斯韦方程组的复数形式]
+    麦克斯韦方程组可以用复数形式表示为
+    \begin{Gather}*[10pt]
+        \curl\vb*{\dot{H}}=\vb*{\dot{J}}+\j\omega\vb*{\dot{D}}\\
+        \curl\vb*{\dot{E}}=-\j\omega\vb*{\dot{B}}\\
+        \div\vb*{\dot{B}}=0\\
+        \div\vb*{\dot{D}}=\dot{\rho}
+    \end{Gather}
+\end{BoxEquation}
+
+\subsection{复电容率和复磁导率}
+我们知道，当电场和磁场随时间变化时，极化强度和磁化强度也将随时间变化，过去我们总是理想假设这种变化是瞬时的。但是，我们需要认识到，介质的极化和磁化的本质是介质中的物质微粒跟随电场和磁场运用的结果，在高频下，介质的极化和磁化可能跟不上电场和磁场的快速变化，因而产生相位差，或者说，存在迟滞效应，这种效应称为\uwave{极化损耗}和\uwave{磁化损耗}。
+
+过去，我们不考虑极化损耗和磁化损耗的主要原因在于，它不太好表示。试想
+\begin{Equation}
+    \vb*{D}=\varepsilon\vb*{E}\qquad
+    \vb*{B}=\mu\vb*{H}
+\end{Equation}
+若需要考虑极化损耗和磁化损耗，那就意味着$\vb*{D},\vb*{B}$相较$\vb*{E},\vb*{H}$落后了一定的相位，这在时域上很难表示（因为$\cos(\omega t)$与$\omega t+\phi$不是线性关系），但在复数域中，通过复矢量，这种相位延迟就可以很容易的通过添加虚数项来表达了，换言之，电容率和磁导率也将变为复数。
+
+\begin{BoxDefinition}[复电容率]
+    若介质存在极化损耗，则以\uwave{复电容率}描述其极化特性
+    \begin{Equation}
+        \varepsilon=\varepsilon'-\j\varepsilon''
+    \end{Equation}
+    其中，$\varepsilon'$为电容率，$\varepsilon''$则反映极化损耗。
+\end{BoxDefinition}
+
+\begin{BoxDefinition}[复磁导率]
+    若介质存在磁化损耗，则以\uwave{复磁导率}描述其磁化特性
+    \begin{Equation}
+        \mu=\mu'-\j\mu''
+    \end{Equation}
+    其中，$\mu'$为磁导率，$\mu''$则反映磁化损耗。
+\end{BoxDefinition}
+复电容率和复磁导率虚部前的负号表示，损耗将使相位落后，而非提前。
+
+复数域下，极化方程和磁化方程就可以写为
+\begin{Equation}
+    \vb*{\dot{D}}=\varepsilon\vb*{\dot{E}}
+    \qquad
+    \vb*{\dot{B}}=\mu\vb*{\dot{H}}
+\end{Equation}
+这里$\varepsilon,\mu$就可以是复电容率和复磁导率了。由此可见，尽管极化损耗和磁化损耗是客观存在的物理现象，但这种介质特性只有在复数域下才能以数学方式表达。故，复电容率和复磁导率的意义也限于复数域的介质方程，时域下的$\vb*{D}=\varepsilon\vb*{E}$和$\vb*{B}=\mu\vb*{H}$中的$\varepsilon,\mu$只能是实数。
+
+介质的极化损耗和磁化损耗在工程上，常用损耗角正切来表示（类似阻抗角和导纳角的想法）
+\begin{BoxDefinition}[极化损耗角正切]
+    定义\uwave{极化损耗角正切}为（虚部除实部）
+    \begin{Equation}
+        \tan\delta_{\varepsilon}=\frac{\varepsilon''}{\varepsilon'}
+    \end{Equation}
+\end{BoxDefinition}
+
+\begin{BoxDefinition}[磁化损耗角正切]
+    定义\uwave{磁化损耗角正切}为（虚部除实部）
+    \begin{Equation}
+        \tan\delta_{\mu}=\frac{\mu''}{\mu'}
+    \end{Equation}
+\end{BoxDefinition}
+
+介质方程中，还有一个是关于传导特性的
+\begin{Equation}
+    \vb*{J}=\sigma\vb*{E}
+\end{Equation}
+介质的传导特性也可以改写至复数域中，没什么特别的，电导率$\sigma$仍为实数
+\begin{Equation}
+    \vb*{\dot{J}}=\sigma\vb*{\dot{E}}
+\end{Equation}
+但是，巧妙之处在于，通过一些方法，在复数域中，传导特性可以与极化特性合并。
+
+根据\fancyref{eqt:麦克斯韦方程组的复数形式}
+\begin{Equation}
+    \curl\vb*{\dot{H}}=\vb*{\dot{J}}+\j\omega\vb*{\dot{D}}
+\end{Equation}
+代入$\vb*{J},\vb*{D}$所满足的传导方程和极化方程
+\begin{Equation}
+    \curl\vb*{\dot{H}}=\sigma\vb*{\dot{E}}+\j\omega\varepsilon\vb*{\dot{E}}
+\end{Equation}
+这样传导电流$\sigma\vb*{\dot{E}}$和位移电流$\j\omega\varepsilon\vb*{\dot{E}}$都能直接用$\vb*{\dot{E}}$表示了，合并为一项
+\begin{Equation}
+    \curl\vb*{\dot{H}}=\qty(\sigma+\j\omega\varepsilon)\vb*{\dot{E}}
+\end{Equation}
+我们期望$\vb*{\dot{E}}$前的系数效仿电容率的形式，故
+\begin{Equation}
+    \curl\vb*{\dot{H}}=\j\omega\qty(\varepsilon-\j\frac{\sigma}{\omega})\vb*{E}
+\end{Equation}
+我们将这里$\vb*{\dot{E}}$前（不包含$\j\omega$的）的系数记为$\varepsilon_\text{c}$，称为等效复电容率。\goodbreak
+\begin{BoxDefinition}[等效复电容率]
+    \uwave{等效复电容率}的实部和虚部分别反映了极化特性和传导特性
+    \begin{Equation}
+        \varepsilon_\text{c}=\varepsilon-\j\frac{\sigma}{\omega}
+    \end{Equation}
+    特别的，若极化特性中还有极化损耗，那电容率$\varepsilon$本身也是个复数，此时
+    \begin{Equation}
+        \varepsilon_\text{c}=\varepsilon'-\j\qty(\varepsilon'+\frac{\sigma}{\omega})
+    \end{Equation}
+\end{BoxDefinition}
+基于等效电容率，麦克斯韦方程组的前两个方程就分别可以表示为
+\begin{Equation}
+    \curl\vb*{\dot{H}}=\j\omega\varepsilon_\text{c}\vb*{\dot{E}}\qquad
+    \curl\vb*{\dot{E}}=-\j\omega\mu\vb*{\dot{H}}
+\end{Equation}
+这样，电场和磁场就显得非常对称了，欧姆损耗、极化损耗、磁化损耗也都能体现。
+
+欧姆损耗也可以类似的用损耗角正切来表示
+\begin{BoxDefinition}[欧姆损耗角正切]
+    定义欧姆损耗角正切为
+    \begin{Equation}
+        \tan\delta_{\sigma}=\frac{\sigma}{\omega\varepsilon}
+    \end{Equation}
+    这里$\varepsilon$认为是实数，即不考虑极化损耗的问题。
+\end{BoxDefinition}
+欧姆损耗角正切$\sigma/\omega\varepsilon$描述了传导电流与位移电流的比值，故
+\begin{itemize}
+    \item 若$\sigma/\omega\varepsilon\ll 1$，位移电流占主导地位，称为\uwave{良绝缘体}。
+    \item 若$\sigma/\omega\varepsilon\gg 1$，传导电流占主导地位，称为\uwave{良导体}。
+\end{itemize}
+注意到分母上角频率$\omega$的存在！这意味着同一种导体，在低频下是良导体，在高频下就可能演变为绝缘体了。直观上也是合理的，高频下电场的变化率要大的多，位移电流也就更强了。
+
+\subsection{亥姆霍兹方程}
+在数学物理方法中，我们曾提到过，若将波动方程的时间部分分离，得到的方程就称为亥姆霍兹方程。在电磁场中，复矢量即分离了时间的电磁矢量，因此，\empx{亥姆霍兹方程的实质是电磁场的波动方程的复数形式}。这就是本小节的任务，将\fancyref{eqt:电磁场的波动方程}复矢量化。
+
+\begin{BoxEquation}[亥姆霍兹方程]*
+    亥姆霍兹方程，是电磁场的波动方程的复矢量形式
+    \begin{Gather}[8pt]
+        \laplacian\vb*{\dot{E}}+k^2\vb*{\dot{E}}=\vb*{0}\\
+        \laplacian\vb*{\dot{H}}+k^2\vb*{\dot{H}}=\vb*{0}
+    \end{Gather}
+    其中$k$为代换常数，满足
+    \begin{Equation}
+        k=\omega\sqrt{\mu\varepsilon_\text{c}}
+    \end{Equation}
+\end{BoxEquation}
+
+\begin{Proof}
+    根据\fancyref{eqt:电磁场的波动方程}，但考虑无源空间（$\rho=0$）\footnote{注意！无源空间仅限于$\rho=0$，而$\vb*{J}\neq 0$，因为根据$\vb*{J}=\sigma\vb*{E}$，电流是电场的直接结果。}
+    \begin{Equation}&[1]
+        \laplacian\vb*{E}-\mu\varepsilon\pdv[2]{\vb*{E}}{t}=\mu\pdv{\vb*{J}}{t}\qquad
+        \laplacian\vb*{H}-\mu\varepsilon\pdv[2]{\vb*{H}}{t}=-\curl\vb*{J}
+    \end{Equation}
+    复矢量化，遵照$\pdv*{t}\to\j\omega$以及$\pdv*[2]{t}\to-\omega^2$
+    \begin{Equation}&[2]
+        \laplacian\vb*{\dot{E}}+\omega^2\mu\varepsilon\vb*{\dot{E}}-\j\omega\mu\vb*{\dot{J}}=\vb*{0}\qquad
+        \laplacian\vb*{\dot{H}}+\omega^2\mu\varepsilon\vb*{\dot{H}}+\curl\vb*{\dot{J}}=\vb*{0}
+    \end{Equation}
+    试图将$\vb*{\dot{J}}$转化掉，根据介质方程
+    \begin{Equation}&[3]
+        \vb*{\dot{J}}=\sigma\vb*{\dot{E}}        
+    \end{Equation}
+    以及$\curl\vb*{\dot{E}}=-\j\omega\mu\vb*{\dot{H}}$
+    \begin{Equation}&[4]
+        \curl\vb*{\dot{J}}=\sigma\curl\vb*{\dot{E}}=-\j\omega\mu\sigma\vb*{\dot{H}}
+    \end{Equation}
+    将\xrefpeq{3}和\xrefpeq{4}代入\xrefpeq{2}中
+    \begin{Equation}&[5]
+        \qquad\qquad\qquad
+        \laplacian\vb*{\dot{E}}+\omega^2\mu\varepsilon\vb*{\dot{E}}-\j\omega\mu\sigma\vb*{\dot{E}}=\vb*{0}\qquad
+        \laplacian\vb*{\dot{H}}+\omega^2\mu\varepsilon\vb*{\dot{H}}-\j\omega\mu\sigma\vb*{\dot{H}}=\vb*{0}
+        \qquad\qquad\qquad
+    \end{Equation}
+    合并$\vb*{\dot{E}}$和$\vb*{\dot{H}}$前的系数
+    \begin{Equation}&[6]
+        \qquad\qquad\qquad
+        \laplacian\vb*{\dot{E}}+(\omega^2\mu\varepsilon-\j\omega\mu\sigma)\vb*{\dot{E}}=\vb*{0}\qquad
+        \laplacian\vb*{\dot{H}}+
+        (\omega^2\mu\varepsilon-\j\omega\mu\sigma)\vb*{\dot{H}}=\vb*{0}
+        \qquad\qquad\qquad
+    \end{Equation}
+    根据\fancyref{def:等效复电容率}
+    \begin{Equation}&[7]
+        \varepsilon_\text{c}=\varepsilon-\j\frac{\sigma}{\omega}
+    \end{Equation}
+    因此
+    \begin{Equation}&[8]
+        \omega^2\mu\varepsilon_\text{c}=\omega^2\mu\varepsilon-\j\omega\mu\sigma
+    \end{Equation}
+    将\xrefpeq{8}代入\xrefpeq{6}中
+    \begin{Equation}&[9]
+        \laplacian\vb*{\dot{E}}+\omega^2\mu\varepsilon_\text{c}\vb*{\dot{E}}=\vb*{0}\qquad
+        \laplacian\vb*{\dot{H}}+\omega^2\mu\varepsilon_\text{c}\vb*{\dot{H}}=\vb*{0}
+    \end{Equation}
+    这里，我们应该能初步体会到，等效电容率$\varepsilon_\text{c}$的引入确实是非常有意义的。\goodbreak
+
+    最后，引入代换变量
+    \begin{Equation}
+        k^2=\omega^2\mu\varepsilon_\text{c}\qquad
+        k=\omega\sqrt{\mu\varepsilon_\text{c}}
+    \end{Equation}
+    则
+    \begin{Equation}
+        \laplacian\vb*{\dot{E}}+k^2\vb*{\dot{E}}=\vb*{0}\qquad
+        \laplacian\vb*{\dot{H}}+k^2\vb*{\dot{H}}=\vb*{0}
+    \end{Equation}
+    至此我们就得到了亥姆霍兹方程。
+\end{Proof}
+
+\subsection{复坡印廷定理}
+
+在时谐场中，由于能量随时间是周期性变化的，我们可以用平均能量来描述。
+\begin{BoxDefinition}[平均坡印廷矢量]
+    \uwave{平均坡印廷矢量}定义为坡印廷矢量在一个周期内的均值
+    \begin{Equation}
+        \vb*{S}_\text{av}=\frac{\omega}{2\pi}\Int[0][2\pi/\omega]\vb*{S}\dd{t}
+    \end{Equation}
+\end{BoxDefinition}
+
+\begin{BoxFormula}[平均坡印廷矢量]
+    平均坡印廷矢量可以表示为
+    \begin{Equation}
+        \vb*{S}_\text{av}=\frac{1}{2}\Re[\vb*{\dot{E}}\times\vb*{\dot{H}}^{*}]
+    \end{Equation}
+\end{BoxFormula}
+\begin{Proof}
+    根据\fancyref{fml:坡印廷矢量}，作为时谐场，将$\vb*{E},\vb*{H}$用复矢量表示
+    \begin{Equation}&[1]
+        \vb*{S}=\vb*{E}\times\vb*{H}=\Re[\vb*{\dot{E}}\e^{\j\omega t}]\times\Re[\vb*{\dot{H}}\e^{\j\omega t}]
+    \end{Equation}
+    取实部$\Re$总是可以改写为复数及其复共轭的$1/2$
+    \begin{Equation}&[2]
+        \vb*{S}=
+        \frac{1}{2}\qty[(\vb*{\dot{E}}\e^{\j\omega t})+(\vb*{\dot{E}}\e^{\j\omega t})^{*}]+
+        \frac{1}{2}\qty[(\vb*{\dot{H}}\e^{\j\omega t})+(\vb*{\dot{H}}\e^{\j\omega t})^{*}]
+    \end{Equation}
+    将共轭展开
+    \begin{Equation}&[3]
+        \vb*{S}=
+        \frac{1}{2}\qty[
+            \vb*{\dot{E}}\e^{\j\omega t}+
+            \vb*{\dot{E}}^{*}\e^{-\j\omega t}]+
+        \frac{1}{2}\qty[
+            \vb*{\dot{H}}\e^{\j\omega t}+
+            \vb*{\dot{H}}^{*}\e^{-\j\omega t}]
+    \end{Equation}
+    因式展开
+    \begin{Equation}&[4]
+        \vb*{S}=
+        \frac{1}{4}\qty[
+        \vb*{\dot{E}}\times\vb*{\dot{H}}
+        \e^{\j 2\omega t}+
+        \vb*{\dot{E}}^{*}\times\vb*{\dot{H}}^{*}\e^{-\j 2\omega t}+
+        \vb*{\dot{E}}^{*}\times\vb*{\dot{H}}+
+        \vb*{\dot{E}}\times\vb*{\dot{H}}^{*}
+        ]
+    \end{Equation}
+    分为两项，整理
+    \begin{Equation}&[5]
+        \qquad\qquad
+        \vb*{S}=
+        \frac{1}{4}\qty[
+            (\vb*{\dot{E}}\times\vb*{\dot{H}}\e^{\j 2\omega t})+
+            (\vb*{\dot{E}}\times\vb*{\dot{H}}\e^{\j 2\omega t})^{*}
+        ]+
+        \frac{1}{4}\qty[
+            (\vb*{\dot{E}}\times\vb*{\dot{H}}^{*})+
+            (\vb*{\dot{E}}\times\vb*{\dot{H}}^{*})^{*}
+        ]
+        \qquad\qquad
+    \end{Equation}
+    再重新用取实部$\Re$表示
+    \begin{Equation}&[6]
+        \vb*{S}=
+        \frac{1}{2}\Re[\vb*{\dot{E}}\times\vb*{\dot{H}}\e^{\j 2\omega t}]+
+        \frac{1}{2}\Re[\vb*{\dot{E}}\times\vb*{\dot{H}}^{*}]
+    \end{Equation}
+    我们以上转化的目的是，将$\vb*{S}$用$\vb*{\dot{E}}$和$\vb*{\dot{H}}$表示，并且分离为时变和时不变两部分。
+
+    而将\xrefpeq{6}代入\fancyref{def:平均坡印廷矢量}
+    \begin{Equation}&[7]
+        \qquad\qquad
+        \vb*{S}_\text{av}=\frac{\omega}{2\pi}\Int[0][2\pi/\omega]\vb*{S}\dd{t}=\frac{\omega}{2\pi}\Int[0][2\pi/\omega]\qty[\frac{1}{2}\Re[\vb*{\dot{E}}\times\vb*{\dot{H}}\e^{\j 2\omega t}]+
+        \frac{1}{2}\Re[\vb*{\dot{E}}\times\vb*{\dot{H}}^{*}]]\dd{t}
+        \qquad\qquad
+    \end{Equation}
+    很明显，\xrefpeq{7}的积分中，第一项是周期的，结果为零，第二项是常数
+    \begin{Equation}*
+        \vb*{S}_\text{av}=\frac{1}{2}\Re[\vb*{\dot{E}}\times\vb*{\dot{H}}^{*}]\qedhere
+    \end{Equation}
+\end{Proof}
+上述推导平均坡印廷矢量的想法，其实可以推广到任何平均能量的计算上
+\begin{itemize}
+    \item 若$u=AB$是某种能量，现$A,B$以时谐方式变化，欲将平均能量$u_\text{av}$用相量$\dot{A},\dot{B}$表示。
+    \item 则$u_\text{av}$应为相量$\dot{A}$与相量$\dot{B}$的共轭的积的实部的一半，即$u_\text{av}=(1/2)\Re[\dot{A}\dot{B}^{*}]$。
+\end{itemize}
+除了坡印廷矢量，电磁场中还有三个与能量有关的概念：电场能量、磁场能量、欧姆功率
+\begin{Equation}
+    w_\text{e}=\frac{1}{2}\vb*{D}\cdot\vb*{E}\qquad
+    w_\text{m}=\frac{1}{2}\vb*{B}\cdot\vb*{H}
+    \qquad
+    p_\text{j}=\vb*{J}\cdot\vb*{E}
+\end{Equation}
+应用物质方程，将上式均专用$\vb*{E},\vb*{H}$表示
+\begin{Equation}
+    w_\text{e}=\frac{1}{2}\sigma\vb*{E}\cdot\vb*{E}\qquad
+    w_\text{m}=\frac{1}{2}\mu\vb*{H}\cdot\vb*{H}\qquad
+    p_\text{j}=\sigma\vb*{E}\cdot\vb*{E}
+\end{Equation}
+仿照平均坡印廷矢量的计算方法，我们可以得到$w_\text{e},w_\text{m},p_\text{j}$的平均值。
+\begin{BoxFormula}[平均电场能量密度]
+    平均电场能量密度满足
+    \begin{Equation}
+        w_\text{eav}=\frac{1}{4}\varepsilon'\vb*{\dot{E}}\cdot\vb*{\dot{E}}^{*}
+    \end{Equation}
+\end{BoxFormula}
+\begin{BoxFormula}[平均磁场能量密度]
+    平均磁场能量密度满足
+    \begin{Equation}
+        w_\text{mav}=\frac{1}{4}\mu'\vb*{\dot{H}}\cdot\vb*{\dot{H}}^{*}
+    \end{Equation}
+\end{BoxFormula}
+\begin{BoxFormula}[平均欧姆功率]
+    平均欧姆功率满足
+    \begin{Equation}
+        p_\text{jav}=\frac{1}{2}\sigma\vb*{\dot{E}}\cdot\vb*{\dot{E}}^{*}
+    \end{Equation}
+\end{BoxFormula}
+
+在电路基础中计算了平均功率后，我们注意到平均功率是某个复数的实部，我们将那个复数称为复功率，并将其实部和虚部分别定义为有功功率和无功功率。在电磁场中，我们也注意到坡印廷矢量$\vb*{S}_\text{av}$同样是某个复矢量$(1/2)\dot{\vb*{E}}\times\dot{\vb*{H}}^{*}$的实部，类似的，我们也可以将这个复矢量定义为复坡印廷矢量，转而研究复坡印廷定理，最终引出电磁场中的有功功率和无功功率。
+
+\begin{BoxDefinition}[复坡印廷矢量]
+    \uwave{复坡印廷矢量}定义为
+    \begin{Equation}
+        \vb*{S}_\text{c}=\frac{1}{2}\vb*{E}\times\vb*{H}^{*}
+    \end{Equation}
+\end{BoxDefinition}
+
+\begin{BoxTheorem}[复数形式的坡印廷定理]
+    复数形式的坡印廷定理为
+    \begin{Equation}
+        \qquad\qquad
+        -\Isot[S]\vb*{S}_\text{c}\cdot\dd{\vb*{S}}=
+        \Itnt[V](p_\text{eav}+p_\text{mav}+p_\text{jav})+\j 2\omega\Itnt[V](w_\text{mav}-w_\text{eav})\dd{V}
+        \qquad\qquad
+    \end{Equation}
+\end{BoxTheorem}
+这里$p_\text{eav}$和$p_\text{mav}$是新出现的，它们分别是平均极化损耗和平均磁化损耗
+\begin{BoxFormula}[平均极化损耗]
+    平均极化损耗满足
+    \begin{Equation}
+        p_\text{mav}=\frac{1}{2}\omega\varepsilon''\vb*{\dot{E}}\cdot\vb*{\dot{E}}^{*}
+    \end{Equation}
+\end{BoxFormula}
+\begin{BoxFormula}[平均磁化损耗]
+    平均磁化损耗满足
+    \begin{Equation}
+        p_\text{eav}=\frac{1}{2}\omega\mu''\vb*{\dot{H}}\cdot\vb*{\dot{H}}^{*}
+    \end{Equation}
+\end{BoxFormula}
+现在我们来证明坡印廷矢量的复数形式\setpeq{复数形式的坡印廷定理}
+\begin{Proof}[\xref{thm:复数形式的坡印廷定理}]
+    根据矢量恒等式
+    \begin{Equation}&[1]
+        \div(\vb*{\dot{E}}\times\vb*{\dot{H}})=\vb*{\dot{H}}^{*}\cdot\qty(\curl\vb*{\dot{E}})-\vb*{\dot{E}}\cdot\qty(\curl\vb*{\dot{H}}^{*})
+    \end{Equation}
+    依据\fancyref{eqt:麦克斯韦方程组的复数形式}
+    \begin{Equation}&[2]
+        \curl\vb*{\dot{E}}=-\j\omega\mu\vb*{H}\qquad
+        \curl\vb*{\dot{H}}^{*}=\sigma\vb*{\dot{E}}^{*}-\j\omega\varepsilon^{{*}}\vb*{\dot{E}}^{*}
+    \end{Equation}
+    将\xrefpeq{2}代入\xrefpeq{1}
+    \begin{Equation}&[3]
+        \div(\vb*{\dot{E}}\times\vb*{\dot{H}}^{*})=-\j\omega\mu\vb*{\dot{H}}\cdot\vb*{\dot{H}}^{*}+\j\omega\varepsilon^{*}\vb*{\dot{E}}\cdot\vb*{\dot{E}}^{*}-\sigma\vb*{\dot{E}}\cdot\vb*{\dot{E}}
+    \end{Equation}
+    两端乘以$-1/2$，对体积$V$积分，运用\fancyref{thm:散度定理}
+    \begin{Equation}&[4]
+        \qquad
+        -\Isot[S]\frac{1}{2}(\vb*{\dot{E}}\times\vb*{\dot{H}}^{*})\cdot\dd{\vb*{S}}=
+        \j\omega\Itnt[V]\qty(\frac{1}{2}\mu\vb*{\dot{H}}\cdot\vb*{\dot{H}}^{*}-\frac{1}{2}\varepsilon^{*}\vb*{\dot{E}}\cdot\vb*{\dot{E}}^{*})\dd{V}+\Itnt[V]\frac{1}{2}\sigma\vb*{\dot{E}}\cdot\vb*{\dot{E}}^{*}\dd{V}
+        \qquad
+    \end{Equation}
+    根据\fancyref{fml:平均磁化损耗}和\fancyref{fml:平均磁场能量密度}
+    \begin{Equation}&[5]
+        \quad
+        \frac{1}{2}\j\omega\mu\vb*{\dot{H}}\cdot\vb*{\dot{H}}^{*}=\frac{1}{2}\j\omega(\mu'-\j\mu'')\vb*{\dot{H}}\cdot\vb*{\dot{H}}^{*}=\frac{1}{2}\omega\mu''\vb*{\dot{H}}\cdot\vb*{\dot{H}}^{*}+\j\frac{1}{2}\omega\mu'\vb*{\dot{H}}\cdot\vb*{\dot{H}}^{*}=p_\text{mav}+\j2\omega w_\text{mav}
+        \quad
+    \end{Equation}
+    根据\fancyref{fml:平均极化损耗}和\fancyref{fml:平均电场能量密度}
+    \begin{Equation}&[6]
+        \qquad
+        -\frac{1}{2}\j\omega\varepsilon\vb*{\dot{E}}\cdot\vb*{\dot{E}}^{*}=-\frac{1}{2}\j\omega(\varepsilon'+\j\varepsilon'')\vb*{\dot{E}}\cdot\vb*{\dot{E}}^{*}=\frac{1}{2}\omega\varepsilon''\vb*{\dot{E}}\cdot\vb*{\dot{E}}^{*}-\j\frac{1}{2}\omega\varepsilon'\vb*{\dot{E}}\cdot\vb*{\dot{E}}^{*}=p_\text{eav}-\j2\omega w_\text{eav}
+        \qquad
+    \end{Equation}
+    根据\fancyref{fml:平均欧姆损耗}
+    \begin{Equation}&[7]
+        \frac{1}{2}\sigma\vb*{\dot{E}}\cdot\vb*{\dot{E}}^{*}=p_\text{jav}
+    \end{Equation}
+    根据\fancyref{def:复坡印廷矢量}
+    \begin{Equation}&[8]
+        \frac{1}{2}\vb*{\dot{E}}\times\vb*{\dot{H}}=\vb*{S}_\text{c}
+    \end{Equation}
+    将\xrefpeq{5},\xrefpeq{6},\xrefpeq{7},\xrefpeq{8}代入\xrefpeq{4}
+    \begin{Equation}*
+        -\Isot[S]\vb*{S}_\text{c}\cdot\dd{\vb*{S}}=
+        \Itnt[V](p_\text{eav}+p_\text{mav}+p_\text{jav})+\j 2\omega\Itnt[V](w_\text{mav}-w_\text{eav})\dd{V}\qedhere
+    \end{Equation}
+\end{Proof}
+
+在\fancyref{thm:复数形式的坡印廷定理}中，我们称
+\begin{itemize}
+    \item $\mal{-\Isot[S]\vb*{S}_\text{c}\cdot\dd{\vb*{S}}}$的实部$\mal{\Itnt[V](p_\text{eav}+p_\text{mav}+p_\text{jav})\dd{V}}$称为\uwave{有功功率}，即电磁场消耗的能量。
+    \item $\mal{-\Isot[S]\vb*{S}_\text{c}\cdot\dd{\vb*{S}}}$的虚部$\mal{\Itnt[V]2\omega(w_\text{mav}+w_\text{eav})\dd{V}}$称为\uwave{无功功率}，即电磁场存储的能量。
+\end{itemize}
+类似于电路系统，我们亦可以用电阻和电抗的观点来研究电磁系统。设想$V$是一个以$S$为边界的电磁系统，在边界$S$上通过横截面为$S_i$的同轴线为电磁系统馈电，这时复坡印廷定理\setpeq{电磁系统的阻抗}
+\begin{Equation}&[1]
+    \qquad
+    -\Isot[S_i]\vb*{S}_\text{c}\cdot\dd{\vb*{S}}-\Isot[S-S_\text{i}]\vb*{S}_\text{c}\cdot\dd{\vb*{S}}=
+    \Itnt[V](p_\text{eav}+p_\text{mav}+p_\text{jav})+\j 2\omega\Itnt[V](w_\text{mav}-w_\text{eav})\dd{V}\qquad
+\end{Equation}
+这里坡印廷矢量在$S_\text{i}$上的积分的负值，即沿同轴线流入的复功率
+\begin{Equation}&[2]
+    \frac{1}{2}\dot{U}_i\dot{I}_i=-\Isot[S_i]\vb*{S}_\text{c}\cdot\dd{\vb*{S}}
+\end{Equation}
+将\xrefpeq{2}代入\xrefpeq{1}（为什么$\vb*{S}_\text{c}$可以变为$\vb*{S}_\text{av}$？）
+\begin{Equation}&[3]
+    \qquad\quad
+    \frac{1}{2}\dot{U}_i\dot{I}_i=\Isot[S-S_\text{i}]\vb*{S}\cdot\dd{\vb*{S}}+
+    \Itnt[V](p_\text{eav}+p_\text{mav}+p_\text{jav})+\j 2\omega\Itnt[V](w_\text{mav}-w_\text{eav})\dd{V}
+    \qquad\quad
+\end{Equation}
+\xrefpeq{3}指出，输入一个电磁系统的能量中
+\begin{itemize}
+    \item 有功功率，等同于电磁系统极化损耗、磁化损耗、焦耳损耗、辐射损耗的总和。
+    \item 无功功率，可以使磁场能量增加（电感器），可以使电场能量减少（电容器）。
+\end{itemize}
+我们知道，复功率可以用电阻$R$和电抗$X$写作
+\begin{Equation}&[4]
+    \frac{1}{2}\dot{U}_i\dot{I}_i=\frac{1}{2}R|\dot{I}_i|+\j\frac{1}{2}X|\dot{I}_\text{i}|^2
+\end{Equation}
+比较\xrefpeq{3}和\xrefpeq{4}，我们就可以得到电磁系统的电阻和电抗了
+\begin{BoxFormula}[电磁系统的电阻]
+    电磁系统的电阻满足
+    \begin{Equation}
+        R=\frac{2}{|\dot{I}_i|^2}\qty[\Itnt[V](p_\text{eav}+p_\text{mav}+p_\text{jav})+\Isot[S-S_i]\vb*{S}_\text{av}\cdot\dd{\vb*{S}}]
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{BoxFormula}[电磁系统的电抗]
+    电磁系统的电抗满足
+    \begin{Equation}
+        X=\frac{4\omega}{|\dot{I}_i|^2}\Itnt[V](\omega_\text{mav}-\omega_\text{eav})\dd{V}
+    \end{Equation}
+\end{BoxFormula}
