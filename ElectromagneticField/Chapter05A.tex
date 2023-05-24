@@ -1,0 +1,213 @@
+\section{均匀平面波在理想介质中的传播}
+
+在本节，我们将讨论$\sigma=0$的理想介质中的均匀平面电磁波的传播特性，包括其波函数、波的电磁能量、波速等。而在下一节，我们将会更一般的讨论$\sigma\neq 0$的导电介质中的电磁波。
+
+\subsection{理想介质中的均匀平面波的波函数}
+\setpeq{理想介质中的均匀平面波的波函数}
+
+设讨论的区域为$\rho=0$无源区，且充满线性、均匀、各向同性的理想介质，换言之$\sigma=0$且有$\vb*{J}=\sigma\vb*{E}=\vb*{0}$。那时谐电磁场将满足齐次亥姆霍兹方程，根据\fancyref{eqt:亥姆霍兹方程}
+\begin{Equation}&[1]
+    \laplacian\vb*{\dot{E}}+k^2\dot{\vb*{E}}=\vb*{0}\qquad
+    \laplacian\vb*{\dot{H}}+k^2\dot{\vb*{H}}=\vb*{0}
+\end{Equation}
+将\xrefpeq{1}在直角坐标中展开
+\begin{Equation}&[2]
+    \qquad\qquad\qquad
+    \pdv[2]{\vb*{\dot{E}}}{x}+
+    \pdv[2]{\vb*{\dot{E}}}{y}+
+    \pdv[2]{\vb*{\dot{E}}}{z}+
+    k^2\vb*{\dot{E}}=\vb*{0}\qquad
+    \pdv[2]{\vb*{\dot{H}}}{x}+
+    \pdv[2]{\vb*{\dot{H}}}{y}+
+    \pdv[2]{\vb*{\dot{H}}}{z}+
+    k^2\vb*{\dot{H}}=\vb*{0}
+    \qquad\qquad\qquad
+\end{Equation}
+由于我们考虑的是平面电磁波波，而平面波仅沿一个方向传播，不妨设其沿$z$轴方向传播，那么电场强度$\vb*{\dot{E}}$和磁场强度$\vb*{\dot{H}}$都只是坐标$z$的函数，而与坐标$x,y$无关，\xrefpeq{2}即简化为
+\begin{Equation}&[3]
+    \dv[2]{\vb*{\dot{E}}}{z}+k^2\vb*{\dot{E}}=\vb*{0}\qquad
+    \dv[2]{\vb*{\dot{H}}}{z}+k^2\vb*{\dot{H}}=\vb*{0}
+\end{Equation}
+而另外一方面，依据\fancyref{eqt:麦克斯韦方程组的复数形式}
+\begin{Equation}&[4]
+    \div\vb*{\dot{E}}=0\qquad
+    \div\vb*{\dot{H}}=0
+\end{Equation}
+将\xrefpeq{4}在直角坐标中展开
+\begin{Equation}&[5]
+    \pdv{\dot{E_x}}{x}+
+    \pdv{\dot{E_y}}{y}+
+    \pdv{\dot{E_z}}{z}=0\qquad
+    \pdv{\dot{H_x}}{x}+
+    \pdv{\dot{H_y}}{y}+
+    \pdv{\dot{H_z}}{z}=0
+\end{Equation}
+由于这里$\vb*{\dot{E}}$和$\vb*{\dot{H}}$仅与$z$有关
+\begin{Equation}&[6]
+    \dv{\dot{E_z}}{z}=0\qquad
+    \dv{\dot{H_z}}{z}=0
+\end{Equation}
+\xrefpeq{3}和\xrefpeq{6}就是我们求解均匀平面波的波函数的基础了。将\xrefpeq{3}改写为分量形式
+\begin{Align}[16pt]
+    &\dv[2]{E_x}{z}+kE_x=0&
+    &\dv[2]{H_x}{z}+kE_x=0\xlabelpeq{7}\\
+    &\dv[2]{E_y}{z}+kE_y=0&
+    &\dv[2]{H_y}{z}+kE_y=0\xlabelpeq{8}\\
+    &\dv[2]{E_z}{z}+kE_z=0&
+    &\dv[2]{H_z}{z}+kE_z=0\xlabelpeq{9}
+\end{Align}
+然而\xrefpeq{6}指出$\dd{\dot{E_z}}/{\dz}=\dd{\dot{H_z}}/{\dz}=0$，即有$\dd^2{\dot{E_z}}/{\dz^2}=\dd^2{\dot{H_z}}/{\dz^2}=0$，代入\xrefpeq{9}得
+\begin{Equation}&[10]
+    E_z(z)=0\qquad H_z(z)=0
+\end{Equation}
+这样还剩下\xrefpeq{7}和\xrefpeq{8}，它们是二阶常微分方程，其中$E_x,E_y$的解为
+\begin{Gather}[6pt]
+    \dot{E_x}(z)=E_{x1\text{m}}\e^{\j\phi_{x1}}\e^{-\j kz}+E_{x2\text{m}}\e^{\j\phi_{x2}}\e^{\j kz}\xlabelpeq{11}\\
+    \dot{E_y}(z)=E_{y1\text{m}}\e^{\j\phi_{y1}}\e^{-\j kz}+E_{y2\text{m}}\e^{\j\phi_{y2}}\e^{\j kz}\xlabelpeq{12}
+\end{Gather}
+这里\xrefpeq{11}和\xrefpeq{12}中的第一项和第二项，分别表示沿$+z$和$-z$传播的平面电磁波。
+
+简单起见，我们这里仅讨论沿$+z$传播的平面电磁波
+\begin{Gather}[6pt]
+    \dot{E_x}(z)=E_{x\text{m}}\e^{\j\phi_{x}}\e^{-\j kz}\\
+    \dot{E_y}(z)=E_{y\text{m}}\e^{\j\phi_{y}}\e^{-\j kz}
+\end{Gather}
+这样，我们就得到了理想介质中沿$+z$方向传播的平面电磁波的波函数了。
+\begin{BoxFormula}[理想介质中平面电磁波的波函数]
+    理想介质中，沿$+z$方向传播的平面电磁波的电场强度$\vb*{\dot{\vb*{E}}}(z)$的波函数为
+    \begin{Equation}
+        \qquad\qquad
+        \dot{E_x}(z)=E_{x\text{m}}\e^{\j\phi_x}\e^{-\j kz}\qquad
+        \dot{E_y}(z)=E_{y\text{m}}\e^{\j\phi_y}\e^{-\j kz}\qquad
+        \dot{E_z}(z)=0
+        \qquad\qquad
+    \end{Equation}
+\end{BoxFormula}
+我们或许会问，为什么这里只解了$\vb*{\dot{E}}(z)$而没有以相似方法解出$\vb*{\dot{H}}(z)$？因为根据麦克斯韦方程组中的$\curl\vb*{\dot{E}}=-\j\omega\mu\vb*{\dot{H}}$，磁场强度$\vb*{\dot{H}}(z)$并不独立于电场强度$\vb*{\dot{E}}(z)$，直接写出$\vb*{\dot{H}}(z)$没有实际意义。因此，现在要做的就是在平面电磁波的背景下，建立$\vb*{\dot{H}}(z)$与$\vb*{\dot{E}}(z)$间的关系。\setpeq{理想介质中平面电磁波的电磁矢量关系}
+
+根据\fancyref{eqt:麦克斯韦方程组的复数形式}
+\begin{Equation}&[1]
+    \vb*{\dot{H}}=-\frac{1}{\j\omega\mu}\curl\vb*{\dot{E}}
+\end{Equation}
+由于这里$\vb*{\dot{E}}$是仅与$z$有关的函数$\vb*{\dot{E}}(z)$，这里旋度的计算并不复杂
+\begin{Equation}&[2]
+    \vb*{\dot{H}}=-\frac{1}{\j\omega\mu}\qty(\pdv{E_x}{z}\vb*{e}_y-\pdv{E_y}{z}\vb*{e}_x)
+\end{Equation}
+代入\fancyref{fml:理想介质中平面电磁波的波函数}
+\begin{Equation}&[3]
+    \vb*{\dot{H}}=\frac{k}{\omega\mu}\qty(E_x\vb*{e}_y-E_y\vb*{e}_x)
+\end{Equation}
+代入\fancyref{eqt:亥姆霍兹方程}中$k=\omega\sqrt{\mu\varepsilon}$的定义
+\begin{Equation}&[4]
+    \vb*{\dot{H}}=\frac{\omega\sqrt{\mu\varepsilon}}{\omega\mu}\qty(E_x\vb*{e}_y-E_y\vb*{e}_x)
+    =
+    \sqrt{\frac{\varepsilon}{\mu}}\qty(E_x\vb*{e}_y-E_y\vb*{e}_x)
+\end{Equation}
+我们不妨引入$\eta=\sqrt{\mu/\varepsilon}$作为代换变量
+\begin{Equation}&[5]
+    \vb*{\dot{H}}=\eta^{-1}\qty(E_x\vb*{e}_y-E_y\vb*{e}_x)
+\end{Equation}
+使用叉乘表示\xrefpeq{5}的括号项
+\begin{Equation}
+    \vb*{\dot{H}}=\eta^{-1}\vb*{e}_z\times\vb*{\dot{E}}
+\end{Equation}
+这样我们就得到了电磁波的电磁矢量间的关系。
+\begin{BoxFormula}[电磁波的电磁矢量关系]
+    理想介质中，电磁波的电磁矢量间满足以下关系
+    \begin{Equation}
+        \vb*{\dot{H}}=\eta^{-1}\vb*{e}_z\times\dot{\vb*{E}}\qquad
+        \vb*{\dot{E}}=\eta\dot{\vb*{H}}\times\vb*{e}_z
+    \end{Equation}
+    这里$\eta$称为\uwave{波阻抗}（Wave Impedance）
+    \begin{Equation}
+        \eta=\frac{|\vb*{\dot{E}}|}{|\vb*{\dot{H}}|}=\sqrt{\frac{\mu}{\varepsilon}}
+    \end{Equation}
+\end{BoxFormula}
+波阻抗是电场与磁场之比，因为具有阻抗的量纲而称为波阻抗。由于波阻抗$\eta$的值与介质的参数有关，因此也称为介质的\uwave{本征阻抗}或\uwave{特性阻抗}，特别是，在自由空间中
+\begin{Equation}
+    \eta_0=\sqrt{\frac{\mu_0}{\varepsilon_0}}=120\pi\approx 377(\si{\ohm})
+\end{Equation}
+\fancyref{fml:电磁波的电磁矢量关系}指出，在理想介质中的电磁波，电场$\vb*{E}$、磁场$\vb*{H}$、波的传播方向$\vb*{e}_z$之间相互垂直，遵循右手螺旋关系（右手四指由电场转向磁场，右手拇指指向波的传播方向）。至此，我们就可以勾勒出理想介质中的电磁波的物理图景了：电磁波沿$z$方向传播，电场和磁场在垂直于$z$方向的$xy$平面上沿两个相互垂直的方向，作同相位的振动。
+
+\subsection{理想介质中的均匀平面波的能量}\setpeq{理想介质中的均匀平面波的能量}
+根据\fancyref{fml:电磁波的电磁矢量关系}，由于
+\begin{Equation}&[1]
+    \vb*{\dot{H}}=\eta^{-1}\vb*{e}_z\times\vb*{\dot{E}}
+\end{Equation}
+因此
+\begin{Equation}&[2]
+    |\vb*{\dot{H}}|=\eta^{-1}|\vb*{\dot{E}}|
+\end{Equation}
+代入$\eta=\sqrt{\mu/\varepsilon}$
+\begin{Equation}&[3]
+    |\vb*{\dot{H}}|=\sqrt{\frac{\varepsilon}{\mu}}~|\vb*{\dot{E}}|
+\end{Equation}
+或
+\begin{Equation}&[4]
+    \frac{1}{4}\varepsilon|\vb*{\dot{E}}|^2=
+    \frac{1}{4}\mu|\vb*{\dot{H}}|^2
+\end{Equation}
+根据\fancyref{fml:平均电场能量密度}和\fancyref{fml:平均磁场能量密度}，\xrefpeq{4}的等号两侧恰分别是平均电场能量密度$w_\text{eav}$和平均磁场能量密度$w_\text{mav}$，这表明，\empx{理想介质中，均匀平面电磁波的平均电场能量密度等于平均磁场能量密度}，电场和磁场在能量上，是均等的。
+\begin{BoxFormula}[理想介质中的均匀平面波的能量]
+    理想介质中的均匀平面电磁波，平均电场能量密度等于平均磁场能量密度
+    \begin{Equation}
+        w_\text{eav}=w_\text{mav}=\frac{1}{4}\varepsilon|\vb*{\dot{E}}|^2
+    \end{Equation}
+\end{BoxFormula}
+根据\fancyref{fml:平均坡印廷矢量}
+\begin{Equation}
+    \vb*{S}_\text{av}=\frac{1}{2}\Re[\vb*{\dot{E}}\times\vb*{\dot{H}}^{*}]
+\end{Equation}
+代入\fancyref{fml:电磁波的电磁矢量关系}
+\begin{Equation}
+    \vb*{S}_\text{av}=\frac{1}{2\eta}\Re\big[\vb*{\dot{E}}\times(\vb*{e}_z\times\vb*{E}^{*})]=\vb*{e}_z\frac{1}{2\eta}|\vb*{\dot{E}}|^2
+\end{Equation}
+这表明，\empx{理想介质中，均匀平面电磁波的能量沿波的传播方向流动}。
+\begin{BoxFormula}[理想介质中均匀平面波的坡印廷矢量]
+    理想介质中的均匀平面电磁波，平均坡印廷矢量满足
+    \begin{Equation}
+        \vb*{S}_\text{av}=\vb*{e}_z\frac{1}{2\eta}|\vb*{\dot{E}}|^2
+    \end{Equation}
+\end{BoxFormula}
+
+\subsection{相速}\setpeq{相速}
+由于前面我们已经证明了当电磁波沿$z$轴传播时，电场和磁场在$xy$平面上沿两个相互垂直的方向振动，如果我们恰当的选取$x$轴和$y$轴，电场和磁场完全可以分别仅在$x$轴和$y$轴存在分量，达成简化分析的目的。在这样的背景下，电场强度的复矢量$\vb*{\dot{E}}(z)$可以表示为
+\begin{Equation}&[1]
+    \vb*{\dot{E}}(z)=\vb*{e}_xE_{x\text{m}}\e^{\j\phi_x}\e^{-\j kz}
+\end{Equation}
+如果回到时变形式
+\begin{Equation}&[2]
+    \vb*{E}(z,t)=\vb*{e}_xE_{x\text{m}}\cos(\omega t-kz+\phi_x)
+\end{Equation}
+这里$\omega$和$k$的意义就很明确了
+\begin{itemize}
+    \item 参量$\omega$是电磁波的\uwave{角频率}，即单位时间的相位变化。
+    \item 参量$k$\hspace{0.3em}是电磁波的\uwave{角波数}，即单位空间的相位变化。
+\end{itemize}
+我们通常所说的电磁波的波速，指的其实是电磁波的等相位面在空间中的移动速度，也称为相速。那么如何定义相速呢，由\xrefpeq{2}可以看出，由于等相位面是恒定值，因此应有
+\begin{Equation}
+    \omega t-kz=C
+\end{Equation}
+两边取微分
+\begin{Equation}
+    \omega\dd{t}-k\dd{z}=0
+\end{Equation}
+此时，移项作比得到的$\dv*{z}{t}$就可以作为相速的数学定义。
+\begin{BoxDefinition}[相速]
+    \uwave{相速}（Phase Velocity）定义为等相位面的移动速度
+    \begin{Equation}
+        v_\text{P}=\dv{z}{t}=\frac{\omega}{k}
+    \end{Equation}
+\end{BoxDefinition}
+在理想介质中，由于$k=\omega\sqrt{\mu\varepsilon}$，因此得到
+\begin{BoxFormula}[理想介质中电磁波的相速]
+    理想介质中，电磁波的相速为
+    \begin{Equation}
+        v_\text{P}=\frac{1}{\sqrt{\varepsilon\mu}}
+    \end{Equation}
+\end{BoxFormula}
+在理想介质中，电磁波的相速与频率无关，仅与介质参数有关，特别的，真空中
+\begin{Equation}
+    v_\text{P0}=\frac{1}{\sqrt{\varepsilon_0\mu_0}}=3\times 10^{8}\si{m\cdot s^{-1}}=c
+\end{Equation}
+即\uwave{真空光速}（Speed of Light），这也一定程度上说明了光是一种电磁波。
