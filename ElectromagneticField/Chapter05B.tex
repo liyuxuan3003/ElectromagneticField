@@ -1,0 +1,466 @@
+\section{均匀平面波在导电介质中的传播}
+若$\sigma\neq 0$，就势必存在传导电流$\vb*{J}=\sigma\vb*{E}$，而有传导电流的存在，就势必意味着电磁能量的损耗，因此可以预见的是，导电介质中的电磁波将在传输中逐渐衰减。在某种意义上
+\begin{itemize}
+    \item 理想介质中的电磁波是无衰减的，类似于简谐振荡。
+    \item 导电介质中的电磁波是有衰减的，类似于阻尼振荡。
+\end{itemize}
+
+\subsection{导电介质中的均匀平面波的波函数}
+在导电介质中，亥姆霍兹方程的形式不变，但$k=\omega\sqrt{\mu\varepsilon}$要改换为$k_c=\omega\sqrt{\mu\varepsilon_\text{c}}$
+\begin{Equation}
+    \laplacian\vb*{\dot{E}}+k_\text{c}^2\vb*{\dot{E}}=\vb*{0}\qquad
+    \laplacian\vb*{\dot{H}}+k_\text{c}^2\vb*{\dot{H}}=\vb*{0}
+\end{Equation}
+在导电介质中的等效角波数$k_\text{c}$是一个复数，这对于亥姆霍兹方程的求解没有任何妨碍，但是出于一些习惯上的原因，在等效角波数$k_\text{c}$为一复数时，我们会考虑作以下代换
+\begin{BoxDefinition}[传播常数]
+    定义\uwave{传播常数}（Propagation Constant）为等效角波数乘以虚部单位
+    \begin{Equation}
+        \gamma=\j k_\text{c}=\j\omega\sqrt{\mu\varepsilon_\text{c}}
+    \end{Equation}
+    传播常数的实部（即$k_\text{c}$的负虚部）记为$\alpha$，称为\uwave{衰减常数}（Attenuation Constant）
+    \begin{Equation}
+        \alpha=\Re\gamma=-\Im k_\text{c}
+    \end{Equation}
+    传播常数的虚部（即$k_\text{c}$的正实部）记为$\beta$，称为\uwave{相位常数}（Phase Constant）
+    \begin{Equation}
+        \beta=\Im\gamma=\Re k_\text{c}
+    \end{Equation}
+\end{BoxDefinition}
+
+这样一来，亥姆霍兹方程就将被改写为（$\gamma=\j k_\text{c}, \gamma^2=-k_\text{c}^2$）
+\begin{Equation}
+    \laplacian\vb*{\dot{E}}-\gamma^2\vb*{\dot{E}}=\vb*{0}\qquad
+    \laplacian\vb*{\dot{H}}-\gamma^2\vb*{\dot{H}}=\vb*{0}
+\end{Equation}
+因此，在导电介质中传播的平面电磁波的波函数就需要改写为
+\begin{BoxFormula}[导电介质中平面电磁波的波函数]
+    导电介质中，沿$+z$方向传播的平面电磁波的电场强度$\vb*{\dot{E}}(z)$的波函数为
+    \begin{Equation}
+        \dot{\vb*{E}}(z)=(
+            \vb*{e}_xE_{x\text{m}}\e^{\j\phi_x}+
+            \vb*{e}_yE_{y\text{m}}\e^{\j\phi_y})\e^{-\alpha z}\e^{-\j\beta z}
+    \end{Equation}
+\end{BoxFormula}
+因为$\e^{-\j kz}=\e^{-\gamma z}=\e^{-(\alpha+\j\beta)z}$，这里我们也可以看出，相位常数$\beta$相当于原先角波数$k$的地位，表征了相位随空间的周期变化，而衰减常数$\alpha$构成的负指数项则代表波幅将随空间衰减。
+
+在导电介质中，\fancyref{fml:电磁波的电磁矢量关系}仍然适用，但$\eta$也要改换为$\eta_\text{c}$
+\begin{Equation}
+    \eta_\text{c}=\sqrt{\frac{\mu}{\varepsilon_\text{c}}}=\sqrt{\frac{\mu}{\varepsilon-\j\sigma/\omega}}
+\end{Equation}
+但是，这种根号下的复数使用起来很不方便，故下面我们要完成两件事
+\begin{itemize}
+    \item 将$\eta_\text{c}$表示为模和辐角的形式，即$\eta_\text{c}=\abs{\eta_\text{c}}\e^{\j\phi}$
+    \item 将$\eta_\text{c}$表示为实部和虚部的形式，即$\eta_\text{c}=\alpha+\j\beta$
+\end{itemize}
+
+\begin{BoxFormula}[波阻抗的模和辐角表示]
+    导电介质的波阻抗以模和辐角的形式可以表示为
+    \begin{Equation}
+        \eta_\text{c}=\qty(\frac{\mu}{\varepsilon})^{1/2}\qty[1+\qty(\frac{\sigma}{\omega\varepsilon})^2]^{-1/4}\exp[\j\frac{1}{2}\arctan(\frac{\sigma}{\omega\varepsilon})]
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    我们已经知道
+    \begin{Equation}&[1]
+        \eta_\text{c}=\sqrt{\frac{\mu}{\varepsilon_\text{c}}}=\sqrt{\frac{\mu}{\varepsilon-\j\sigma/\omega}}
+    \end{Equation}
+    要计算一个复数的平方根，先要将这个复数转化为模和辐角的形式。
+
+    首先计算它的模
+    \begin{Equation}&[2]
+        \abs{\frac{\mu}{\varepsilon-\j\sigma/\omega}}=
+        \frac{\mu}{\sqrt{\varepsilon^2+\sigma^2/\omega^2}}
+    \end{Equation}
+    随后计算它的辐角，为此先将其虚数单位$\j$转化到分子上（上下同乘$\varepsilon+\j\sigma/\omega$）
+    \begin{Equation}&[3]
+        \frac{\mu}{\varepsilon-\j\sigma/\omega}=\frac{\mu(\varepsilon+\j\sigma/\omega)}{\varepsilon^2+\sigma^2/\omega^2}=\frac{\mu\varepsilon+\j\mu\sigma/\omega}{\varepsilon^2+\sigma^2/\omega^2}
+    \end{Equation}
+    因此
+    \begin{Equation}&[4]
+        \qquad\qquad\qquad
+        \Re\qty(\frac{\mu}{\varepsilon-\j\sigma/\omega})=\frac{\mu\varepsilon}{\varepsilon^2+\sigma^2/\omega^2}\qquad
+        \Im\qty(\frac{\mu}{\varepsilon-\j\sigma/\omega})=\frac{\mu\sigma/\omega}{\varepsilon^2+\sigma^2/\omega^2}
+        \qquad\qquad\qquad
+    \end{Equation}
+    这样就可以算得辐角为
+    \begin{Equation}&[5]
+        \tan\phi_0=
+        \frac
+        {\Im[\mu/\varepsilon-(\j\sigma/\omega)]}
+        {\Re[\mu/\varepsilon-(\j\sigma/\omega)]}=
+        \frac{\mu\sigma/\omega}{\mu\varepsilon}=
+        \frac{\sigma}{\omega\varepsilon}
+    \end{Equation}
+    由\xrefpeq{2}和\xrefpeq{5}
+    \begin{Equation}&[6]
+        \frac{\mu}{\varepsilon-\j\sigma/\omega}=\frac{\mu}{\sqrt{\varepsilon^2+\sigma^2/\omega^2}}\exp[\j\arctan(\frac{\sigma}{\omega\varepsilon})]
+    \end{Equation}
+    因此
+    \begin{Equation}
+        \eta_\text{c}=\sqrt{\frac{\mu}{\varepsilon-\j\sigma/\omega}\vphantom{\sqrt{\frac{\mu}{\sqrt{\varepsilon^2+\sigma^2/\omega^2}}}}}=\sqrt{\vphantom{\sqrt{\frac{\mu}{\sqrt{\varepsilon^2+\sigma^2/\omega^2}}}}\frac{\mu}{\sqrt{\varepsilon^2+\sigma^2/\omega^2}}}\exp[\j\frac{1}{2}\arctan(\frac{\sigma}{\omega\varepsilon})]
+    \end{Equation}
+    即
+    \begin{Equation}
+        \eta_\text{c}=
+        \sqrt{\frac{\mu}{\varepsilon}\frac{1}{\sqrt{1+\sigma^2/\omega^2\varepsilon^2}}}\exp[\j\frac{1}{2}\arctan(\frac{\sigma}{\omega\varepsilon})]
+    \end{Equation}
+    或
+    \begin{Equation}*
+        \eta_\text{c}=\qty(\frac{\mu}{\varepsilon})^{1/2}\qty[1+\qty(\frac{\sigma}{\omega\varepsilon})^2]^{-1/4}\exp[\j\frac{1}{2}\arctan(\frac{\sigma}{\omega\varepsilon})]\qedhere
+    \end{Equation}
+\end{Proof}
+
+\begin{BoxFormula}[衰减常数与相位常数]
+    衰减常数$\alpha$可以表示为
+    \begin{Equation}
+        \alpha=\omega\sqrt{\frac{\mu\varepsilon}{2}\qty\Bigg[\sqrt{1+\qty(\frac{\sigma}{\omega\varepsilon})^2}-1]}
+    \end{Equation}
+    相位常数$\beta$可以表示为
+    \begin{Equation}
+        \beta=\omega\sqrt{\frac{\mu\varepsilon}{2}\qty\Bigg[\sqrt{1+\qty(\frac{\sigma}{\omega\varepsilon})^2}+1]}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{def:传播常数}，有$\gamma=\alpha+\i\beta$
+    \begin{Equation}&[1]
+        \gamma^2=\alpha^2-\beta^2+\j 2\alpha\beta
+    \end{Equation}
+    而另外一方面，考虑到$\gamma=\j\omega\sqrt{\mu\varepsilon_\text{c}}$
+    \begin{Equation}&[2]
+        \qquad\qquad\qquad
+        \gamma^2=\qty(\j\omega\sqrt{\mu\varepsilon_\text{c}})^2=-\omega^2\mu\varepsilon_\text{c}=-\omega^2\mu(\varepsilon-\j\sigma/\omega)=-\omega^2\mu\varepsilon+\j\omega\mu\sigma
+        \qquad\qquad\qquad
+    \end{Equation}
+    这样对比\xrefpeq{1}和\xrefpeq{2}即可得
+    \begin{Equation}&[3]
+        \alpha^2-\beta^2=-\omega^2\mu\varepsilon\qquad
+        2\alpha\beta=\omega\mu\sigma
+    \end{Equation}
+    以$\alpha$为例求解
+    \begin{Equation}&[4]
+        \beta=\frac{\omega\mu\sigma}{2\alpha}
+    \end{Equation}
+    将\xrefpeq{4}代入\xrefpeq{3}得到
+    \begin{Equation}&[5]
+        \alpha^2-\frac{\omega^2\sigma^2\mu^2}{4\alpha^2}=-\omega^2\mu\varepsilon
+    \end{Equation}
+    两边同乘$\alpha^2$
+    \begin{Equation}
+        \alpha^4+\omega^2\mu\varepsilon-\frac{1}{4}\omega^2\sigma^2\mu^2=0
+    \end{Equation}
+    这就解得
+    \begin{Equation}
+        \alpha^2=\frac{1}{2}\qty[-\omega^2\mu\varepsilon\pm\sqrt{\omega^4\mu^2\varepsilon^2+\omega^2\sigma^2\mu^2}]
+    \end{Equation}
+    从根号中提取$\omega^2\mu\varepsilon$
+    \begin{Equation}
+        \alpha^2=\frac{1}{2}\qty[-\omega^2\mu\varepsilon\pm\omega^2\mu\varepsilon\sqrt{1+\qty(\frac{\sigma}{\varepsilon\omega})^2}]
+    \end{Equation}
+    即
+    \begin{Equation}
+        \alpha^2=\frac{\omega^2\mu\varepsilon}{2}\qty[1+\qty(\frac{\sigma}{\varepsilon\omega})^2-1]
+    \end{Equation}
+    得到
+    \begin{Equation}
+        \alpha=\omega\sqrt{\frac{\mu\varepsilon}{2}\qty\Bigg[\sqrt{1+\qty(\frac{\sigma}{\omega\varepsilon})^2}-1]}
+    \end{Equation}
+    类似的，也可以得到$\beta$的表达式。
+\end{Proof}
+在导电介质中，继承了原有实角波数$k$概念的是相位常数$\beta$，因而导电介质中的相速为
+\begin{Equation}
+    v_\text{P}=\frac{\omega}{\beta}
+\end{Equation}
+在导电介质中$\beta$与$\omega$有关且两者并非线性关系，因此，在导电介质中相速$v_\text{p}=\omega/\beta$是有关频率的函数，换言之，在同一种导电介质中，\empx{不同频率的电磁波的相速是不同的}，这也就意味着，若电磁波是由若干不同频率的时谐电磁波叠加而成，那么当其通过导电介质时，这些不同频率的时谐电磁波将因为不同的相速而分离。这种现象被称为\uwave{色散}（Dispersion），同时导电介质也相应的被称为\uwave{色散介质}（Dispersive Medium）。需要指出的是，色散的名称确实是来自白光经过棱镜时分离为不同单色光的现象，但是，色散的概念是普适的，并不仅限于光频段。
+
+\subsection{导电介质中的均匀平面波的能量}
+根据\fancyref{fml:平均电场能量密度}和\fancyref{fml:导电介质中平面电磁波的波函数}
+\begin{Equation}
+    w_\text{eav}=\frac{1}{4}\varepsilon|\vb*{\dot{E}}|^2=\frac{1}{4}\varepsilon E_\text{m}^2\e^{-2\alpha z}
+\end{Equation}
+根据\fancyref{fml:平均磁场能量密度}和\fancyref{fml:电磁波的电磁矢量关系}
+\begin{Equation}
+    w_\text{mav}=\frac{1}{4}\mu|\vb*{\dot{H}}|^2=\frac{1}{4}\mu|\eta_\text{c}|^{-2}E_\text{m}^2\e^{-2\alpha z}
+\end{Equation}
+而由\fancyref{fml:波阻抗的模和辐角表示}可知
+\begin{Equation}
+    \mu|\eta_\text{c}|^{-2}=\mu\frac{\varepsilon}{\mu}\sqrt{1+\qty(\frac{\sigma}{\omega\varepsilon})^2}=\varepsilon\sqrt{1+\qty(\frac{\sigma}{\omega\varepsilon})^2}
+\end{Equation}
+因此
+\begin{Equation}
+    w_\text{mav}=\frac{1}{4}\varepsilon E_\text{m}^2\e^{-2az}\sqrt{1+\qty(\frac{\sigma}{\omega\varepsilon})^2}
+\end{Equation}
+这表明，在导电介质中，电场能量和磁场能量都会随着电磁波的传播而逐渐减小，这部分能量转化为了导电介质中电流的焦耳热。同时，由于$\sqrt{1+(\sigma/\omega\varepsilon)^2}>1$，这就意味着，在导电介质中，电场和磁场的能量不再均等，电场能量总是小于磁场能量，除非$\sigma=0$退化到理想介质。
+\begin{BoxFormula}[导电介质中的均匀平面波的能量]
+    导电介质中的均匀平面电磁波，平均电场能量密度小于平均磁场能量密度
+    \begin{Equation}
+        w_\text{eav}=\frac{1}{4}\varepsilon E_\text{m}^2\e^{-2\alpha z}\qquad
+        w_\text{mav}=\frac{1}{4}\varepsilon E_\text{m}^2\e^{-2\alpha z}\sqrt{1+\qty(\frac{\sigma}{\omega\varepsilon})^2}
+    \end{Equation}
+\end{BoxFormula}
+
+根据\fancyref{fml:平均坡印廷矢量}
+\begin{Equation}
+    S_\text{av}=\frac{1}{2}\Re[\vb*{\dot{E}}\times\vb*{\dot{H}}]
+\end{Equation}
+代入\fancyref{fml:电磁波的电磁矢量关系}，但注意现在$\eta_\text{c}$是一个复数
+\begin{Equation}
+    S_\text{av}=\frac{1}{2}\Re\qty[\vb*{\dot{E}}\times\qty(\frac{1}{\eta_\text{c}}\vb*{e}_\text{z}\times\vb*{\dot{E}})^{*}]
+\end{Equation}
+将共轭展开，注意$\eta_\text{c}$作为复数也需要取共轭
+\begin{Equation}
+    S_\text{av}=\frac{1}{2}\Re\qty[\vb*{e}_z|\vb*{\dot{E}}|^2\frac{1}{|\eta_\text{c}|\e^{-\j\phi}}]=\frac{1}{2}\Re\qty[\vb*{e}_z|\vb*{\dot{E}}|^2\frac{\e^{\j\phi}}{|\eta_\text{c}|}]
+\end{Equation}
+即
+\begin{BoxFormula}[导电介质中均匀平面波的坡印廷矢量]
+    导电介质中的均匀平面电磁波，平均坡印廷矢量满足
+    \begin{Equation}
+        S_\text{av}=\vb*{e}_z\frac{1}{2|\eta_\text{c}|}|\vb*{\dot{E}}|^2\cos\phi
+    \end{Equation}
+\end{BoxFormula}
+
+这里，我们总结一下理想介质和导电介质中的均匀平面电磁波的传播特性间的异同
+\begin{Table}[理想介质和导电介质中电磁波的传播特性]
+    <理想介质&导电介质\\>
+    电场、磁场、传播方向垂直，是横电磁波&
+    电场、磁场、传播方向垂直，是横电磁波\\
+    电场与磁场的振幅不变&电场与磁场的振幅呈指数衰减\\
+    电场与磁场的相位相同，波阻抗为实数&
+    电场与磁场的相位不同，波阻抗为复数\\
+    电磁波的相速与频率无关&
+    电磁波的相速与频率有关\\
+    平均磁场能量密度等于平均电场能量密度&
+    平均磁场能量密度大于平均电场能量密度\\
+\end{Table}
+
+接下来，我们来讨论两种近似情况下$\alpha,\beta$以及$\eta_\text{c}$的表达式。
+
+\subsection{良介质中的均匀平面波}
+良介质即满足条件$\sigma/\omega\varepsilon\ll 1$的导电介质，其中，位移电流起主要作用，传导电流的影响很小。
+
+在开始前，我们有必要补充两组泰勒展开近似
+\begin{Equation}
+    \sqrt{1+x}=1+\frac{1}{2}x+o(x^2)\qquad
+    \sqrt{1-x}=1-\frac{1}{2}x+o(x^2)
+\end{Equation}
+以及
+\begin{Equation}
+    \frac{1}{\sqrt{1+x}}=1-\frac{1}{2}x+o(x^2)\qquad
+    \frac{1}{\sqrt{1-x}}=1+\frac{1}{2}x+o(x^2)
+\end{Equation}
+
+\begin{BoxFormula}[良介质的衰减常数和相位常数]
+    良介质中的衰减常数$\alpha$和相位常数$\beta$可以近似为
+    \begin{Equation}
+        \alpha=\frac{\sigma}{2}\sqrt{\frac{\mu}{\varepsilon}}\qquad
+        \beta=\omega\sqrt{\mu\varepsilon}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{def:传播常数}和\fancyref{def:等效复电容率}
+    \begin{Equation}&[1]
+        \gamma=\j\omega\sqrt{\mu\varepsilon_\text{c}}=\j\omega\sqrt{\mu\qty(\varepsilon-\j\frac{\sigma}{\omega})}=\j\omega\sqrt{\mu\varepsilon\qty(1-\j\frac{\sigma}{\omega\varepsilon})}
+    \end{Equation}
+    在\xrefpeq{1}中代入$\sqrt{1-x}$的近似
+    \begin{Equation}
+        \gamma=\j\omega\sqrt{\mu\varepsilon}\qty(1-\j\frac{\sigma}{2\omega\varepsilon})
+    \end{Equation}
+    即
+    \begin{Equation}
+        \gamma=\j\omega\sqrt{\mu\varepsilon}+\frac{\sigma}{2}\sqrt{\frac{\mu}{\varepsilon}}
+    \end{Equation}
+    因此
+    \begin{Equation}*
+        \alpha=\frac{\sigma}{2}\sqrt{\frac{\mu}{\varepsilon}}\qquad
+        \beta=\omega\sqrt{\mu\varepsilon}\qedhere
+    \end{Equation}
+\end{Proof}
+
+\begin{BoxFormula}[良介质的波阻抗]
+    良介质中的波阻抗$\eta_\text{c}$可以近似为
+    \begin{Equation}
+        \eta_\text{c}=\sqrt{\frac{\mu}{\varepsilon}}\qty(1+\j\frac{\sigma}{2\omega\varepsilon})
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{fml:电磁波的电磁矢量关系}中$\eta_\text{c}$的定义
+    \begin{Equation}
+        \eta_\text{c}=\sqrt{\frac{\mu}{\varepsilon_\text{c}}}=\sqrt{\frac{\mu}{\varepsilon}}\qty(1-\j\frac{\sigma}{\omega\varepsilon})^{-1/2}
+    \end{Equation}
+    应用$1/\sqrt{1-x}$的近似
+    \begin{Equation}*
+        \eta_\text{c}=\sqrt{\frac{\mu}{\varepsilon}}\qty(1+\j\frac{\sigma}{2\omega\varepsilon})\qedhere
+    \end{Equation}
+\end{Proof}
+
+我们注意到，良介质中，除了有一定损耗所引起的衰减$\alpha$外，其与理想介质中电磁波的传播特点基本相同，尤其是其相位常数$\beta=\omega\sqrt{\mu\varepsilon}$近似与$\omega$成正比，可以视为非色散介质。
+
+\subsection{良导体中的均匀平面波}
+良导体即满足条件$\sigma/\omega\varepsilon\gg 1$的导电介质，其中，传导电流起主要作用，位移电流的影响很小。
+
+\begin{BoxFormula}[良导体的衰减常数和相位常数]
+    良导体中的衰减常数$\alpha$和相位常数$\beta$可以近似为
+    \begin{Equation}
+        \alpha=\beta=\sqrt{\frac{\omega\mu\varepsilon}{2}}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{def:传播常数}和\fancyref{def:等效复电容率}
+    \begin{Equation}&[1]
+        \gamma=\j\omega\sqrt{\mu\varepsilon_\text{c}}=\j\omega\sqrt{\mu\qty(\varepsilon-\j\frac{\sigma}{\omega})}=\j\omega\sqrt{\mu\varepsilon\qty(1-\j\frac{\sigma}{\omega\varepsilon})}
+    \end{Equation}
+    这里$\sigma/\omega\varepsilon$相较$1$大的多，故
+    \begin{Equation}
+        \gamma=\j\omega\sqrt{-\j\frac{\mu\sigma}{\omega}}
+    \end{Equation}
+    将$\j\omega$并入根号中，并考虑到$-\j^3=\j$
+    \begin{Equation}
+        \gamma=\sqrt{\j\omega\mu\sigma}
+    \end{Equation}
+    而由于$\sqrt{\j}=(1+\j)/\sqrt{2}$
+    \begin{Equation}
+        \gamma=(1+\j)\sqrt{\frac{\omega\mu\sigma}{2}}
+    \end{Equation}
+    因此
+    \begin{Equation}*
+        \alpha=\beta=\sqrt{\frac{\omega\mu\varepsilon}{2}}\qedhere
+    \end{Equation}
+\end{Proof}
+
+\begin{BoxFormula}[良导体的波阻抗]
+    良导体中的波阻抗$\eta_\text{c}$可以近似为
+    \begin{Equation}
+        \eta_\text{c}=(1+\j)\sqrt{\frac{\omega\mu}{2\sigma}}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{fml:电磁波的电磁矢量关系}中$\eta_\text{c}$的定义
+    \begin{Equation}
+        \eta_\text{c}=\sqrt{\frac{\mu}{\varepsilon_\text{c}}}=\sqrt{\frac{\mu}{\varepsilon}}\qty(1-\j\frac{\sigma}{\omega\varepsilon})^{-1/2}
+    \end{Equation}
+    由于$\sigma/\omega\varepsilon\ll 1$
+    \begin{Equation}*
+        \eta_\text{c}=\sqrt{\frac{\mu}{\varepsilon}}\qty(-\j\frac{\sigma}{\omega\varepsilon})^{-1/2}=\sqrt{\j\frac{\omega\mu}{\sigma}}
+    \end{Equation}
+    而由于$\sqrt{\j}=(1+\j)/\sqrt{2}$
+    \begin{Equation}*
+        \eta_\text{c}=(1+\j)\sqrt{\frac{\omega\mu}{2\sigma}}\qedhere
+    \end{Equation}
+\end{Proof}
+
+良导体中有$\eta_\text{c}=(1+\j)\sqrt{\omega\mu/2\sigma}$，这表明，良导体中磁场的相位滞后电场$45^{\circ}$。
+
+良导体中，根据\fancyref{def:相速}，电磁波相速为
+\begin{Equation}
+    v_\text{P}=\frac{\omega}{\beta}=\frac{\omega}{\sqrt{\omega\mu\varepsilon/2}}
+\end{Equation}
+即
+\begin{Equation}
+    v_\text{P}=\sqrt{\frac{2\omega}{\mu\sigma}}
+\end{Equation}
+
+良导体中，由于$\alpha=\beta=\sqrt{\omega\mu\varepsilon/2}$均随频率的增加而增加，因此，高频电磁波在良导体中的衰减常数非常大。所以，良导体中的电磁波局限于导体表面附近的区域，这种现象称为\uwave{趋肤效应}（Skin effect）。工程上常用\uwave{趋肤深度}来表征电磁波的趋肤程度，记作$\delta$，其定义为电磁波幅值衰减为表面值的$1/\e$时电磁波所传播的距离。基于这个定义，趋肤深度$\delta$应满足
+\begin{Equation}
+    \e^{-\alpha\delta}=\e^{-1}
+\end{Equation}
+即
+\begin{Equation}
+    \delta=\frac{1}{\alpha}=\sqrt{\frac{2}{\omega\mu\sigma}}
+\end{Equation}
+良导体中由于$\alpha=\beta$
+\begin{Equation}
+    \delta=\frac{1}{\beta}=\frac{\lambda}{2\pi}
+\end{Equation}
+这样，我们就可以根据电磁波的波长来计算其趋肤深度了。
+
+\subsection{群速}
+信号总是由许多频率不同的正弦波组成的，很显然，稳定单一频率的正弦波是不能携带任何信息的，它总是那样上下振荡。信号之所以能传递，是由于对波调制的结果，所谓调制，就是将不同频率组分的正弦波按照一定比例叠加起来。而对于调制波，我们并不关心其中每一频率组分的正弦波的相速，我们关心的是信号整体传递的速度，换言之，即信号调制后的\uwave{波群}或\uwave{波包}（Wave Packet）的传播速度，这也就是所谓群速的概念。本小节将推导群速的定义式。
+
+设有两个振幅均为$E_\text{m}$的行波，两者的角频率分别为$\omega+\delt{\omega}$和$\omega-\delt{\omega}$，在色散介质中，两者的角波数为$k+\delt{k}$和$k-\delt{k}$，则这两者可以分别表示为（以复指数的实部表示）
+\begin{Equation}
+    \qquad\qquad
+    E_1=E_\text{m}\Re\qty[\e^{\j(\omega+\delt{\omega})t}\e^{-\j(k+\delt{k})z}]\qquad
+    E_2=E_\text{m}\Re\qty[\e^{\j(\omega+\delt{\omega})t}\e^{-\j(k-\delt{k})z}]
+    \qquad\qquad
+\end{Equation}
+而两者的合成波为
+\begin{Equation}
+    \qquad\qquad\qquad
+    E=E_1+E_2=E_\text{m}\Re\qty\Big[
+        E_\text{m}\e^{\j(\omega t-kz)}
+        \qty(
+        \e^{\j(\delt{\omega}t-\delt{k}z)}+
+        \e^{-\j(\delt{\omega}t-\delt{k}z)}
+        )
+    ]
+    \qquad\qquad\qquad
+\end{Equation}
+即
+\begin{Equation}
+    E=E_\text{m}\cos(\delt{\omega t}-\delt{k}z)\Re[\e^{\j(\omega t-kz)}]
+\end{Equation}
+由此可见，合成波的振幅$E_\text{m}\cos(\delt{\omega t}-\delt{k}z)$会随着$z,t$而变化，即，合成波的振幅是受调制的，称为\uwave{包络波}\footnote{实际上，这就是我们大学物理中所学的，两个频率相近的振动叠加时的拍现象。}。群速的定义是\uwave{包络}（Envelope）的推进速度，而我们知道，包络线实际上就是振幅曲线$E_\text{m}\cos(\delt{\omega t}-\delt{k}z)$，因此，群速实际上就是要跟踪振幅的一个恒定点的速度
+\begin{Equation}
+    \delt{\omega}t-\delt{k}z=C
+\end{Equation}
+两端取微分
+\begin{Equation}
+    \delt{\omega}\dd{t}-\delt{k}\dd{z}=0
+\end{Equation}
+即
+\begin{Equation}
+    \dv{z}{t}=\frac{\delt{\omega}}{\delt{k}}
+\end{Equation}
+而由于$\delt{\omega},\delt{k}$很小
+\begin{Equation}
+    \dv{z}{t}=\dv{\omega}{k}
+\end{Equation}
+这就得到了群速的定义式
+\begin{BoxDefinition}[群速]
+    \uwave{群速}（Group Velocity）定义为包络的移动速度
+    \begin{Equation}
+        v_\text{G}=\dv{\omega}{k}
+    \end{Equation}
+\end{BoxDefinition}
+
+\begin{BoxFormula}[群速与相速的关系]
+    群速$v_\text{G}$和相速$v_\text{P}$间存在以下关系
+    \begin{Equation}
+        v_\text{G}=v_\text{P}\qty(1-\frac{\omega}{v_\text{P}}\dv{v_\text{P}}{\omega})^{-1}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{def:群速}
+    \begin{Equation}
+        v_\text{G}=\dv{\omega}{k}
+    \end{Equation}
+    根据\fancyref{def:相速}，有$\omega=v_\text{P}k$
+    \begin{Equation}
+        v_\text{G}=\dv{(v_\text{P}k)}{k}=v_\text{P}+k\dv{v_\text{p}}{k}
+    \end{Equation}
+    再重新代回$k=\omega/v_\text{P}$，并将对$k$的导数转化为对$\omega$的导数
+    \begin{Equation}
+        v_\text{G}=v_\text{P}+\frac{\omega}{v_\text{P}}\dv{v_\text{P}}{\omega}\dv{\omega}{k}
+    \end{Equation}
+    再重新运用群速的定义$v_\text{G}=\dv*{\omega}{k}$
+    \begin{Equation}
+        v_\text{G}=v_\text{P}+\frac{\omega}{v_\text{P}}\dv{v_\text{P}}{\omega}v_\text{G}
+    \end{Equation}
+    整理，解出$v_\text{G}$为
+    \begin{Equation}*
+        v_\text{G}=v_\text{P}\qty(1-\frac{\omega}{v_\text{P}}\dv{v_\text{P}}{\omega})^{-1}\qedhere
+    \end{Equation}
+\end{Proof}
+由\fancyref{fml:群速与相速的关系}可以看出，通常来说相速$v_\text{P}$和群速$v_\text{G}$是不同的
+\begin{itemize}
+    \item 若$\dv*{v_\text{P}}{\omega}=0$，相速与频率无关，此时$v_\text{G}=v_\text{P}$，群速等于相速，称为无色散。
+    \item 若$\dv*{v_\text{P}}{\omega}<0$，相速随频率增加而减小，此时$v_\text{G}<v_\text{P}$，群速小于相速，称为\uwave{正常色散}。
+    \item 若$\dv*{v_\text{P}}{\omega}>0$，相速随频率增加而增加，此时$v_\text{G}>v_\text{P}$，群速大于相速，称为\uwave{反常色散}。
+\end{itemize}
+良导体中，相速$v_\text{P}=\sqrt{2\omega/\mu\sigma}$随$\omega$增大而增大，故良导体是反常色散的。

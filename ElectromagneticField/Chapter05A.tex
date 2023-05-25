@@ -76,11 +76,9 @@
 \begin{BoxFormula}[理想介质中平面电磁波的波函数]
     理想介质中，沿$+z$方向传播的平面电磁波的电场强度$\vb*{\dot{\vb*{E}}}(z)$的波函数为
     \begin{Equation}
-        \qquad\qquad
-        \dot{E_x}(z)=E_{x\text{m}}\e^{\j\phi_x}\e^{-\j kz}\qquad
-        \dot{E_y}(z)=E_{y\text{m}}\e^{\j\phi_y}\e^{-\j kz}\qquad
-        \dot{E_z}(z)=0
-        \qquad\qquad
+        \dot{\vb*{E}}(z)=(
+            \vb*{e}_xE_{x\text{m}}\e^{\j\phi_x}+
+            \vb*{e}_yE_{y\text{m}}\e^{\j\phi_y})\e^{-\j kz}
     \end{Equation}
 \end{BoxFormula}
 我们或许会问，为什么这里只解了$\vb*{\dot{E}}(z)$而没有以相似方法解出$\vb*{\dot{H}}(z)$？因为根据麦克斯韦方程组中的$\curl\vb*{\dot{E}}=-\j\omega\mu\vb*{\dot{H}}$，磁场强度$\vb*{\dot{H}}(z)$并不独立于电场强度$\vb*{\dot{E}}(z)$，直接写出$\vb*{\dot{H}}(z)$没有实际意义。因此，现在要做的就是在平面电磁波的背景下，建立$\vb*{\dot{H}}(z)$与$\vb*{\dot{E}}(z)$间的关系。\setpeq{理想介质中平面电磁波的电磁矢量关系}
@@ -115,7 +113,7 @@
 \begin{BoxFormula}[电磁波的电磁矢量关系]
     理想介质中，电磁波的电磁矢量间满足以下关系
     \begin{Equation}
-        \vb*{\dot{H}}=\eta^{-1}\vb*{e}_z\times\dot{\vb*{E}}\qquad
+        \vb*{\dot{H}}=\eta^{-1}\vb*{e}_z\times\vb*{\dot{E}}\qquad
         \vb*{\dot{E}}=\eta\dot{\vb*{H}}\times\vb*{e}_z
     \end{Equation}
     这里$\eta$称为\uwave{波阻抗}（Wave Impedance）
@@ -151,7 +149,7 @@
 \begin{BoxFormula}[理想介质中的均匀平面波的能量]
     理想介质中的均匀平面电磁波，平均电场能量密度等于平均磁场能量密度
     \begin{Equation}
-        w_\text{eav}=w_\text{mav}=\frac{1}{4}\varepsilon|\vb*{\dot{E}}|^2
+        w_\text{eav}=w_\text{mav}=\frac{1}{4}\varepsilon E_\text{m}^2
     \end{Equation}
 \end{BoxFormula}
 根据\fancyref{fml:平均坡印廷矢量}
@@ -160,7 +158,7 @@
 \end{Equation}
 代入\fancyref{fml:电磁波的电磁矢量关系}
 \begin{Equation}
-    \vb*{S}_\text{av}=\frac{1}{2\eta}\Re\big[\vb*{\dot{E}}\times(\vb*{e}_z\times\vb*{E}^{*})]=\vb*{e}_z\frac{1}{2\eta}|\vb*{\dot{E}}|^2
+    \vb*{S}_\text{av}=\frac{1}{2\eta}\Re\big[\vb*{\dot{E}}\times(\vb*{e}_z\times\vb*{E})^{*}]=\vb*{e}_z\frac{1}{2\eta}|\vb*{\dot{E}}|^2
 \end{Equation}
 这表明，\empx{理想介质中，均匀平面电磁波的能量沿波的传播方向流动}。
 \begin{BoxFormula}[理想介质中均匀平面波的坡印廷矢量]
@@ -196,7 +194,7 @@
 \begin{BoxDefinition}[相速]
     \uwave{相速}（Phase Velocity）定义为等相位面的移动速度
     \begin{Equation}
-        v_\text{P}=\dv{z}{t}=\frac{\omega}{k}
+        v_\text{P}=\frac{\omega}{k}
     \end{Equation}
 \end{BoxDefinition}
 在理想介质中，由于$k=\omega\sqrt{\mu\varepsilon}$，因此得到
