@@ -1,0 +1,234 @@
+\section{电磁波的偏振}
+根据\fancyref{fml:理想介质中平面电磁波的波函数}
+\begin{Equation}
+    \dot{E_x}(z)=E_{x\text{m}}\e^{\j\phi_x}\e^{-\j kz}\qquad
+    \dot{E_y}(z)=E_{y\text{m}}\e^{\j\phi_y}\e^{-\j kz}
+\end{Equation}
+如果改写为时变形式
+\begin{Equation}
+    E_x(z)=E_{x\text{m}}\cos(\omega t-kz+\phi_x)\qquad
+    E_y(z)=E_{y\text{m}}\cos(\omega t-kz+\phi_y)
+\end{Equation}
+而一般来说，两个同频正弦函数在垂直方向上叠加的轨迹是椭圆（试想椭圆的参数方程）。换言之，取决于$\phi_x$和$\phi_y$的关系，电场$\vb*{E}=\vb*{e}_xE_x+\vb*{e}_yE_y$的大小和方向可能会随时间变化，更直白的说，\empx{电场的振动是二维的振动}，而二维上的振动不仅限于那种，矢量端点在一条直线上的往复运动，矢量端点沿圆轨迹或椭圆轨迹周期性旋转也是一种振动。我们将这种特性称为\uwave{偏振}（Polarization），前述的这几种振动模式，依次称为线偏振、圆偏振、椭圆偏振，其中椭圆偏振是最一般的情况，线偏振和圆偏振均可以视为椭圆偏振的特例。在本节，我们将会首先推导最一般的椭圆偏振方程，在此基础上，将线偏振和圆偏振作为椭圆偏振的特殊情况引出。
+
+由于偏振研究的主要是振动，因此不妨取$z=0$简化
+\begin{Equation}
+    E_x(z)=E_{x\text{m}}\cos(\omega t+\phi_x)\qquad
+    E_y(z)=E_{y\text{m}}\cos(\omega t+\phi_y)
+\end{Equation}
+
+\subsection{椭圆偏振}
+在本小节，我们将求出\uwave{椭圆偏振}（Elliptical Polarization）的轨迹方程，以及其模和辐角。
+\begin{BoxFormula}[椭圆偏振]
+    椭圆偏振的轨迹方程为
+    \begin{Equation}
+        \qquad\qquad
+        \qty(\frac{x}{E_{x\text{m}}})^2-
+        2
+        \qty(\frac{x}{E_{x\text{m}}})
+        \qty(\frac{y}{E_{y\text{m}}})
+        \cos(\phi_x-\phi_y)+
+        \qty(\frac{y}{E_{y\text{m}}})^2=
+        \sin^2(\phi_x-\phi_y)
+        \qquad\qquad
+    \end{Equation}
+    模的表达式为
+    \begin{Equation}
+        \abs{\vb*{E}(z,t)}=
+        \sqrt{E_{x\text{m}}^2\cos^2(\omega t+\phi_x)+E_{y\text{m}}^2\cos^2(\omega t+\phi_y)}
+    \end{Equation}
+    辐角的表达式为
+    \begin{Equation}
+        \tan\alpha=\frac{E_{y\text{m}}\cos(\omega t+\phi_y)}{E_{x\text{m}}\cos(\omega t+\phi_x)}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    这里模和辐角无非$r=\sqrt{x^2+y^2}$和$\tan\theta=y/x$，没有什么特别的，关键在于轨迹方程。
+
+    首先列出两个方向的振动方程
+    \begin{Equation}&[1]
+        E_x(z)=E_{x\text{m}}\cos(\omega t+\phi_x)\qquad
+        E_y(z)=E_{y\text{m}}\cos(\omega t+\phi_y)
+    \end{Equation}
+    整理
+    \begin{Equation}&[2]
+        \frac{x}{E_{x\text{m}}}=
+        \cos(\omega t+\phi_x)\qquad
+        \frac{y}{E_{y\text{m}}}=
+        \cos(\omega t+\phi_y)
+    \end{Equation}
+    将\xrefpeq{2}的两式求平方和
+    \begin{Equation}&[3]
+        \qty(\frac{x}{E_{x\text{m}}})^2+
+        \qty(\frac{y}{E_{y\text{m}}})^2=
+        \cos^2(\omega t+\phi_x)+
+        \cos^2(\omega t+\phi_y)
+    \end{Equation}
+    运用降幂公式$\cos\theta=(1+\cos 2\theta)/2$
+    \begin{Equation}&[4]
+        \qquad\qquad
+        \qty(\frac{x}{E_{x\text{m}}})^2+
+        \qty(\frac{y}{E_{y\text{m}}})^2=
+        \frac{1}{2}
+        \qty[1+\cos(2\omega t+2\phi_x)]+
+        \frac{1}{2}
+        \qty[1+\cos(2\omega t+2\phi_y)]
+        \qquad\qquad
+    \end{Equation}
+    这一支到\xrefpeq{4}结束，下面我们开始另外一支的推导。
+
+    将\xrefpeq{2}的两式相乘，并乘以$2\cos(\phi_x-\phi_y)$
+    \begin{Equation}&[5]
+        \qquad\qquad
+        \qty(\frac{x}{E_{x\text{m}}})
+        \qty(\frac{y}{E_{y\text{m}}})
+        2\cos(\phi_x-\phi_y)=
+        \qty[2\cos(\omega t+\phi_x)\cos(\omega t+\phi_y)]\cos(\phi_x-\phi_y)
+        \qquad\qquad
+    \end{Equation}
+    运用积化和差公式$\cos\theta_1\cos\theta_2=\qty[\cos(\theta_1+\theta_2)+\cos(\theta_1-\theta_2)]/2$
+    \begin{Equation}&[6]
+        \qquad
+        \qty(\frac{x}{E_{x\text{m}}})
+        \qty(\frac{y}{E_{y\text{m}}})
+        2\cos(\phi_x-\phi_y)=
+        \qty[\cos(2\omega t+\phi_x+\phi_y)+\cos(\phi_x-\phi_y)]\cos(\phi_x-\phi_y)
+        \qquad
+    \end{Equation}
+    将$\cos(\phi_x-\phi_y)$乘入方括号中
+    \begin{Equation}&[7]
+        \qquad
+        \qty(\frac{x}{E_{x\text{m}}})
+        \qty(\frac{y}{E_{y\text{m}}})
+        2\cos(\phi_x-\phi_y)=
+        \cos(2\omega t+\phi_x+\phi_y)
+        \cos(\phi_x-\phi_y)+
+        \cos^2(\phi_x-\phi_y)
+        \qquad
+    \end{Equation}
+    再次运用积化和差
+    \begin{Equation}&[8]
+        \qquad
+        \qty(\frac{x}{E_{x\text{m}}})
+        \qty(\frac{y}{E_{y\text{m}}})
+        2\cos(\phi_x-\phi_y)=
+        \frac{1}{2}[\cos(2\omega t+2\phi_x)+\cos(2\omega t+2\phi_y)]+\cos^2(\phi_x-\phi_y)
+        \qquad
+    \end{Equation}
+    现在，将\xrefpeq{4}减去\xrefpeq{8}
+    \begin{Equation}*
+        \qquad\qquad
+        \qty(\frac{x}{E_{x\text{m}}})^2-
+        2
+        \qty(\frac{x}{E_{x\text{m}}})
+        \qty(\frac{y}{E_{y\text{m}}})
+        \cos(\phi_x-\phi_y)+
+        \qty(\frac{y}{E_{y\text{m}}})^2=
+        \sin^2(\phi_x-\phi_y)
+        \qquad\qquad
+    \end{Equation}
+    这就是椭圆偏振的轨迹方程。
+\end{Proof}
+
+\subsection{线偏振}
+\uwave{线偏振}（Linear Polarization）是椭圆偏振在$\phi_x,\phi_y$相位相差$0$或$\pi$时的特殊情形。
+\begin{BoxFormula}[线偏振]
+    若$\phi_x-\phi_y=0+2n\pi$，则为1,3象限的线偏振，满足
+    \begin{Equation}
+        y=+\frac{E_{y\text{m}}}{E_{x\text{m}}}x\qquad
+        \tan\alpha=+\frac{E_{y\text{m}}}{E_{x\text{m}}}
+    \end{Equation}
+    若$\phi_x-\phi_y=\pi+2n\pi$，则为2,4象限的线偏振，满足
+    \begin{Equation}
+        y=-\frac{E_{y\text{m}}}{E_{x\text{m}}}x\qquad
+        \tan\alpha=-\frac{E_{y\text{m}}}{E_{x\text{m}}}
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{fml:椭圆偏振}，椭圆偏振的轨迹方程为
+    \begin{Equation}&[1]
+        \qquad\qquad
+        \qty(\frac{x}{E_{x\text{m}}})^2-
+        2
+        \qty(\frac{x}{E_{x\text{m}}})
+        \qty(\frac{y}{E_{y\text{m}}})
+        \cos(\phi_x-\phi_y)+
+        \qty(\frac{y}{E_{y\text{m}}})^2=
+        \sin^2(\phi_x-\phi_y)
+        \qquad\qquad
+    \end{Equation}
+    当$\phi_x-\phi_y=0+2n\pi$时，有$\cos(\phi_x-\phi_y)=+1$和$\sin^2(\phi_x-\phi_y)=0$
+    \begin{Equation}
+        \qty(\frac{x}{E_{x\text{m}}}-\frac{y}{E_{y\text{m}}})^2=0\qquad
+        y=+\frac{E_{y\text{m}}}{E_{x\text{m}}}x
+    \end{Equation}
+    当$\phi_x-\phi_y=\pi+2n\pi$时，有$\cos(\phi_x-\phi_y)=-1$和$\sin^2(\phi_x-\phi_y)=0$
+    \begin{Equation}
+        \qty(\frac{x}{E_{x\text{m}}}+\frac{y}{E_{y\text{m}}})^2=0\qquad
+        y=-\frac{E_{y\text{m}}}{E_{x\text{m}}}x
+    \end{Equation}
+    而相应$\tan\alpha$的表达式很容易由上两式得到。
+\end{Proof}
+
+\subsection{圆偏振}
+圆偏振（Circular Polarization）是椭圆偏振在$\phi_x,\phi_y$相位相差$\pi/2$或$3\pi/2$，且两个方向的振幅$E_{x\text{m}}=E_{y\text{m}}$时的特殊情况，若$E_{x\text{m}}\neq E_{y\text{m}}$，则为相应的正椭圆偏振（即长短轴为$x,y$轴）。
+
+\begin{BoxFormula}[圆偏振]
+    若$\phi_x-\phi_y=(\pi/2)+2n\pi\hphantom{3}$，且$E_{x\text{m}}=E_{y\text{m}}$，则为逆时针的右旋圆偏振，满足
+    \begin{Equation}
+        \qty(\frac{x}{E_{x\text{m}}})^2+
+        \qty(\frac{y}{E_{y\text{m}}})^2=1
+        \qquad
+        \alpha=+(\omega t+\phi_x)
+    \end{Equation}
+    若$\phi_x-\phi_y=(3\pi/2)+2n\pi$，且$E_{x\text{m}}=E_{y\text{m}}$，则为顺时针的左旋圆偏振，满足
+    \begin{Equation}
+        \qty(\frac{x}{E_{x\text{m}}})^2+
+        \qty(\frac{y}{E_{y\text{m}}})^2=1
+        \qquad
+        \alpha=-(\omega t+\phi_x)
+    \end{Equation}
+\end{BoxFormula}
+
+\begin{Proof}
+    根据\fancyref{fml:椭圆偏振}，椭圆偏振的轨迹方程为
+    \begin{Equation}&[1]
+        \qquad\qquad
+        \qty(\frac{x}{E_{x\text{m}}})^2-
+        2
+        \qty(\frac{x}{E_{x\text{m}}})
+        \qty(\frac{y}{E_{y\text{m}}})
+        \cos(\phi_x-\phi_y)+
+        \qty(\frac{y}{E_{y\text{m}}})^2=
+        \sin^2(\phi_x-\phi_y)
+        \qquad\qquad
+    \end{Equation}
+    无论$\phi_x-\phi_y$是$(\pi/2)+2n\pi$还是$(3\pi/2)+2n\pi$，都有$\cos(\phi_x-\phi_y)=0$和$\sin^2(\phi_x-\phi_y)=1$
+    \begin{Equation}
+        \qty(\frac{x}{E_{x\text{m}}})^2+
+        \qty(\frac{y}{E_{y\text{m}}})^2=1
+    \end{Equation}
+    根据\fancyref{fml:椭圆偏振}，辐角为
+    \begin{Equation}
+        \tan\alpha=\frac{E_{y\text{m}}\cos(\omega t+\phi_y)}{E_{x\text{m}}\cos(\omega t+\phi_x)}
+    \end{Equation}
+    考虑到圆偏振时$E_{x\text{m}}=E_{y\text{m}}$
+    \begin{Equation}
+        \tan\alpha=\frac{\cos(\omega t+\phi_y)}{\cos(\omega t+\phi_y)}
+    \end{Equation}\goodbreak
+    若$\phi_x-\phi_y=(\pi/2)+2n\pi\hphantom{1}$，则$\cos(\omega t+\phi_y)=\cos(\omega t+\phi_x-\pi/2)\hphantom{3}=+\sin(\omega t+\phi_x)$
+    \begin{Equation}
+        \qquad\qquad
+        \alpha=\arctan\qty[+\frac{\sin(\omega t+\phi_x)}{\cos(\omega t+\phi_y)}]=\arctan[+\tan(\omega t+\phi_x)]=+(\omega t+\phi_x)
+        \qquad\qquad
+    \end{Equation}
+    若$\phi_x-\phi_y=(3\pi/2)+2n\pi$，则$\cos(\omega t+\phi_y)=\cos(\omega t+\phi_x-3\pi/2)=-\sin(\omega t+\phi_x)$
+    \begin{Equation}
+        \qquad\qquad
+        \alpha=\arctan\qty[+\frac{\sin(\omega t+\phi_x)}{\cos(\omega t+\phi_y)}]=\arctan[-\tan(\omega t+\phi_x)]=-(\omega t+\phi_x)
+        \qquad\qquad
+    \end{Equation}
+    这就得到了两种情况下辐角$\alpha$的表达式，这决定了圆偏振是右旋还是左旋。
+\end{Proof}
