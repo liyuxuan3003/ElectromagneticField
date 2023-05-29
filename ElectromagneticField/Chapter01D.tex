@@ -23,7 +23,7 @@
 \begin{BoxDefinition}[矢量场的矢量线]
     矢量场的可视化方法是\uwave{矢量线}（Streamline），其是由微分方程
     \begin{Equation}
-        \dd{r}\times\vb*{F}=\vb*{0}
+        \dd{\vb*{r}}\times\vb*{F}=\vb*{0}
     \end{Equation}
     特别的，在直角坐标系中
     \begin{Equation}
@@ -79,13 +79,13 @@
     \begin{Equation}
         \Itnt[V]\div\vb*{F}\dd{V}=\Isot[S]\vb*{F}\cdot\dd{\vb*{S}}
     \end{Equation}
-    其指出，矢量场的散度在$V$上的积分等于矢量场在$V$的闭曲面$S$上的通量。
+    其指出，矢量场的散度在$V$上的积分等于矢量场在$V$的边界曲面$S$上的通量。
 \end{BoxTheorem}
 
 \subsection{矢量场的环流和旋度}
 通量由矢量函数的在闭曲面上的积分给出，环流则由矢量函数在闭取向上的积分给出。
-\begin{BoxDefinition}[矢量场的旋度]
-    定义矢量场$\vb*{F}(\vb*{r})$在闭合空间曲面$C$上的环流（Circulation）
+\begin{BoxDefinition}[矢量场的环流]
+    定义矢量场$\vb*{F}(\vb*{r})$在闭合空间曲线$C$上的环流（Circulation）
     \begin{Equation}
         \Gamma=\Ilot[C]\vb*{F}\cdot\dd{\vb*{l}}
     \end{Equation}
@@ -112,7 +112,7 @@
 旋度也可以被认为是某种源，只不过说
 \begin{itemize}
     \item 散度的源导致通量的产生，称为\uwave{通量源}，它导致矢量线的发出与汇聚。
-    \item 旋度的源导致环流的产生，称为\uwave{涡旋源}，它导致矢量线的正旋与逆选。
+    \item 旋度的源导致环流的产生，称为\uwave{涡旋源}，它导致矢量线的正旋与逆旋。
 \end{itemize}
 这样，我们就可以说
 \begin{itemize}
@@ -162,5 +162,5 @@
     \begin{Equation}
         \Isnt[S]\curl\vb*{F}\cdot\dd{\vb*{S}}=\Ilot[C]\vb*{F}\cdot\dd{\vb*{l}}
     \end{Equation}
-    其指出，矢量场的旋度在$S$上的积分等于矢量场在$S$闭曲线$S$上的环流。
+    其指出，矢量场的旋度在$S$上的积分等于矢量场在$S$的边界曲线$C$上的环流。
 \end{BoxTheorem}
